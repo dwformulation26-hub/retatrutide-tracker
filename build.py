@@ -121,6 +121,9 @@ def validate(d):
         if url in seen:
             p.append(f"news {key}: duplicate source url (same story twice?)")
         seen.add(url)
+    for no, url in d.get("patentLinks", {}).items():
+        if not PATENT_NO.fullmatch(no) or not url.startswith("http"):
+            p.append(f"patentLinks {no}: needs a patent number and an http(s) url")
     for k in ("competitors", "patents", "timelineTitle", "timeline"):
         if not bilingual(d.get("lede", {}).get(k)):
             p.append(f"lede {k}: needs en and ko")

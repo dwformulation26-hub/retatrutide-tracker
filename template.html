@@ -293,7 +293,8 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const segHtml = (id, cur, opts) => `<div class="seg" id="${id}" role="group">${opts.map(([v, en, ko]) =>
   `<button type="button" data-v="${v}" aria-pressed="${cur === v}">${Ti(en, ko)}</button>`).join("")}</div>`;
 const fill = (o, v) => ({ en: o.en.replace(/\{(\w+)\}/g, (_, k) => v[k]), ko: o.ko.replace(/\{(\w+)\}/g, (_, k) => v[k]) });
-const patUrl = (no) => `https://patents.google.com/patent/${encodeURIComponent(no)}/en`;
+// Google Patents by default; patentLinks overrides numbers it cannot show (404, or a machine translation that hides the drug name)
+const patUrl = (no) => (D.patentLinks || {})[no] || `https://patents.google.com/patent/${encodeURIComponent(no)}/en`;
 
 // ── language ────────────────────────────────────────────────────
 function setLang(l) {
