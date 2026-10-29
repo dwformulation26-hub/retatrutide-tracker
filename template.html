@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Retatrutide LAI Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Same system as the Presbyopia, Intranasal and Tirzepatide Radars: page 1 = stage lanes of product cards, page 2 = patent landscape,
+   page 3 = the originator's patent clock and plan, page 4 = dated news list */
+:root {
+  --bg: #f5f5f8; --surface: #ffffff; --ink: #15151d; --ink-2: #4a4a5a; --muted: #7c7c8c; --line: #e0e0e8; --line-2: #cbcbd8;
+  --accent: #4b4a9a; --accent-soft: #ebeaf6; --accent-ink: #3a3982;
+  --ok: #1d7f47; --ok-soft: #e3f3e8; --warn: #9a6512; --warn-soft: #fbf0dc; --crit: #b23a30; --crit-soft: #fbe7e4;
+  --lane-1: #3a3982; --lane-2: #5b5ab0; --lane-3: #9897cf; --lane-4: #b9bcc4;
+  --sans: "IBM Plex Sans", "IBM Plex Sans KR", system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f0f15; --surface: #17171f; --ink: #ebebf2; --ink-2: #b6b6c6; --muted: #82828f; --line: #272733; --line-2: #363645;
+    --accent: #a6a5ea; --accent-soft: #23234a; --accent-ink: #c4c3f3;
+    --ok: #4cc27f; --ok-soft: #143222; --warn: #e2a64a; --warn-soft: #33270f; --crit: #ef7a6e; --crit-soft: #3a1c19;
+    --lane-1: #c4c3f3; --lane-2: #8f8ee0; --lane-3: #5e5db0; --lane-4: #4a4d55;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f0f15; --surface: #17171f; --ink: #ebebf2; --ink-2: #b6b6c6; --muted: #82828f; --line: #272733; --line-2: #363645;
+  --accent: #a6a5ea; --accent-soft: #23234a; --accent-ink: #c4c3f3;
+  --ok: #4cc27f; --ok-soft: #143222; --warn: #e2a64a; --warn-soft: #33270f; --crit: #ef7a6e; --crit-soft: #3a1c19;
+  --lane-1: #c4c3f3; --lane-2: #8f8ee0; --lane-3: #5e5db0; --lane-4: #4a4d55;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--sans); }
+a { color: var(--accent-ink); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mono { font-family: var(--mono); font-size: .86em; letter-spacing: -.01em; }
+.muted { color: var(--muted); }
+.ko { display: block; color: var(--ink-2); font-size: .94em; }
+.ko-inline { color: var(--ink-2); margin-left: .4em; font-weight: 400; }
+:root[data-lang="en"] .ko, :root[data-lang="en"] .ko-inline { display: none; }
+:root[data-lang="ko"] .en { display: none; }
+:root[data-lang="ko"] .ko { color: inherit; font-size: inherit; }
+:root[data-lang="ko"] .ko-inline { color: inherit; margin-left: 0; }
+:root[data-lang="ko"] body, :root[data-lang="both"] body { word-break: keep-all; }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.top-in { display: flex; align-items: center; gap: 18px; min-height: 58px; flex-wrap: wrap; padding-block: 6px; }
+.name { display: flex; align-items: center; gap: 10px; font-weight: 650; letter-spacing: -.01em; margin-right: auto; }
+.name svg { width: 22px; height: 22px; flex: none; }
+.name small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; letter-spacing: 0; }
+nav { display: flex; gap: 2px; }
+nav a { display: flex; align-items: baseline; gap: 6px; padding: 8px 12px; border-radius: 8px; color: var(--ink-2); font-size: 14px; white-space: nowrap; }
+nav a b { font-family: var(--mono); font-weight: 500; font-size: 12px; color: var(--muted); }
+nav a:hover { background: var(--bg); text-decoration: none; }
+nav a[aria-current="page"] { background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; }
+nav a[aria-current="page"] b { color: var(--accent-ink); }
+.seg { display: inline-flex; border: 1px solid var(--line-2); border-radius: 8px; overflow: hidden; flex-wrap: wrap; }
+.seg button { border: 0; background: var(--surface); color: var(--ink-2); font: inherit; font-size: 12.5px; padding: 5px 10px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line-2); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.seg button[aria-pressed="true"] .ko-inline { color: inherit; }
+@media (max-width: 760px) { nav { order: 3; width: 100%; overflow-x: auto; } nav a { padding: 7px 10px; } .top-in { gap: 8px 12px; } .name { min-width: 0; } }
+
+main { padding-block: 32px 56px; }
+h1 { font-size: clamp(24px, 3.2vw, 32px); line-height: 1.2; letter-spacing: -.02em; margin: 0; font-weight: 650; text-wrap: balance; }
+h1 .ko { font-size: .62em; font-weight: 500; margin-top: 6px; letter-spacing: 0; }
+:root[data-lang="ko"] h1 .ko { font-size: 1em; font-weight: 650; margin-top: 0; }
+h2 { font-size: 18px; letter-spacing: -.01em; margin: 0; font-weight: 650; }
+h2 .ko-inline { font-size: .85em; }
+h3 { margin: 0; }
+.lede { color: var(--ink-2); max-width: 72ch; margin: 12px 0 0; }
+.eyebrow { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 8px; letter-spacing: .02em; }
+.stack { display: grid; gap: 36px; grid-template-columns: minmax(0, 1fr); }
+.stack > *, .lane > * { min-width: 0; }
+
+/* page 1: stage strip */
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-top: 22px; }
+.strip a { display: grid; gap: 2px; padding: 10px 12px 9px; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 6px; color: var(--ink); }
+.strip a:hover { text-decoration: none; border-color: var(--line-2); border-top-color: var(--c); }
+.strip .n { font-size: 24px; font-weight: 650; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.strip .l { font-size: 12.5px; color: var(--ink-2); line-height: 1.3; }
+@media (max-width: 760px) { .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 18px; }
+.tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--muted); }
+.sel { font: inherit; font-size: 12.5px; color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); border-radius: 8px; padding: 5px 8px; max-width: 100%; }
+
+/* registries checked: why the first lane is empty */
+.reg { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 8px; margin-top: 14px; }
+.reg div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; font-size: 12.5px; color: var(--ink-2); display: grid; gap: 2px; align-content: start; }
+.reg b { font-size: 13px; color: var(--ink); display: flex; gap: 8px; align-items: baseline; }
+
+/* technology × stage matrix */
+.mx-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin-top: 14px; }
+.mx { width: 100%; border-collapse: collapse; font-size: 13px; }
+.mx th, .mx td { padding: 7px 10px; border-bottom: 1px solid var(--line); text-align: center; white-space: nowrap; }
+.mx th:first-child, .mx td:first-child { text-align: left; }
+.mx thead th { font-size: 11.5px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line-2); vertical-align: bottom; }
+.mx thead th .ko { font-weight: 500; font-size: 11px; }
+.mx tbody tr:last-child td { border-bottom: 0; }
+.mx td.c button { font: 600 13px var(--mono); border: 0; background: none; color: var(--ink); cursor: pointer; padding: 2px 8px; border-radius: 6px; min-width: 32px; }
+.mx td.c button:hover { background: var(--accent-soft); color: var(--accent-ink); }
+.mx td.z { color: var(--line-2); font-family: var(--mono); }
+.mx td.tot { font-family: var(--mono); color: var(--muted); }
+.mx tr.on td { background: var(--accent-soft); }
+
+.lane { display: grid; gap: 12px; scroll-margin-top: 90px; grid-template-columns: minmax(0, 1fr); }
+.lane-h { display: flex; align-items: baseline; gap: 10px; border-bottom: 2px solid var(--c); padding-bottom: 8px; }
+.lane-h .count { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-left: auto; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; overflow-wrap: anywhere; }
+.card-h { display: flex; gap: 10px; min-width: 0; align-items: flex-start; justify-content: space-between; }
+.card-h > div { min-width: 0; }
+.co { font-size: 13px; color: var(--ink-2); line-height: 1.35; }
+.co .ko { font-size: 12.5px; color: var(--muted); }
+.prod { font-size: 17px; font-weight: 650; letter-spacing: -.01em; line-height: 1.3; margin: 2px 0 0; }
+.prod .ko { font-size: 14px; font-weight: 500; margin-top: 1px; }
+:root[data-lang="ko"] .co .ko { font-size: inherit; color: inherit; }
+:root[data-lang="ko"] .prod .ko { font-size: inherit; font-weight: inherit; }
+.api { font-size: 13px; color: var(--muted); line-height: 1.45; }
+.flag { font-family: var(--mono); font-size: 11px; font-weight: 500; padding: 2px 6px; border-radius: 4px; border: 1px solid var(--line-2); color: var(--ink-2); flex: none; }
+.flag.kr { background: var(--accent-soft); border-color: transparent; color: var(--accent-ink); }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.stage { font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--bg); color: var(--ink-2); line-height: 1.5; }
+.area { font-size: 11.5px; font-weight: 500; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-2); line-height: 1.5; }
+.fresh { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--warn-soft); color: var(--warn); line-height: 1.5; }
+.fresh.new { background: var(--ok-soft); color: var(--ok); }
+.row { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 10px; font-size: 13.5px; border-top: 1px solid var(--line); padding-top: 10px; min-width: 0; }
+.lbl { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 2px; line-height: 1.3; }
+.lbl .ko { display: block; font-size: 11.5px; letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 500; }
+:root[data-lang="ko"] .lbl .ko { font-size: 12px; }
+.now { color: var(--ink); }
+.ivl { font-weight: 600; }
+.trials { display: grid; gap: 6px; min-width: 0; }
+.trial { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; color: var(--ink-2); }
+.trial a { font-family: var(--mono); font-size: 12px; }
+.trial .meta { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+.st { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 999px; }
+.st.done { background: var(--bg); color: var(--ink-2); }
+.st.go { background: var(--ok-soft); color: var(--ok); }
+.st.stop { background: var(--crit-soft); color: var(--crit); }
+.st.unk { background: var(--warn-soft); color: var(--warn); }
+.pat { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12.5px; color: var(--ink-2); }
+.pat a { font-family: var(--mono); font-size: 12px; }
+.dev { color: var(--ink-2); }
+.srcl { font-size: 12px; }
+.stopped > summary { cursor: pointer; list-style: none; }
+.stopped > summary::-webkit-details-marker { display: none; }
+.stopped .lane-h::after { content: "+"; font-family: var(--mono); color: var(--muted); }
+.stopped[open] .lane-h::after { content: "–"; }
+.stopped[open] .cards { margin-top: 12px; }
+.empty { background: var(--surface); border: 1px dashed var(--line-2); border-radius: 10px; padding: 20px; color: var(--muted); text-align: center; }
+
+/* page 2: patents */
+.tbl-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th { text-align: left; font-size: 11.5px; font-weight: 600; color: var(--muted); padding: 10px 14px; border-bottom: 1px solid var(--line-2); white-space: nowrap; vertical-align: bottom; }
+th .ko { font-weight: 500; font-size: 11px; }
+td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.nowrap { white-space: nowrap; }
+td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var(--mono); }
+.pt-tbl { min-width: 820px; }
+.status { font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--bg); color: var(--ink-2); white-space: nowrap; display: inline-block; }
+.status.granted { background: var(--ok-soft); color: var(--ok); }
+.status.ceased { background: var(--crit-soft); color: var(--crit); }
+.counts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); gap: 8px; margin-top: 18px; }
+.counts div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 2px; }
+.counts .n { font-size: 22px; font-weight: 650; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.counts .l { font-size: 12.5px; color: var(--ink-2); }
+.section-h { display: grid; gap: 4px; margin-bottom: 12px; }
+.section-h p { margin: 0; color: var(--ink-2); font-size: 14px; max-width: 72ch; }
+
+/* page 3: patent clock (one full-width track per family, so it fits a phone without sideways scrolling) */
+.clock { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px 16px; display: grid; gap: 14px; }
+.axis { position: relative; height: 16px; font: 11px var(--mono); color: var(--muted); }
+.axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.prow { display: grid; gap: 5px; }
+.pl { display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; font-size: 13px; }
+.pl a { font-family: var(--mono); font-size: 12px; }
+.pl .w { color: var(--ink-2); }
+.pl .e { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--ink); white-space: nowrap; }
+.track { position: relative; height: 10px; background: var(--bg); border-radius: 999px; }
+.track .b { position: absolute; top: 0; bottom: 0; border-radius: 999px; background: var(--k); }
+.track .x { position: absolute; top: 0; bottom: 0; border: 1.5px dashed var(--k); border-left: 0; border-radius: 0 999px 999px 0; }
+.track .td { position: absolute; top: -4px; bottom: -4px; border-left: 1.5px solid var(--crit); }
+.track .ms { position: absolute; top: 50%; width: 10px; height: 10px; transform: translate(-50%, -50%) rotate(45deg); background: var(--ok); border: 1.5px solid var(--ok); }
+.track .ms.plan { background: var(--surface); }
+.ckey { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); align-items: center; }
+.ckey i { display: inline-block; width: 18px; height: 8px; border-radius: 999px; background: var(--k); margin-right: 6px; vertical-align: middle; }
+.ckey i.dash { background: none; border: 1.5px dashed var(--accent); border-left: 0; }
+.ckey i.tdk { width: 0; height: 14px; border-left: 1.5px solid var(--crit); border-radius: 0; }
+.ckey i.dia { width: 9px; height: 9px; border-radius: 0; transform: rotate(45deg); background: var(--ok); }
+.ckey i.dia.plan { background: none; border: 1.5px solid var(--ok); }
+.pnote { font-size: 12.5px; color: var(--muted); }
+.st.plan { background: var(--accent-soft); color: var(--accent-ink); }
+.todayrow { font: 600 12px var(--mono); color: var(--crit); padding: 8px 16px; background: var(--crit-soft); border-top: 1px solid var(--line); }
+
+/* page 4 */
+.news { display: grid; gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.month { font-family: var(--mono); font-size: 12px; color: var(--muted); padding: 14px 16px 6px; background: var(--bg); border-top: 1px solid var(--line); }
+.month:first-child { border-top: 0; }
+.item { display: grid; grid-template-columns: 92px minmax(0, 1fr) auto; gap: 6px 14px; padding: 12px 16px; border-top: 1px solid var(--line); align-items: start; }
+.month + .item { border-top: 0; }
+.item .d { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.item .t { min-width: 0; }
+.item .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 3px; }
+.tag { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 4px; background: var(--bg); color: var(--ink-2); }
+.tag.kr { background: var(--accent-soft); color: var(--accent-ink); }
+.tag.pt { background: var(--warn-soft); color: var(--warn); }
+.item .s { font-size: 12.5px; white-space: nowrap; padding-top: 2px; }
+@media (max-width: 600px) { .item { grid-template-columns: 1fr; } .item .s { white-space: normal; } }
+.foot { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-block: 18px 28px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <div class="name">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9" r="4.2" fill="none" stroke="var(--accent)" stroke-width="1.5"/><circle cx="16.5" cy="8" r="2.8" fill="none" stroke="var(--accent)" stroke-width="1.5"/><circle cx="13" cy="16.5" r="3.6" fill="var(--accent)"/></svg>
+      <div>Retatrutide LAI Radar<small id="asof"></small></div>
+    </div>
+    <nav aria-label="Pages">
+      <a href="#competitors" data-page="competitors"><b>1</b><span><span class="en">Competitors</span><span class="ko-inline">경쟁사</span></span></a>
+      <a href="#patents" data-page="patents"><b>2</b><span><span class="en">Patents</span><span class="ko-inline">특허</span></span></a>
+      <a href="#timeline" data-page="timeline"><b>3</b><span><span class="en">Lilly timeline</span><span class="ko-inline">릴리 타임라인</span></span></a>
+      <a href="#news" data-page="news"><b>4</b><span><span class="en">News</span><span class="ko-inline">뉴스</span></span></a>
+    </nav>
+    <div class="seg" id="lang" role="group" aria-label="Language">
+      <button type="button" data-l="both">EN·KR</button><button type="button" data-l="en">EN</button><button type="button" data-l="ko">KR</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="p-competitors" class="stack"></section>
+  <section id="p-patents" class="stack" hidden></section>
+  <section id="p-timeline" class="stack" hidden></section>
+  <section id="p-news" class="stack" hidden></section>
+</main>
+<footer class="wrap foot" id="foot"></footer>
+
+<script>window.RETA = /*DATA*/null;</script>
+<script>
+"use strict";
+const D = window.RETA;
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// bilingual text: block (two lines) or inline
+const T = (o) => (o && typeof o === "object" ? `<span class="en">${o.en}</span>${o.ko && o.ko !== o.en ? `<span class="ko">${o.ko}</span>` : ""}` : o ?? "");
+const Ti = (en, ko) => `<span class="en">${en}</span><span class="ko-inline">${ko}</span>`;
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const segHtml = (id, cur, opts) => `<div class="seg" id="${id}" role="group">${opts.map(([v, en, ko]) =>
+  `<button type="button" data-v="${v}" aria-pressed="${cur === v}">${Ti(en, ko)}</button>`).join("")}</div>`;
+const fill = (o, v) => ({ en: o.en.replace(/\{(\w+)\}/g, (_, k) => v[k]), ko: o.ko.replace(/\{(\w+)\}/g, (_, k) => v[k]) });
+const patUrl = (no) => `https://patents.google.com/patent/${encodeURIComponent(no)}/en`;
+
+// ── language ────────────────────────────────────────────────────
+function setLang(l) {
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l === "ko" ? "ko" : "en";
+  document.querySelectorAll("#lang button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.l === l));
+  try { localStorage.setItem("reta-lang", l); } catch (e) { /* storage unavailable */ }
+}
+let saved = null; try { saved = localStorage.getItem("reta-lang"); } catch (e) { /* storage unavailable */ }
+setLang(["both", "en", "ko"].includes(saved) ? saved : "both");
+$("#lang").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) setLang(b.dataset.l); });
+$("#asof").innerHTML = `<span class="en">Data as of </span>${D.asOf}<span class="ko-inline">기준</span>`;
+
+// ═════════ PAGE 1 — COMPETITORS ═════════
+const LANE_C = { clinic: "--lane-1", animal: "--lane-2", patent: "--lane-3", stopped: "--lane-4" };
+const ST = {
+  COMPLETED: ["done", "Completed", "완료"], RECRUITING: ["go", "Recruiting", "모집 중"], ACTIVE_NOT_RECRUITING: ["go", "Active", "진행 중"],
+  NOT_YET_RECRUITING: ["go", "Not yet recruiting", "모집 전"], ENROLLING_BY_INVITATION: ["go", "Enrolling by invitation", "초청 모집"],
+  TERMINATED: ["stop", "Terminated", "조기 종료"], WITHDRAWN: ["stop", "Withdrawn", "철회"], SUSPENDED: ["stop", "Suspended", "일시 중지"],
+  UNKNOWN: ["unk", "Status unknown", "상태 불명"],
+};
+let scope = "All", tech = "All";
+
+function trialHtml(c) {
+  if (!c.trials.length) return `<span class="muted">${T(c.noTrial) || Ti("No registered trial found", "등록 임상 확인 안 됨")}</span>`;
+  return c.trials.slice(0, 3).map((t) => {
+    const [cls, en, ko] = ST[t.status] || ["unk", t.status, t.status];
+    return `<div class="trial"><a href="https://clinicaltrials.gov/study/${t.nct}" target="_blank" rel="noopener">${t.nct}</a>
+      <span class="st ${cls}">${Ti(en, ko)}</span><span class="meta">${t.phase || ""} · n=${t.n ?? "?"}${t.pcd ? " · " + String(t.pcd).slice(0, 7) : ""}</span></div>`;
+  }).join("") + (c.noTrial ? `<div class="muted" style="font-size:12px">${T(c.noTrial)}</div>` : "");
+}
+const patHtml = (c) => c.patents.length
+  ? `<div class="pat">${c.patents.map((p) => `<span><a href="${patUrl(p.no)}" target="_blank" rel="noopener">${p.no}</a> ${Ti(p.status.en, p.status.ko)}</span>`).join("")}</div>`
+  : `<span class="muted">${Ti("No retatrutide-specific filing found", "레타트루타이드 특정 출원 확인 안 됨")}</span>`;
+
+// "New" for cards added in the last 30 days, "Updated" for a card change in the last 14 days
+const daysAgo = (d) => (new Date(D.asOf) - new Date(d)) / 864e5;
+function badge(c) {
+  if (c.added && daysAgo(c.added) <= 30) return `<span class="fresh new">${Ti("New", "신규")}</span>`;
+  const last = (c.history || []).map((h) => h.date).sort().pop();
+  return last && daysAgo(last) <= 14 ? `<span class="fresh">${Ti("Updated", "업데이트")}</span>` : "";
+}
+
+function card(c) {
+  const te = D.techs.find((a) => a.id === c.tech) || { en: c.tech, ko: c.tech };
+  return `<article class="card">
+    <div class="card-h"><div><div class="co">${T(c.company)}</div><h3 class="prod">${T(c.product)}</h3></div>
+      <span class="flag${c.region === "KR" ? " kr" : ""}" title="${esc(c.region)}">${esc(c.region)}</span></div>
+    <div class="api">${T(c.api)}</div>
+    <div class="pills"><span class="stage">${Ti(c.stage.en, c.stage.ko)}</span><span class="area">${Ti(te.en, te.ko)}</span>${badge(c)}</div>
+    <div class="row"><div class="lbl">${T({ en: "Interval", ko: "투여 간격" })}</div><div class="ivl">${T(c.interval)}</div></div>
+    <div class="row"><div class="lbl">${T({ en: "Now", ko: "현황" })}</div><div class="now">${T(c.now)}${c.src ? ` <a class="srcl" href="${esc(c.src.url)}" target="_blank" rel="noopener" title="${esc(c.src.label)}">↗</a>` : ""}</div></div>
+    <div class="row"><div class="lbl">${T({ en: "Platform", ko: "플랫폼" })}</div><div class="dev">${T(c.platform)}</div></div>
+    <div class="row"><div class="lbl">${T({ en: "Patents", ko: "특허" })}</div><div>${patHtml(c)}</div></div>
+    <div class="row"><div class="lbl">${T({ en: "Trials", ko: "임상" })}</div><div class="trials">${trialHtml(c)}</div></div>
+  </article>`;
+}
+
+const inScope = (c) => scope === "All" || (scope === "Korea" ? c.region === "KR" : c.region !== "KR");
+function renderCompetitors() {
+  const el = $("#p-competitors");
+  const pool = D.cards.filter(inScope);
+  const cards = pool.filter((c) => tech === "All" || c.tech === tech);
+  // newest move first; Korean assets first on a tie
+  const sorted = (l) => cards.filter((c) => c.lane === l).sort((a, b) => (b.lastMove || "").localeCompare(a.lastMove || "") || (a.region === "KR" ? -1 : 0) - (b.region === "KR" ? -1 : 0));
+  const cnt = (t, l) => pool.filter((c) => c.tech === t && c.lane === l).length;
+  el.innerHTML = `
+    <div>
+      <div class="eyebrow">${Ti("Page 1 · Competitors by development stage", "1페이지 · 개발 단계별 경쟁사")}</div>
+      <h1>${T({ en: "Who is building a long-acting retatrutide", ko: "장기지속형 레타트루타이드를 개발하는 곳" })}</h1>
+      <p class="lede">${T(fill(D.lede.competitors, { n: D.cards.length }))}</p>
+      <div class="strip">${D.lanes.map((l) => `<a href="#lane-${l.id}" style="--c:var(${LANE_C[l.id]})"><span class="n">${sorted(l.id).length}</span><span class="l">${T(l.name)}</span></a>`).join("")}</div>
+      <div class="reg">${D.registries.map((r) => `<div><b>${esc(r.name)} <span class="st ${r.result === "checked" ? "go" : "unk"}">${r.result === "checked" ? Ti("Checked", "확인") : Ti("Not checked", "미확인")}</span></b>${T(r.note)}</div>`).join("")}</div>
+      <div class="mx-wrap"><table class="mx"><thead><tr><th>${T({ en: "Technology", ko: "기술" })}</th>${D.lanes.map((l) => `<th>${T(l.name)}</th>`).join("")}<th>${T({ en: "Total", ko: "합계" })}</th></tr></thead><tbody>
+        ${D.techs.map((a) => {
+          const tot = pool.filter((c) => c.tech === a.id).length;
+          if (!tot) return "";
+          return `<tr class="${tech === a.id ? "on" : ""}"><td><button type="button" class="arbtn" data-a="${esc(a.id)}" style="all:unset;cursor:pointer">${Ti(a.en, a.ko)}</button></td>${D.lanes.map((l) => {
+            const n = cnt(a.id, l.id);
+            return n ? `<td class="c"><button type="button" data-a="${esc(a.id)}" data-l="${l.id}" title="${esc(a.en)} · ${esc(l.name.en)}">${n}</button></td>` : `<td class="z">·</td>`;
+          }).join("")}<td class="tot">${tot}</td></tr>`;
+        }).join("")}
+      </tbody></table></div>
+      <div class="toolbar">
+        <div class="tools">
+          ${segHtml("scope", scope, [["All", "All", "전체"], ["Korea", "Korea", "국내"], ["Global", "Global", "글로벌"]])}
+          <select class="sel" id="techSel" aria-label="Technology">
+            <option value="All">All technologies · 전체 기술</option>
+            ${D.techs.map((a) => `<option value="${esc(a.id)}"${tech === a.id ? " selected" : ""}>${esc(a.en)} · ${esc(a.ko)}</option>`).join("")}
+          </select>
+        </div>
+        <div class="legend"><span>${Ti("Within each stage: most recent move first", "단계 내 정렬: 최근 동향 순")}</span></div>
+      </div>
+    </div>
+    ${D.lanes.map((l) => {
+      const list = sorted(l.id);
+      const head = `<div class="lane-h"><h2>${Ti(l.name.en, l.name.ko)}</h2><span class="count">${list.length}</span></div>`;
+      const none = l.id === "clinic" ? Ti("No long-acting retatrutide has a registered trial or IND", "임상시험·IND가 등록된 장기지속형 레타트루타이드 없음") : Ti("Nothing at this stage for the current filter", "현재 필터에 해당하는 과제 없음");
+      const body = list.length ? `<div class="cards">${list.map(card).join("")}</div>` : `<div class="empty">${none}</div>`;
+      return l.id === "stopped"
+        ? `<details class="lane stopped" open id="lane-${l.id}" style="--c:var(${LANE_C[l.id]})"><summary>${head}</summary>${body}</details>`
+        : `<div class="lane" id="lane-${l.id}" style="--c:var(${LANE_C[l.id]})">${head}${body}</div>`;
+    }).join("")}`;
+  $("#scope", el).addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { scope = b.dataset.v; renderCompetitors(); } });
+  $("#techSel", el).addEventListener("change", (e) => { tech = e.target.value; renderCompetitors(); });
+  $(".mx", el).addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-a]"); if (!b) return;
+    tech = tech === b.dataset.a && !b.dataset.l ? "All" : b.dataset.a;
+    renderCompetitors();
+    const target = b.dataset.l ? document.getElementById(`lane-${b.dataset.l}`) : null;
+    if (target) { if (target.tagName === "DETAILS") target.open = true; target.scrollIntoView(); }
+  });
+}
+
+// ═════════ PAGE 2 — PATENTS ═════════
+const stCls = (s) => (/ceased/i.test(s.en) ? "ceased" : /granted|registered/i.test(s.en) ? "granted" : "");
+function renderPatents() {
+  const el = $("#p-patents");
+  const P = D.patents, Q = D.platforms;
+  const byCc = {}; P.forEach((p) => { byCc[p.cc] = (byCc[p.cc] || 0) + 1; });
+  const cc = Object.entries(byCc).sort((a, b) => b[1] - a[1]);
+  const granted = P.filter((p) => stCls(p.status) === "granted").length;
+  el.innerHTML = `
+    <div>
+      <div class="eyebrow">${Ti("Page 2 · Patent landscape", "2페이지 · 특허 현황")}</div>
+      <h1>${T({ en: "Who has filed on long-acting retatrutide", ko: "장기지속형 레타트루타이드 특허 출원 현황" })}</h1>
+      <p class="lede">${T(fill(D.lede.patents, { p: P.length, q: Q.length }))}</p>
+      <div class="counts">
+        <div><span class="n">${P.length}</span><span class="l">${Ti("Retatrutide-specific families", "레타트루타이드 특정 패밀리")}</span></div>
+        <div><span class="n">${granted}</span><span class="l">${Ti("Granted somewhere", "등록 완료")}</span></div>
+        ${cc.map(([k, n]) => `<div><span class="n">${n}</span><span class="l">${esc(k)}</span></div>`).join("")}
+      </div>
+    </div>
+    <div>
+      <div class="section-h"><h2>${Ti("Retatrutide-specific families", "레타트루타이드 특정 특허")}</h2>
+        <p>${T({ en: "Oldest priority first. Status is the most advanced office decision found.", ko: "우선일 오래된 순. 상태는 확인된 가장 진전된 심사 결과입니다." })}</p></div>
+      <div class="tbl-wrap"><table class="pt-tbl"><thead><tr>
+        <th>${T({ en: "Priority", ko: "우선일" })}</th><th>${T({ en: "Applicant", ko: "출원인" })}</th><th>${T({ en: "Publication", ko: "공개번호" })}</th>
+        <th>${T({ en: "Technology", ko: "기술" })}</th><th>${T({ en: "Published", ko: "공개일" })}</th><th>${T({ en: "Status", ko: "상태" })}</th></tr></thead><tbody>
+        ${[...P].sort((a, b) => a.priority.localeCompare(b.priority)).map((p) => `<tr>
+          <td class="nowrap mono">${p.priority}</td>
+          <td>${esc(p.applicant)}<span class="sub">${esc(p.cc)}</span></td>
+          <td class="nowrap"><a class="mono" href="${patUrl(p.no)}" target="_blank" rel="noopener">${p.no}</a>${p.family ? `<span class="sub">${esc(p.family)}</span>` : ""}</td>
+          <td>${T(p.tech)}</td><td class="nowrap mono">${p.published}</td>
+          <td><span class="status ${stCls(p.status)}">${Ti(p.status.en, p.status.ko)}</span></td></tr>`).join("")}
+      </tbody></table></div>
+    </div>
+    <div>
+      <div class="section-h"><h2>${Ti("Platform families that list retatrutide", "레타트루타이드를 포함하는 플랫폼 특허")}</h2>
+        <p>${T({ en: "Broader depot inventions where retatrutide is one of several named drugs. They show who could enter, not who is developing.", ko: "레타트루타이드가 여러 약물 중 하나로 기재된 포괄적 데포 발명. 개발 여부가 아니라 진입 가능성을 보여줍니다." })}</p></div>
+      <div class="tbl-wrap"><table class="pt-tbl"><thead><tr>
+        <th>${T({ en: "Priority", ko: "우선일" })}</th><th>${T({ en: "Applicant", ko: "출원인" })}</th><th>${T({ en: "Publication", ko: "공개번호" })}</th><th>${T({ en: "Technology", ko: "기술" })}</th></tr></thead><tbody>
+        ${[...Q].sort((a, b) => a.priority.localeCompare(b.priority)).map((p) => `<tr>
+          <td class="nowrap mono">${p.priority}</td><td>${esc(p.applicant)}<span class="sub">${esc(p.cc)}</span></td>
+          <td class="nowrap"><a class="mono" href="${patUrl(p.no)}" target="_blank" rel="noopener">${p.no}</a></td><td>${T(p.tech)}</td></tr>`).join("")}
+      </tbody></table></div>
+    </div>`;
+}
+
+
+// ═════════ PAGE 3 — PATENT HOLDER'S TIMELINE ═════════
+const KIND = { compound: ["--lane-1", "Compound", "물질"], use: ["--lane-2", "Use / dosing", "용도·용법"], formulation: ["--lane-3", "Formulation", "제형"],
+  process: ["--lane-4", "Process", "제조"] };
+const yr = (d) => { const [y, m = 1, dd = 15] = String(d).split("-").map(Number); return y + (m - 1) / 12 + (dd - 1) / 365; };
+function renderTimeline() {
+  const el = $("#p-timeline");
+  const E = D.estate, M = D.plan;
+  const ends = E.flatMap((p) => [p.expiry, p.extMax].filter(Boolean));
+  const y0 = Math.floor(Math.min(...E.map((p) => yr(p.priority)), ...M.map((m) => yr(m.date))));
+  const y1 = Math.ceil(Math.max(...ends.map(yr), yr(D.asOf))) + 1;
+  const pct = (d) => ((typeof d === "number" ? d : yr(d)) - y0) / (y1 - y0) * 100;
+  const pos = (d) => pct(d).toFixed(2) + "%";
+  const ticks = []; for (let y = Math.ceil((y0 + 1) / 5) * 5; y < y1; y += 5) ticks.push(y);
+  const today = `<span class="td" style="left:${pos(D.asOf)}"></span>`;
+  const rows = [...E].sort((a, b) => a.priority.localeCompare(b.priority)).map((p) => {
+    const [c, en, ko] = KIND[p.kind] || KIND.use;
+    const w = pct(p.expiry) - pct(p.priority), xw = p.extMax ? pct(p.extMax) - pct(p.expiry) : 0;
+    return `<div class="prow" style="--k:var(${c})">
+      <div class="pl"><a href="${patUrl(p.no)}" target="_blank" rel="noopener">${p.no}</a><span class="area">${Ti(en, ko)}</span><span class="w">${T(p.title)}</span>
+        <span class="e">${Ti("to " + p.expiry.slice(0, 7), p.expiry.slice(0, 7) + "까지")}${p.extMax ? ` <span class="muted">${Ti("· up to " + p.extMax.slice(0, 7), "· 최대 " + p.extMax.slice(0, 7))}</span>` : ""}</span></div>
+      <div class="track"><span class="b" style="left:${pos(p.priority)};width:${w.toFixed(2)}%"></span>${xw ? `<span class="x" style="left:calc(${pos(p.expiry)} - 1px);width:${xw.toFixed(2)}%"></span>` : ""}${today}</div>
+      ${p.note ? `<div class="pnote">${T(p.note)}</div>` : ""}
+    </div>`;
+  }).join("");
+  const msRow = `<div class="prow"><div class="pl"><b>${Ti("Lilly milestones", "릴리 주요 일정")}</b><span class="w">${Ti("filled = done · hollow = planned", "채움 = 완료 · 빈칸 = 계획")}</span></div>
+    <div class="track">${M.map((m) => `<span class="ms${m.done ? "" : " plan"}" style="left:${pos(m.date)}" title="${esc(m.date + " · " + m.text.en)}"></span>`).join("")}${today}</div></div>`;
+  let list = "", crossed = false;
+  const todayRow = `<div class="todayrow">${Ti("Today · " + D.asOf, "오늘 · " + D.asOf)}</div>`;
+  [...M].sort((a, b) => a.date.localeCompare(b.date)).forEach((m) => {
+    if (!crossed && !m.done) { list += todayRow; crossed = true; }
+    list += `<div class="item"><div class="d">${m.date}</div><div class="t"><div class="tags"><span class="st ${m.done ? "done" : "plan"}">${m.done ? Ti("Done", "완료") : Ti("Planned", "계획")}</span></div>${T(m.text)}</div>
+      <div class="s"><a href="${esc(m.src.url)}" target="_blank" rel="noopener" title="${esc(m.src.label)}">${Ti("Source", "출처")} ↗</a></div></div>`;
+  });
+  el.innerHTML = `
+    <div>
+      <div class="eyebrow">${Ti("Page 3 · Patent holder's timeline", "3페이지 · 특허권자 타임라인")}</div>
+      <h1>${T(D.lede.timelineTitle)}</h1>
+      <p class="lede">${T(D.lede.timeline)}</p>
+    </div>
+    <div>
+      <div class="section-h"><h2>${Ti("Patent clock", "특허 만료 타임라인")}</h2>
+        <p>${T({ en: "Each bar runs from priority date to the 20-year expiry. The dashed tail is the most a term extension could add after approval: an estimate until an extension is granted.",
+          ko: "막대는 우선일부터 20년 만료일까지입니다. 점선은 허가 후 존속기간 연장으로 늘어날 수 있는 최대치로, 연장이 인정되기 전까지는 추정치입니다." })}</p></div>
+      <div class="clock">
+        <div class="axis">${ticks.map((y) => `<span style="left:${pos(y)}">${y}</span>`).join("")}</div>
+        ${msRow}${rows}
+        <div class="ckey">${Object.entries(KIND).filter(([k]) => E.some((p) => p.kind === k)).map(([, [c, en, ko]]) => `<span style="--k:var(${c})"><i></i>${Ti(en, ko)}</span>`).join("")}
+          <span><i class="dash"></i>${Ti("Possible extension", "연장 가능 기간")}</span><span><i class="tdk"></i>${Ti("Today", "오늘")}</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="section-h"><h2>${Ti("Lilly's retatrutide plan", "릴리의 레타트루타이드 계획")}</h2>
+        <p>${T({ en: "What has happened and what Lilly has said comes next, oldest first. Each planned date says whose estimate it is.",
+          ko: "지금까지의 진행과 릴리가 밝힌 향후 일정, 오래된 순. 계획 일정마다 누구의 전망인지 표시했습니다." })}</p></div>
+      <div class="news">${list}${crossed ? "" : todayRow}</div>
+    </div>`;
+}
+
+// ═════════ PAGE 4 — NEWS ═════════
+let nscope = "All", ntype = "All";
+const TYPE = { Data: ["Data", "데이터"], Patent: ["Patent", "특허"], Deal: ["Deal", "계약"], Corporate: ["Corporate", "기업"],
+  Trial: ["Trial", "임상"], Regulatory: ["Regulatory", "규제"], Market: ["Market", "시장"] };
+function renderNews() {
+  const el = $("#p-news");
+  const list = D.news.filter((n) => (nscope === "All" || (nscope === "Korea" ? n.region === "KR" : n.region !== "KR")) && (ntype === "All" || n.type === ntype));
+  let html = "", last = "";
+  list.forEach((n) => {
+    const [y, m] = n.date.split("-");
+    const key = `${y}-${m || ""}`;
+    if (key !== last) { html += `<div class="month">${m ? Ti(`${MONTHS[+m - 1]} ${y}`, `${y}년 ${+m}월`) : y}</div>`; last = key; }
+    const ty = TYPE[n.type] || [n.type, n.type];
+    html += `<div class="item"><div class="d">${n.date}</div><div class="t"><div class="tags"><span class="tag${n.region === "KR" ? " kr" : ""}">${n.region === "KR" ? Ti("Korea", "국내") : Ti("Global", "글로벌")}</span><span class="tag${n.type === "Patent" ? " pt" : ""}">${Ti(ty[0], ty[1])}</span></div>${T(n.text)}</div>
+      <div class="s">${n.src ? `<a href="${esc(n.src.url)}" target="_blank" rel="noopener" title="${esc(n.src.label)}">${Ti("Source", "출처")} ↗</a>` : ""}</div></div>`;
+  });
+  const types = Object.keys(TYPE).filter((k) => D.news.some((n) => n.type === k));
+  el.innerHTML = `
+    <div>
+      <div class="eyebrow">${Ti("Page 4 · News", "4페이지 · 뉴스")}</div>
+      <h1>${T({ en: "Long-acting retatrutide news", ko: "장기지속형 레타트루타이드 뉴스" })}</h1>
+      <p class="lede">${T({ en: `${D.news.length} dated events since Jan 2025, newest first, one sentence each. Patent publications are dated by publication, not priority.`,
+        ko: `2025년 1월 이후 날짜별 이벤트 ${D.news.length}건, 최신순, 한 문장 요약. 특허는 우선일이 아닌 공개일 기준입니다.` })}</p>
+      <div class="toolbar"><div class="tools">${segHtml("nscope", nscope, [["All", "All", "전체"], ["Korea", "Korea", "국내"], ["Global", "Global", "글로벌"]])}
+        <select class="sel" id="ntype" aria-label="News type"><option value="All">All types · 전체 유형</option>${types.map((k) => `<option value="${k}"${ntype === k ? " selected" : ""}>${TYPE[k][0]} · ${TYPE[k][1]}</option>`).join("")}</select></div>
+        <div class="legend"><span>${list.length} / ${D.news.length}</span></div></div>
+    </div>
+    <div class="news">${html || `<div class="empty" style="border:0">${Ti("No news for this filter", "해당 뉴스 없음")}</div>`}</div>`;
+  $("#nscope", el).addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { nscope = b.dataset.v; renderNews(); } });
+  $("#ntype", el).addEventListener("change", (e) => { ntype = e.target.value; renderNews(); });
+}
+
+// ═════════ ROUTER ═════════
+const PAGES = { competitors: renderCompetitors, patents: renderPatents, timeline: renderTimeline, news: renderNews };
+const done = {};
+function show() {
+  const h = location.hash.slice(1);
+  const page = PAGES[h] ? h : "competitors";
+  Object.keys(PAGES).forEach((p) => ($(`#p-${p}`).hidden = p !== page));
+  document.querySelectorAll("nav a").forEach((a) => (a.dataset.page === page ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current")));
+  if (!done[page]) { PAGES[page](); done[page] = true; }
+}
+addEventListener("hashchange", () => { const h = location.hash.slice(1); show(); if (PAGES[h]) scrollTo({ top: 0 }); });
+show();
+$("#foot").innerHTML = T({ en: "Sources: ClinicalTrials.gov, Espacenet, Google Patents, company releases, Lilly SEC filings, ADA coverage and trade press. Patent expiry dates are estimates unless a grant states them. Research current to " + D.asOf + ". Internal use only.",
+  ko: "출처: ClinicalTrials.gov, Espacenet, Google Patents, 기업 발표, 릴리 SEC 공시, ADA 관련 보도 및 업계 언론. 특허 만료일은 등록 문서에 명시되지 않은 경우 추정치입니다. " + D.asOf + " 기준 조사. 내부용 자료." });
+</script>
+</body>
+</html>
