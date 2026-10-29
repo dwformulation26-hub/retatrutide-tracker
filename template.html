@@ -181,30 +181,59 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
 .section-h { display: grid; gap: 4px; margin-bottom: 12px; }
 .section-h p { margin: 0; color: var(--ink-2); font-size: 14px; max-width: 72ch; }
 
-/* page 3: patent clock (one full-width track per family, so it fits a phone without sideways scrolling) */
-.clock { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px 16px; display: grid; gap: 14px; }
-.axis { position: relative; height: 16px; font: 11px var(--mono); color: var(--muted); }
-.axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
-.prow { display: grid; gap: 5px; }
-.pl { display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; font-size: 13px; }
-.pl a { font-family: var(--mono); font-size: 12px; }
-.pl .w { color: var(--ink-2); }
-.pl .e { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--ink); white-space: nowrap; }
-.track { position: relative; height: 10px; background: var(--bg); border-radius: 999px; }
-.track .b { position: absolute; top: 0; bottom: 0; border-radius: 999px; background: var(--k); }
-.track .x { position: absolute; top: 0; bottom: 0; border: 1.5px dashed var(--k); border-left: 0; border-radius: 0 999px 999px 0; }
-.track .td { position: absolute; top: -4px; bottom: -4px; border-left: 1.5px solid var(--crit); }
-.track .ms { position: absolute; top: 50%; width: 10px; height: 10px; transform: translate(-50%, -50%) rotate(45deg); background: var(--ok); border: 1.5px solid var(--ok); }
-.track .ms.plan { background: var(--surface); }
-.ckey { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); align-items: center; }
-.ckey i { display: inline-block; width: 18px; height: 8px; border-radius: 999px; background: var(--k); margin-right: 6px; vertical-align: middle; }
-.ckey i.dash { background: none; border: 1.5px dashed var(--accent); border-left: 0; }
-.ckey i.tdk { width: 0; height: 14px; border-left: 1.5px solid var(--crit); border-radius: 0; }
-.ckey i.dia { width: 9px; height: 9px; border-radius: 0; transform: rotate(45deg); background: var(--ok); }
-.ckey i.dia.plan { background: none; border: 1.5px solid var(--ok); }
-.pnote { font-size: 12.5px; color: var(--muted); }
+/* page 3: key figures, a Gantt of the patent families on one shared year axis, then a year-by-year road map */
+.kf { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 10px; margin-top: 22px; }
+.kf div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 2px; align-content: start; }
+.kf .v { font-size: 26px; font-weight: 650; letter-spacing: -.02em; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.kf .v .ko { font-size: 14px; font-weight: 500; letter-spacing: 0; }
+.kf .l { font-size: 13px; font-weight: 600; color: var(--ink); margin-top: 4px; }
+.kf .s { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+:root[data-lang="ko"] .kf .v .ko { font-size: inherit; font-weight: inherit; }
+.gantt { --lw: 230px; --gap: 20px; --pad: 20px; position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0 var(--pad) 6px; }
+.gantt .grid { position: absolute; top: 0; bottom: 0; left: calc(var(--pad) + var(--lw) + var(--gap)); right: var(--pad); pointer-events: none; }
+.gantt .grid i { position: absolute; top: 34px; bottom: 0; border-left: 1px solid var(--line); }
+.gantt .grid b { position: absolute; top: 12px; transform: translateX(-50%); font: 500 11px var(--mono); color: var(--muted); }
+.gantt .grid .now { border-left: 1.5px solid var(--crit); top: 30px; }
+.gantt .grid .nowl { position: absolute; top: 12px; transform: translateX(-50%); font: 600 11px var(--mono); color: var(--crit); background: var(--surface); padding: 0 4px; white-space: nowrap; }
+.gantt .head { height: 38px; }
+.gr { position: relative; display: grid; grid-template-columns: var(--lw) minmax(0, 1fr); gap: 6px var(--gap); align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+.gr .lab { display: grid; gap: 1px; min-width: 0; position: relative; z-index: 1; }
+.gr .gn { font-size: 14px; font-weight: 600; line-height: 1.3; }
+.gr .gn .ko-inline { font-weight: 500; }
+.gr .gm { font: 11.5px var(--mono); color: var(--muted); }
+.gr .ge { font-size: 12.5px; color: var(--ink-2); }
+.bar { position: relative; height: 12px; }
+.bar .b { position: absolute; top: 0; bottom: 0; border-radius: 4px; background: var(--k); }
+.bar .x { position: absolute; top: 0; bottom: 0; border: 1.5px dashed var(--k); border-left: 0; border-radius: 0 4px 4px 0; }
+.gkey { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; color: var(--muted); padding: 12px 0 8px; border-top: 1px solid var(--line); position: relative; z-index: 1; background: var(--surface); }
+.gkey i { display: inline-block; width: 18px; height: 8px; border-radius: 3px; background: var(--k); margin-right: 6px; vertical-align: middle; }
+.gkey i.dash { background: none; border: 1.5px dashed var(--lane-1); border-left: 0; }
+.gkey i.tdk { width: 0; height: 12px; border-left: 1.5px solid var(--crit); border-radius: 0; }
+@media (max-width: 620px) {
+  .gantt { --lw: 0px; --gap: 0px; --pad: 16px; }
+  .gr { grid-template-columns: minmax(0, 1fr); }
+  .gr .lab { background: var(--surface); padding-bottom: 2px; }
+}
+.road { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.yr { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 6px 20px; padding: 18px 20px 4px; border-top: 1px solid var(--line); }
+.yr:first-child { border-top: 0; }
+.yr > h3 { font: 600 17px var(--mono); color: var(--ink); letter-spacing: -.01em; }
+.yr.ahead > h3 { color: var(--accent-ink); }
+.evs { display: grid; min-width: 0; }
+.ev { position: relative; padding: 0 0 16px 24px; min-width: 0; }
+.ev::before { content: ""; position: absolute; left: 5px; top: 14px; bottom: 0; border-left: 1.5px solid var(--line-2); }
+.ev:last-child::before { display: none; }
+.ev .dot { position: absolute; left: 0; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink-2); }
+.ev.plan .dot { background: var(--surface); border: 2px solid var(--accent); }
+.ev .when { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; font: 12px var(--mono); color: var(--muted); margin-bottom: 2px; }
+.ev .txt { font-size: 14px; line-height: 1.5; }
+.ev .when .src { margin-left: auto; font-family: var(--sans); font-size: 12px; }
 .st.plan { background: var(--accent-soft); color: var(--accent-ink); }
-.todayrow { font: 600 12px var(--mono); color: var(--crit); padding: 8px 16px; background: var(--crit-soft); border-top: 1px solid var(--line); }
+.today { display: flex; align-items: center; gap: 10px; font: 600 12px var(--mono); color: var(--crit); margin: 0 0 16px 0; }
+.today::after { content: ""; flex: 1; border-top: 1.5px solid var(--crit); }
+@media (max-width: 620px) { .yr { grid-template-columns: minmax(0, 1fr); padding: 16px 16px 2px; } }
+.dtl summary { cursor: pointer; font-size: 13px; color: var(--accent-ink); margin-top: 12px; }
+.dtl .tbl-wrap { margin-top: 10px; }
 
 /* page 4 */
 .news { display: grid; gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
@@ -426,60 +455,66 @@ function renderPatents() {
 
 
 // ═════════ PAGE 3 — PATENT HOLDER'S TIMELINE ═════════
-const KIND = { compound: ["--lane-1", "Compound", "물질"], use: ["--lane-2", "Use / dosing", "용도·용법"], formulation: ["--lane-3", "Formulation", "제형"],
-  process: ["--lane-4", "Process", "제조"] };
 const yr = (d) => { const [y, m = 1, dd = 15] = String(d).split("-").map(Number); return y + (m - 1) / 12 + (dd - 1) / 365; };
+const ym = (d) => { const [y, m] = String(d).split("-"); return m ? Ti(`${MONTHS[+m - 1]} ${y}`, `${y}년 ${+m}월`) : y; };
 function renderTimeline() {
   const el = $("#p-timeline");
-  const E = D.estate, M = D.plan;
-  const ends = E.flatMap((p) => [p.expiry, p.extMax].filter(Boolean));
-  const y0 = Math.floor(Math.min(...E.map((p) => yr(p.priority)), ...M.map((m) => yr(m.date))));
-  const y1 = Math.ceil(Math.max(...ends.map(yr), yr(D.asOf))) + 1;
-  const pct = (d) => ((typeof d === "number" ? d : yr(d)) - y0) / (y1 - y0) * 100;
-  const pos = (d) => pct(d).toFixed(2) + "%";
-  const ticks = []; for (let y = Math.ceil((y0 + 1) / 5) * 5; y < y1; y += 5) ticks.push(y);
-  const today = `<span class="td" style="left:${pos(D.asOf)}"></span>`;
-  const rows = [...E].sort((a, b) => a.priority.localeCompare(b.priority)).map((p) => {
-    const [c, en, ko] = KIND[p.kind] || KIND.use;
-    const w = pct(p.expiry) - pct(p.priority), xw = p.extMax ? pct(p.extMax) - pct(p.expiry) : 0;
-    return `<div class="prow" style="--k:var(${c})">
-      <div class="pl"><a href="${patUrl(p.no)}" target="_blank" rel="noopener">${p.no}</a><span class="area">${Ti(en, ko)}</span><span class="w">${T(p.title)}</span>
-        <span class="e">${Ti("to " + p.expiry.slice(0, 7), p.expiry.slice(0, 7) + "까지")}${p.extMax ? ` <span class="muted">${Ti("· up to " + p.extMax.slice(0, 7), "· 최대 " + p.extMax.slice(0, 7))}</span>` : ""}</span></div>
-      <div class="track"><span class="b" style="left:${pos(p.priority)};width:${w.toFixed(2)}%"></span>${xw ? `<span class="x" style="left:calc(${pos(p.expiry)} - 1px);width:${xw.toFixed(2)}%"></span>` : ""}${today}</div>
-      ${p.note ? `<div class="pnote">${T(p.note)}</div>` : ""}
-    </div>`;
+  const E = [...D.estate].sort((a, b) => a.priority.localeCompare(b.priority));
+  const y0 = Math.floor(Math.min(...E.map((p) => yr(p.priority))));
+  const y1 = Math.ceil(Math.max(...E.flatMap((p) => [yr(p.extMax || p.expiry), yr(p.expiry)]))) + 1;
+  const pct = (d) => (((typeof d === "number" ? d : yr(d)) - y0) / (y1 - y0) * 100);
+  const ticks = []; for (let y = Math.ceil(y0 / 5) * 5; y < y1; y += 5) ticks.push(y);
+  // the molecule patent carries the story; later families are drawn quieter
+  const col = (p) => (p.kind === "compound" ? "--lane-1" : "--lane-3");
+  const gantt = `<div class="gantt" role="img" aria-label="${esc("Retatrutide patent families from priority date to expiry")}">
+    <div class="grid">${ticks.map((y) => `<i style="left:${pct(y)}%"></i>${Math.abs(pct(y) - pct(D.asOf)) < 8 ? "" : `<b style="left:${pct(y)}%">${y}</b>`}`).join("")}
+      <i class="now" style="left:${pct(D.asOf)}%"></i><span class="nowl" style="left:${pct(D.asOf)}%">${Ti("Today", "오늘")}</span></div>
+    <div class="head"></div>
+    ${E.map((p) => `<div class="gr" style="--k:var(${col(p)})" title="${esc(p.note.en)}">
+      <div class="lab"><div class="gn">${Ti(p.short.en, p.short.ko)}</div>
+        <div class="ge">${Ti("Expires", "만료")} <b class="mono">${p.expiry.slice(0, 7)}</b>${p.extMax ? `<span class="muted"> · ${Ti("extended", "연장 시")} <span class="mono">≤ ${p.extMax.slice(0, 7)}</span></span>` : ""}</div>
+        <a class="gm" href="${patUrl(p.no)}" target="_blank" rel="noopener">${p.no}</a></div>
+      <div class="bar"><span class="b" style="left:${pct(p.priority)}%;width:${pct(p.expiry) - pct(p.priority)}%"></span>${p.extMax ? `<span class="x" style="left:calc(${pct(p.expiry)}% - 4px);width:calc(${pct(p.extMax) - pct(p.expiry)}% + 4px)"></span>` : ""}</div>
+    </div>`).join("")}
+    <div class="gkey"><span style="--k:var(--lane-1)"><i></i>${Ti("Molecule patent", "물질 특허")}</span><span style="--k:var(--lane-3)"><i></i>${Ti("Later Lilly patents", "릴리 후속 특허")}</span>
+      <span><i class="dash"></i>${Ti("Possible extension (estimate)", "연장 가능 기간(추정)")}</span><span><i class="tdk"></i>${Ti("Today", "오늘")}</span></div>
+  </div>`;
+  const table = `<details class="dtl"><summary>${Ti("Patent details", "특허 상세")}</summary><div class="tbl-wrap"><table class="pt-tbl"><thead><tr>
+      <th>${T({ en: "Patent", ko: "특허" })}</th><th>${T({ en: "What it covers", ko: "보호 대상" })}</th><th>${T({ en: "Granted", ko: "등록" })}</th><th>${T({ en: "Priority", ko: "우선일" })}</th><th>${T({ en: "Expires", ko: "만료" })}</th></tr></thead><tbody>
+    ${E.map((p) => `<tr><td class="nowrap"><a class="mono" href="${patUrl(p.no)}" target="_blank" rel="noopener">${p.no}</a></td><td>${T(p.title)}</td>
+      <td>${T(p.granted)}</td><td class="nowrap mono">${p.priority}</td><td class="nowrap mono">${p.expiry}${p.extMax ? `<span class="sub">≤ ${p.extMax}</span>` : ""}</td></tr>`).join("")}
+  </tbody></table></div></details>`;
+  // road map: one block per year, with a Today rule before the first planned step
+  const M = [...D.plan].sort((a, b) => a.date.localeCompare(b.date));
+  const years = [...new Set(M.map((m) => m.date.slice(0, 4)))];
+  let crossed = false;
+  const road = years.map((y) => {
+    const evs = M.filter((m) => m.date.startsWith(y));
+    const body = evs.map((m) => {
+      const rule = !crossed && !m.done ? (crossed = true, `<div class="today">${Ti("Today", "오늘")} · ${D.asOf}</div>`) : "";
+      return `${rule}<div class="ev${m.done ? "" : " plan"}"><span class="dot"></span>
+        <div class="when"><span>${m.date}</span>${m.done ? "" : `<span class="st plan">${Ti("Planned", "계획")}</span>`}
+          <a class="src" href="${esc(m.src.url)}" target="_blank" rel="noopener" title="${esc(m.src.label)}">${Ti("Source", "출처")} ↗</a></div>
+        <div class="txt">${T(m.text)}</div></div>`;
+    }).join("");
+    return `<div class="yr${evs.every((m) => !m.done) ? " ahead" : ""}"><h3>${y}</h3><div class="evs">${body}</div></div>`;
   }).join("");
-  const msRow = `<div class="prow"><div class="pl"><b>${Ti("Lilly milestones", "릴리 주요 일정")}</b><span class="w">${Ti("filled = done · hollow = planned", "채움 = 완료 · 빈칸 = 계획")}</span></div>
-    <div class="track">${M.map((m) => `<span class="ms${m.done ? "" : " plan"}" style="left:${pos(m.date)}" title="${esc(m.date + " · " + m.text.en)}"></span>`).join("")}${today}</div></div>`;
-  let list = "", crossed = false;
-  const todayRow = `<div class="todayrow">${Ti("Today · " + D.asOf, "오늘 · " + D.asOf)}</div>`;
-  [...M].sort((a, b) => a.date.localeCompare(b.date)).forEach((m) => {
-    if (!crossed && !m.done) { list += todayRow; crossed = true; }
-    list += `<div class="item"><div class="d">${m.date}</div><div class="t"><div class="tags"><span class="st ${m.done ? "done" : "plan"}">${m.done ? Ti("Done", "완료") : Ti("Planned", "계획")}</span></div>${T(m.text)}</div>
-      <div class="s"><a href="${esc(m.src.url)}" target="_blank" rel="noopener" title="${esc(m.src.label)}">${Ti("Source", "출처")} ↗</a></div></div>`;
-  });
   el.innerHTML = `
     <div>
       <div class="eyebrow">${Ti("Page 3 · Patent holder's timeline", "3페이지 · 특허권자 타임라인")}</div>
       <h1>${T(D.lede.timelineTitle)}</h1>
       <p class="lede">${T(D.lede.timeline)}</p>
+      <div class="kf">${D.keyfacts.map((k) => `<div><span class="v">${T(k.value)}</span><span class="l">${T(k.label)}</span><span class="s">${T(k.sub)}</span></div>`).join("")}</div>
     </div>
     <div>
       <div class="section-h"><h2>${Ti("Patent clock", "특허 만료 타임라인")}</h2>
-        <p>${T({ en: "Each bar runs from priority date to the 20-year expiry. The dashed tail is the most a term extension could add after approval: an estimate until an extension is granted.",
-          ko: "막대는 우선일부터 20년 만료일까지입니다. 점선은 허가 후 존속기간 연장으로 늘어날 수 있는 최대치로, 연장이 인정되기 전까지는 추정치입니다." })}</p></div>
-      <div class="clock">
-        <div class="axis">${ticks.map((y) => `<span style="left:${pos(y)}">${y}</span>`).join("")}</div>
-        ${msRow}${rows}
-        <div class="ckey">${Object.entries(KIND).filter(([k]) => E.some((p) => p.kind === k)).map(([, [c, en, ko]]) => `<span style="--k:var(${c})"><i></i>${Ti(en, ko)}</span>`).join("")}
-          <span><i class="dash"></i>${Ti("Possible extension", "연장 가능 기간")}</span><span><i class="tdk"></i>${Ti("Today", "오늘")}</span></div>
-      </div>
+        <p>${T({ en: "Each bar runs from first filing to expiry.", ko: "막대는 최초 출원부터 만료까지입니다." })}</p></div>
+      ${gantt}${table}
     </div>
     <div>
-      <div class="section-h"><h2>${Ti("Lilly's retatrutide plan", "릴리의 레타트루타이드 계획")}</h2>
-        <p>${T({ en: "What has happened and what Lilly has said comes next, oldest first. Each planned date says whose estimate it is.",
-          ko: "지금까지의 진행과 릴리가 밝힌 향후 일정, 오래된 순. 계획 일정마다 누구의 전망인지 표시했습니다." })}</p></div>
-      <div class="news">${list}${crossed ? "" : todayRow}</div>
+      <div class="section-h"><h2>${Ti("Lilly's road map", "릴리 로드맵")}</h2>
+        <p>${T({ en: "Done in grey, planned in purple.", ko: "회색은 완료, 보라색은 계획입니다." })}</p></div>
+      <div class="road">${road}</div>
     </div>`;
 }
 

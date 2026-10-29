@@ -134,9 +134,15 @@ def validate(d):
                 p.append(f"{where}: {k} must be YYYY-MM or YYYY-MM-DD")
         if pt.get("extMax") and not pt["extMax"] > pt.get("expiry", ""):
             p.append(f"{where}: extMax must be later than expiry")
-        for k in ("title", "note"):
+        for k in ("short", "title", "granted", "note"):
             if not bilingual(pt.get(k)):
                 p.append(f"{where}: {k} needs en and ko")
+        if bilingual(pt.get("short")) and len(pt["short"]["en"]) > 24:
+            p.append(f"{where}: short.en longer than 24 chars - it labels a chart row")
+    for i, k in enumerate(d.get("keyfacts", [])):
+        for f in ("value", "label", "sub"):
+            if not bilingual(k.get(f)):
+                p.append(f"keyfacts {i}: {f} needs en and ko")
         if not (pt.get("src") or {}).get("url", "").startswith("http"):
             p.append(f"{where}: src url missing")
     for m in d["plan"]:

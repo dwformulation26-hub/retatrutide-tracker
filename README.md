@@ -8,8 +8,9 @@ on the patent holder.
 1. **Competitors**: programme cards in stage lanes (in human testing → inactive), technology × stage table, Korea/Global
    and technology filters, target dosing interval, patents, and the trial registries checked.
 2. **Patents**: long-acting retatrutide patent families and broader platform families that list retatrutide.
-3. **Lilly timeline**: Lilly's own retatrutide patent families on one time axis (priority → 20-year expiry, with the
-   possible extension dashed), and Lilly's milestones, done and planned.
+3. **Lilly timeline**: four key figures, a Gantt of Lilly's own retatrutide patent families on one year axis (first
+   filing → expiry, the possible extension dashed, the molecule patent emphasised), and a year-by-year road map with a
+   Today rule between what is done and what is planned.
 4. **News**: dated events since Jan 2025.
 
 `index.html` is one static file with all data built in - deploy it as-is. Internal use only.
@@ -30,7 +31,8 @@ Edit `reta_data.json`, run `python build.py`, commit both the JSON and `index.ht
   `stopped` = ceased or dormant.
 - Every card, milestone and news item needs English and Korean text and a source URL. News is sorted newest first and
   dated by the article's own printed date.
-- `estate[].kind` is `compound`, `use`, `formulation` or `process`. `expiry` is the 20-year date (Google Patents' estimate
+- `keyfacts` are the four tiles at the top of page 3: keep `value` short and language-neutral where possible.
+- `estate[].short` labels a chart row (max 24 chars); `granted` and `title` feed the details table. `kind` is `compound`, `use`, `formulation` or `process`. `expiry` is the 20-year date (Google Patents' estimate
   or filing + 20 years); `extMax` is the furthest a term extension could reach and stays an estimate until one is granted.
 - `plan[].done` is `false` for anything after `asOf`; the build refuses a "done" milestone dated in the future.
 - Ledes carry `{n}`, `{p}` and `{q}` placeholders for the card, patent and platform counts; reread them when facts change.

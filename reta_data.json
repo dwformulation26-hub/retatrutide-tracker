@@ -14,10 +14,68 @@
    "ko": "릴리 레타트루타이드 특허 만료 시점과 향후 계획"
   },
   "timeline": {
-   "en": "Lilly's compound patent dates from December 2017 and runs to December 2038 in Europe, Japan and China and to January 2039 in the US, before any extension. Lilly plans to file in the US in Q1 2027; a standard review would mean approval around early 2028 (estimate), leaving about 11 years of patent life plus up to 5 years of extension. Later Lilly filings on the formulation, dose steps and weight maintenance run to 2042–2046. Lilly has announced no monthly retatrutide; its only disclosed route is the 2025 Camurus depot licence.",
-   "ko": "릴리의 물질 특허는 2017년 12월 우선일로, 연장 전 기준 유럽·일본·중국은 2038년 12월, 미국은 2039년 1월에 만료됩니다. 릴리는 2027년 1분기 미국 허가 신청을 계획하고 있어, 표준 심사 시 2028년 초 허가(추정)가 예상되며 약 11년의 특허 기간과 최대 5년의 연장이 남습니다. 제형·용량 적정·체중 유지에 관한 후속 출원은 2042~2046년까지 이어집니다. 릴리는 월 1회 레타트루타이드를 발표하지 않았으며, 공개된 경로는 2025년 Camurus 데포 라이선스뿐입니다."
+   "en": "Lilly's protection on retatrutide runs to the end of 2038 and could stretch to about 2043. It plans to file in the US in early 2027 and has not announced a monthly version.",
+   "ko": "릴리의 레타트루타이드 보호 기간은 2038년 말까지이며 약 2043년까지 늘어날 수 있습니다. 2027년 초 미국 허가 신청을 계획하고 있으며, 월 1회 제형은 발표하지 않았습니다."
   }
  },
+ "keyfacts": [
+  {
+   "value": {
+    "en": "2038",
+    "ko": "2038"
+   },
+   "label": {
+    "en": "Molecule patent expires",
+    "ko": "물질 특허 만료"
+   },
+   "sub": {
+    "en": "December, in the EU, Japan and China. US: January 2039.",
+    "ko": "유럽·일본·중국 12월. 미국 2039년 1월."
+   }
+  },
+  {
+   "value": {
+    "en": "~2043",
+    "ko": "~2043"
+   },
+   "label": {
+    "en": "Latest with an extension",
+    "ko": "연장 시 최장"
+   },
+   "sub": {
+    "en": "Estimate. Extensions are granted only after approval.",
+    "ko": "추정치. 연장은 허가 후에만 인정됨."
+   }
+  },
+  {
+   "value": {
+    "en": "1Q 2027",
+    "ko": "1Q 2027"
+   },
+   "label": {
+    "en": "US filing planned",
+    "ko": "미국 허가 신청 예정"
+   },
+   "sub": {
+    "en": "Lilly guidance. Approval around early 2028 on a standard review (estimate).",
+    "ko": "릴리 가이던스. 표준 심사 시 2028년 초 허가(추정)."
+   }
+  },
+  {
+   "value": {
+    "en": "None",
+    "ko": "없음"
+   },
+   "label": {
+    "en": "Monthly retatrutide from Lilly",
+    "ko": "릴리의 월 1회 레타트루타이드"
+   },
+   "sub": {
+    "en": "Only route on record: the 2025 Camurus depot licence.",
+    "ko": "확인된 경로는 2025년 Camurus 데포 라이선스뿐."
+   }
+  }
+ ],
  "lanes": [
   {
    "id": "clinic",
@@ -430,6 +488,14 @@
    "src": {
     "label": "Google Patents: US11542313B2",
     "url": "https://patents.google.com/patent/US11542313B2/en"
+   },
+   "short": {
+    "en": "The molecule",
+    "ko": "물질"
+   },
+   "granted": {
+    "en": "US, EP, JP, CN, KR, CA, AU and 16 lower-income countries",
+    "ko": "미국·유럽·일본·중국·한국·캐나다·호주 및 중저소득국 16곳"
    }
   },
   {
@@ -448,6 +514,14 @@
    "src": {
     "label": "Espacenet: US12691055B2",
     "url": "https://worldwide.espacenet.com/patent/search?q=pn%3DUS12691055B2"
+   },
+   "short": {
+    "en": "Weekly formulation",
+    "ko": "주 1회 제형"
+   },
+   "granted": {
+    "en": "US (Jul 2026); others pending",
+    "ko": "미국(2026년 7월); 그 외 심사 중"
    }
   },
   {
@@ -466,6 +540,14 @@
    "src": {
     "label": "Espacenet: US12496329B2",
     "url": "https://worldwide.espacenet.com/patent/search?q=pn%3DUS12496329B2"
+   },
+   "short": {
+    "en": "Dose steps",
+    "ko": "용량 적정"
+   },
+   "granted": {
+    "en": "US (Dec 2025); others pending",
+    "ko": "미국(2025년 12월); 그 외 심사 중"
    }
   },
   {
@@ -484,6 +566,14 @@
    "src": {
     "label": "Espacenet: AU2023356357A1",
     "url": "https://worldwide.espacenet.com/patent/search?q=pn%3DAU2023356357A1"
+   },
+   "short": {
+    "en": "Synthesis",
+    "ko": "합성 공정"
+   },
+   "granted": {
+    "en": "Pending",
+    "ko": "심사 중"
    }
   },
   {
@@ -502,6 +592,14 @@
    "src": {
     "label": "Espacenet: WO2026198842A1",
     "url": "https://worldwide.espacenet.com/patent/search?q=pn%3DWO2026198842A1"
+   },
+   "short": {
+    "en": "Weight maintenance",
+    "ko": "체중 유지"
+   },
+   "granted": {
+    "en": "Pending (PCT)",
+    "ko": "심사 중(PCT)"
    }
   }
  ],
