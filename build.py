@@ -162,6 +162,43 @@ def validate(d):
             p.append(f"{where}: text contains pipeline narration")
         if not (m.get("src") or {}).get("url", "").startswith("http"):
             p.append(f"{where}: src url missing")
+    pk = d.get("pk")
+    if pk:
+        PK_EV = {"human", "animal", "hidden", "none"}
+        groups = {g["id"] for g in pk["groups"]}
+        for k in ("title", "lede"):
+            if not bilingual(pk.get(k)):
+                p.append(f"pk {k}: needs en and ko")
+        for r in pk["board"]:
+            where = f"pk row {r.get('name', {}).get('en')}"
+            if r.get("group") not in groups:
+                p.append(f"{where}: group not in groups")
+            if r.get("card") and r["card"] not in ids:
+                p.append(f"{where}: no card with id {r['card']}")
+            if r.get("ev") not in PK_EV:
+                p.append(f"{where}: ev must be one of {sorted(PK_EV)}")
+            if (r.get("days") is None) != (r.get("ev") == "none"):
+                p.append(f"{where}: days is required unless ev is none")
+            elif r.get("days") is not None and not 0 < r["days"] <= pk["axis"]:
+                p.append(f"{where}: days must fall on the 0-{pk['axis']} axis")
+            for k in ("name", "who", "bar"):
+                if not bilingual(r.get(k)):
+                    p.append(f"{where}: {k} needs en and ko")
+            for k in ("exp", "peak"):
+                if r.get(k) is not None and not bilingual(r[k]):
+                    p.append(f"{where}: {k} needs en and ko")
+            srcs = [r["src"]] if isinstance(r.get("src"), dict) else r.get("src") or [{}]
+            if not all(s.get("url", "").startswith("http") for s in srcs):
+                p.append(f"{where}: src url missing")
+        for k in ("judge", "caution"):
+            if not bilingual((pk.get(k) or {}).get("text")):
+                p.append(f"pk {k}: text needs en and ko")
+        for r in pk["board"]:
+            for col, k in (r.get("kind") or {}).items():
+                if col not in ("exp", "peak") or k not in ("figure", "simulated") or not r.get(col):
+                    p.append(f"pk row {r['name']['en']}: kind {col}={k} must tag a filled exp or peak as figure or simulated")
+        if not all(len(t) == 3 and all(isinstance(x, (int, float)) for x in t) for t in pk["curve"]["pts"]):
+            p.append("pk curve: pts must be [day, mean, se] numbers")
     dates = [n["date"] for n in d["news"]]
     if dates != sorted(dates, reverse=True):
         p.append("news must be sorted newest first")

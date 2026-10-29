@@ -271,6 +271,72 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
 .tag.pt { background: var(--warn-soft); color: var(--warn); }
 .item .s { font-size: 12.5px; white-space: nowrap; padding-top: 2px; }
 @media (max-width: 600px) { .item { grid-template-columns: 1fr; } .item .s { white-space: normal; } }
+/* PK page: one board - every row on the same day axis, with the same two number columns */
+.pkb { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0 20px 4px; }
+.pkb-h, .pkr { display: grid; grid-template-columns: 230px minmax(0, 1.3fr) minmax(0, .9fr) minmax(0, .9fr); gap: 4px 22px; }
+.pkb-h { padding: 14px 0 8px; font-size: 11.5px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line-2); align-items: end; position: sticky; top: 64px; background: var(--surface); z-index: 2; }
+.pkb-h .ko { font-weight: 500; font-size: 11px; }
+.axis { position: relative; height: 16px; margin-top: 4px; }
+.axis b { position: absolute; bottom: 0; transform: translateX(-50%); font: 500 11px var(--mono); color: var(--muted); }
+.axis b:first-child { transform: none; }
+.axis b.tg { color: var(--crit); font-weight: 600; }
+.pkg { padding: 16px 0 2px; font-size: 12px; font-weight: 650; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+.pkg::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+.pkg .ko-inline { font-weight: 500; }
+.pkr { padding: 10px 0; align-items: start; }
+.pkr + .pkr { border-top: 1px dashed var(--line); }
+.pkr .nm { font-weight: 600; font-size: 14px; line-height: 1.3; }
+.pkr .nm .ko { font-weight: 500; font-size: 12.5px; }
+:root[data-lang="ko"] .pkr .nm .ko { font-size: inherit; font-weight: inherit; }
+.pkr.reta .nm { color: var(--accent-ink); }
+.pkr .who { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.pkr .who .ko-inline { color: var(--muted); }
+.trk { position: relative; height: 18px; margin-top: 2px; background: repeating-linear-gradient(to right, var(--line) 0 1px, transparent 1px calc(100% / 9)); }
+.trk::after { content: ""; position: absolute; top: -6px; bottom: -6px; left: var(--tg); border-left: 1.5px solid var(--crit); }
+.trk .bb { position: absolute; top: 3px; height: 12px; left: 0; border-radius: 0 4px 4px 0; background: var(--k); }
+.trk .bb.open { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); border-radius: 0; }
+.trk .bb.hid { background: none; border: 1.5px dashed var(--lane-2); border-left: 0; }
+.bt { font-size: 12px; color: var(--ink-2); margin-top: 5px; line-height: 1.35; }
+.bt .ko-inline { color: var(--muted); }
+.num { font-size: 13px; line-height: 1.45; min-width: 0; }
+.num .ko { font-size: 12px; }
+.num.nil { color: var(--line-2); font-family: var(--mono); }
+.num .tl { display: none; }
+.pk-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; color: var(--muted); padding: 12px 0 10px; border-top: 1px solid var(--line); margin-top: 6px; }
+.pk-key i { display: inline-block; width: 18px; height: 9px; border-radius: 0 3px 3px 0; background: var(--k); margin-right: 6px; vertical-align: middle; }
+.pk-key i.hid { background: none; border: 1.5px dashed var(--lane-2); border-left: 0; }
+.pk-key i.open { border-radius: 0; -webkit-mask-image: linear-gradient(to right, #000 30%, transparent); mask-image: linear-gradient(to right, #000 30%, transparent); }
+.pk-key i.tg { width: 0; height: 13px; border-left: 1.5px solid var(--crit); border-radius: 0; }
+.pk-note { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
+.pk-judge { font-size: 13.5px; color: var(--ink-2); margin: 0 0 12px; padding: 10px 14px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
+.pk-judge a, .pk-note a { white-space: nowrap; }
+.kind { font: 500 10.5px var(--mono); padding: 1px 5px; border-radius: 4px; white-space: nowrap; display: inline-block; margin-top: 3px; }
+.kind.figure { background: var(--accent-soft); color: var(--accent-ink); }
+.kind.simulated { background: var(--warn-soft); color: var(--warn); }
+.pkr .tag2 { display: inline-block; font-size: 11px; font-weight: 600; padding: 0 7px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-2); margin-top: 4px; }
+@media (max-width: 760px) {
+  .pkb { padding: 0 16px 4px; }
+  .pkb-h, .pkr { grid-template-columns: minmax(0, 1fr); }
+  .pkb-h > :not(.axis-c) { display: none; }
+  .pkb-h { top: 108px; }
+  .num .tl { display: inline; font-size: 11px; font-weight: 600; color: var(--muted); margin-right: 6px; text-transform: uppercase; letter-spacing: .04em; }
+  .num.nil { display: none; }
+}
+.cvbox { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; display: grid; gap: 8px; }
+.cvbox .ch { max-width: 720px; }
+.cvbox .meta { font-size: 12.5px; color: var(--muted); }
+.ch { width: 100%; height: auto; display: block; overflow: visible; }
+.ch .g { stroke: var(--line); stroke-width: 1; }
+.ch .ax { stroke: var(--line-2); stroke-width: 1; }
+.ch text { fill: var(--muted); font: 11px var(--mono); }
+.ch .tgl { stroke: var(--crit); stroke-width: 1.5; }
+.ch text.tgt { fill: var(--crit); }
+.ch .ln { stroke: var(--lane-2); stroke-width: 2; fill: none; stroke-linejoin: round; }
+.ch .eb { stroke: var(--lane-2); stroke-width: 1.5; opacity: .45; }
+.ch .pt { fill: var(--lane-2); stroke: var(--surface); stroke-width: 2; }
+.ch .hit { fill: transparent; }
+.ch .hit:hover + .pt { fill: var(--lane-1); }
+.tip { position: fixed; z-index: 20; pointer-events: none; background: var(--ink); color: var(--surface); font: 12px/1.4 var(--sans); padding: 6px 9px; border-radius: 6px; white-space: nowrap; transform: translate(-50%, calc(-100% - 10px)); }
 .foot { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-block: 18px 28px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 </style>
@@ -286,6 +352,7 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
       <a href="#competitors" data-page="competitors"><span><span class="en">Competitors</span><span class="ko-inline">경쟁사</span></span></a>
       <a href="#patents" data-page="patents"><span><span class="en">Patents</span><span class="ko-inline">특허</span></span></a>
       <a href="#timeline" data-page="timeline"><span><span class="en">Lilly timeline</span><span class="ko-inline">릴리 타임라인</span></span></a>
+      <a href="#pk" data-page="pk" id="pkTab"><span><span class="en">PK data</span><span class="ko-inline">PK 데이터</span></span></a>
       <a href="#news" data-page="news"><span><span class="en">News</span><span class="ko-inline">뉴스</span></span></a>
     </nav>
     <div class="lang" id="lang" role="group" aria-label="Language">
@@ -298,9 +365,11 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
   <section id="p-competitors" class="stack"></section>
   <section id="p-patents" class="stack" hidden></section>
   <section id="p-timeline" class="stack" hidden></section>
+  <section id="p-pk" class="stack" hidden></section>
   <section id="p-news" class="stack" hidden></section>
 </main>
 <footer class="wrap foot" id="foot"></footer>
+<div class="tip" id="tip" hidden></div>
 
 <script>window.RETA = /*DATA*/null;</script>
 <script>
@@ -541,7 +610,80 @@ function renderTimeline() {
     </div>`;
 }
 
-// ═════════ PAGE 4 — NEWS ═════════
+// ═════════ PAGE 4 — PK DATA ═════════
+// one board: every programme and benchmark on the same day axis, with the same two number columns beside it
+const KIND = { figure: ["Read from chart", "차트 판독"], simulated: ["Simulation", "시뮬레이션"] };
+const kindTag = (k) => (KIND[k] ? ` <span class="kind ${k}">${Ti(KIND[k][0], KIND[k][1])}</span>` : "");
+const EV = { human: "--lane-1", animal: "--lane-3", hidden: "--lane-3", none: "--lane-4" };
+const srcLinks = (src) => { const l = [].concat(src);
+  return l.length === 1 ? `<a href="${esc(l[0].url)}" target="_blank" rel="noopener" title="${esc(l[0].label)}">${Ti("Source", "출처")} ↗</a>`
+    : `${Ti("Sources", "출처")} ${l.map((x, i) => `<a href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.label)}">${i + 1} ↗</a>`).join(" ")}`; };
+
+function curveSvg(cv, target) {
+  const W = 640, H = 240, l = 36, r = 10, t = 16, b = 24, xmax = 63, ymax = 150;
+  const x = (d) => l + (W - l - r) * d / xmax, y = (v) => t + (H - t - b) * (1 - v / ymax);
+  const path = cv.pts.map(([d, m], i) => `${i ? "L" : "M"}${x(d).toFixed(1)},${y(m).toFixed(1)}`).join("");
+  return `<svg class="ch" viewBox="0 0 ${W} ${H}" role="img" aria-label="Plasma retatrutide in ng/mL by day, Vivani implant in rats">
+    ${[0, 50, 100, 150].map((v) => `<line class="g" x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}"/><text x="${l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`).join("")}
+    <line class="ax" x1="${l}" x2="${W - r}" y1="${y(0)}" y2="${y(0)}"/>
+    ${[0, 7, 14, 21, 28, 35, 42, 49, 56].map((d) => `<text x="${x(d)}" y="${H - 6}" text-anchor="middle"${d === target ? ' class="tgt"' : ""}>${d}</text>`).join("")}
+    <line class="tgl" x1="${x(target)}" x2="${x(target)}" y1="${t}" y2="${y(0)}"/>
+    <text x="${l}" y="${t - 5}">ng/mL</text><text x="${W - r}" y="${y(0) - 6}" text-anchor="end">day</text>
+    ${cv.pts.filter((q) => q[2]).map(([d, m, se]) => `<line class="eb" x1="${x(d)}" x2="${x(d)}" y1="${y(m - se)}" y2="${y(m + se)}"/>`).join("")}
+    <path class="ln" d="${path}"/>
+    ${cv.pts.map(([d, m, se]) => `<circle class="hit" cx="${x(d)}" cy="${y(m)}" r="12" data-tip="${esc(`Day ${d}: ${m} ng/mL${se ? ` ± ${se} SE` : ""}`)}"/><circle class="pt" cx="${x(d)}" cy="${y(m)}" r="4.5"/>`).join("")}
+  </svg>`;
+}
+const tip = $("#tip");
+document.addEventListener("pointerover", (e) => {
+  const h = e.target.closest && e.target.closest("[data-tip]");
+  if (!h) { tip.hidden = true; return; }
+  const bx = h.getBoundingClientRect();
+  tip.textContent = h.dataset.tip; tip.hidden = false;
+  tip.style.left = `${bx.left + bx.width / 2}px`; tip.style.top = `${bx.top + bx.height / 2 - 4}px`;
+});
+addEventListener("scroll", () => { tip.hidden = true; }, { passive: true });
+
+function renderPK() {
+  const el = $("#p-pk"), P = D.pk;
+  const pct = (d) => `${(d / P.axis * 100).toFixed(2)}%`;
+  const ticks = [0, 7, 14, 21, 28, 35, 42, 49, 56];
+  const num = (v, en, ko, k) => (v ? `<div class="num"><span class="tl">${Ti(en, ko)}</span>${T(v)}${kindTag(k)}</div>` : `<div class="num nil">—</div>`);
+  const row = (r) => `<div class="pkr${r.group === "reta" ? " reta" : ""}" style="--k:var(${EV[r.ev]});--tg:${pct(P.target)}">
+      <div><div class="nm">${T(r.name)}</div><div class="who">${Ti(r.who.en, r.who.ko)} · ${srcLinks(r.src)}</div>${r.tag ? `<span class="tag2">${Ti(r.tag.en, r.tag.ko)}</span>` : ""}</div>
+      <div><div class="trk">${r.days ? `<span class="bb${r.open ? " open" : ""}${r.ev === "hidden" ? " hid" : ""}" style="width:${pct(r.days)}"></span>` : ""}</div>
+        <div class="bt">${Ti(r.bar.en, r.bar.ko)}</div></div>
+      ${num(r.exp, "Exposure", "노출량", (r.kind || {}).exp)}${num(r.peak, "Peak", "최고농도", (r.kind || {}).peak)}
+    </div>`;
+  el.innerHTML = `
+    <div>
+      <div class="eyebrow">${Ti("Page 4 · PK data", "4페이지 · PK 데이터")}</div>
+      <h1>${T(P.title)}</h1>
+      <p class="lede">${T(P.lede)}</p>
+    </div>
+    <div>
+      <p class="pk-judge">${T(P.judge.text)} ${srcLinks(P.judge.src)}</p>
+      <div class="pkb">
+        <div class="pkb-h"><div>${T({ en: "Programme", ko: "과제" })}</div>
+          <div class="axis-c">${T({ en: "Days one dose keeps drug in the blood", ko: "1회 투여 후 혈중 유지 일수" })}
+            <div class="axis">${ticks.map((dd) => `<b style="left:${pct(dd)}"${dd === P.target ? ' class="tg"' : ""}>${dd}</b>`).join("")}</div></div>
+          <div>${T({ en: "Exposure vs reference", ko: "기준 대비 노출량" })}</div><div>${T({ en: "Peak and first day", ko: "최고농도·초기 방출" })}</div></div>
+        ${P.groups.map((g) => `<div class="pkg">${Ti(g.name.en, g.name.ko)}</div>${P.board.filter((r) => r.group === g.id).map(row).join("")}`).join("")}
+        <div class="pk-key"><span style="--k:var(--lane-1)"><i></i>${Ti("Human data", "사람 데이터")}</span><span style="--k:var(--lane-3)"><i></i>${Ti("Animal data", "동물 데이터")}</span>
+          <span style="--k:var(--lane-3)"><i class="open"></i>${Ti("Lasts longer than shown", "표시보다 더 유지")}</span><span><i class="hid"></i>${Ti("Sampled, result not public", "채혈했으나 결과 비공개")}</span>
+          <span><i class="tg"></i>${Ti("Monthly target, 28 days", "월 1회 목표, 28일")}</span></div>
+      </div>
+      <p class="pk-note">${T({ en: "For approved and weekly products the bar is the dosing interval; for the rest it is how long blood levels were shown. A dash means no public number.", ko: "허가·주 1회 제품의 막대는 투여 간격, 나머지는 혈중농도가 확인된 기간입니다. 대시(—)는 공개된 수치가 없다는 뜻입니다." })}</p>
+      <p class="pk-note">${T(P.caution.text)} ${srcLinks(P.caution.src)}</p>
+    </div>
+    <div>
+      <div class="section-h"><h2>${Ti("The only retatrutide depot curve", "유일한 레타트루타이드 데포 곡선")}</h2>
+        <p>${T({ en: "Vivani implant in rats. Red line: the 28-day monthly target.", ko: "비바니 임플란트, 랫드. 빨간 선: 월 1회 목표 28일." })}</p></div>
+      <div class="cvbox">${curveSvg(P.curve, P.target)}<div class="meta">${T(P.curve.note)} <a href="${esc(P.curveSrc.url)}" target="_blank" rel="noopener">${esc(P.curveSrc.label)} ↗</a></div></div>
+    </div>`;
+}
+
+// ═════════ PAGE 5 — NEWS ═════════
 let nscope = "All", ntype = "All";
 const TYPE = { Data: ["Data", "데이터"], Patent: ["Patent", "특허"], Deal: ["Deal", "계약"], Corporate: ["Corporate", "기업"],
   Trial: ["Trial", "임상"], Regulatory: ["Regulatory", "규제"], Market: ["Market", "시장"] };
@@ -560,7 +702,7 @@ function renderNews() {
   const types = Object.keys(TYPE).filter((k) => D.news.some((n) => n.type === k));
   el.innerHTML = `
     <div>
-      <div class="eyebrow">${Ti("Page 4 · News", "4페이지 · 뉴스")}</div>
+      <div class="eyebrow">${Ti("Page 5 · News", "5페이지 · 뉴스")}</div>
       <h1>${T({ en: "Long-acting retatrutide news", ko: "장기지속형 레타트루타이드 뉴스" })}</h1>
       <p class="lede">${T({ en: `${D.news.length} dated events since Jan 2025, newest first, one sentence each. Patent publications are dated by publication, not priority.`,
         ko: `2025년 1월 이후 날짜별 이벤트 ${D.news.length}건, 최신순, 한 문장 요약. 특허는 우선일이 아닌 공개일 기준입니다.` })}</p>
@@ -575,6 +717,7 @@ function renderNews() {
 
 // ═════════ ROUTER ═════════
 const PAGES = { competitors: renderCompetitors, patents: renderPatents, timeline: renderTimeline, news: renderNews };
+PAGES.pk = renderPK;
 const done = {};
 function show() {
   const h = location.hash.slice(1);

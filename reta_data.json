@@ -335,6 +335,61 @@
     "url": "https://worldwide.espacenet.com/patent/search/family/101709215/publication/WO2026221351A1?q=pn%3DWO2026221351A1"
    },
    "checked": "2026-10-29"
+  },
+  {
+   "id": "vivani-reta",
+   "lane": "animal",
+   "region": "US",
+   "tech": "implant",
+   "company": {
+    "en": "Vivani Medical (Nano Precision Medical)",
+    "ko": "비바니 메디컬(Nano Precision Medical)"
+   },
+   "product": {
+    "en": "NanoPortal retatrutide implant",
+    "ko": "NanoPortal 레타트루타이드 임플란트"
+   },
+   "api": {
+    "en": "Retatrutide in a prototype implant under the skin that releases drug through a nanoporous membrane",
+    "ko": "나노다공성 막으로 약물을 방출하는 시제품 피하 임플란트에 레타트루타이드 탑재"
+   },
+   "interval": {
+    "en": "Not stated; rat data cover 8 weeks",
+    "ko": "미공개, 랫드 데이터는 8주"
+   },
+   "stage": {
+    "en": "Preclinical, rat PK",
+    "ko": "전임상, 랫드 PK"
+   },
+   "now": {
+    "en": "Aug 2026: investor deck shows rat plasma levels of about 64–101 ng/mL from day 7 to day 56 in an ongoing study; dose not stated.",
+    "ko": "2026년 8월: 투자자 자료에서 진행 중인 랫드 시험의 7~56일 혈중농도 약 64~101 ng/mL 제시. 용량은 미공개."
+   },
+   "platform": {
+    "en": "NanoPortal implant, also used for exenatide (NPM-115) and semaglutide (NPM-139). NPM-139's first human study, SLIM-1, is registered but not yet recruiting.",
+    "ko": "NanoPortal 임플란트로 엑세나타이드(NPM-115)·세마글루타이드(NPM-139)도 개발. NPM-139 첫 임상(SLIM-1)은 등록됐으나 아직 모집 전."
+   },
+   "patents": [
+    {
+     "no": "AU2024416670A1",
+     "status": {
+      "en": "Pending",
+      "ko": "심사 중"
+     }
+    }
+   ],
+   "lastMove": "2026-08",
+   "trials": [],
+   "noTrial": {
+    "en": "No retatrutide trial.",
+    "ko": "레타트루타이드 임상 없음."
+   },
+   "src": {
+    "label": "Vivani investor presentation (17 Aug 2026), slide 25",
+    "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
+   },
+   "checked": "2026-10-29",
+   "added": "2026-10-29"
   }
  ],
  "patents": [
@@ -868,6 +923,19 @@
    }
   },
   {
+   "date": "2026-08-17",
+   "region": "GL",
+   "type": "Data",
+   "text": {
+    "en": "Vivani's investor deck showed its prototype NanoPortal retatrutide implant holding rat plasma levels near 64–101 ng/mL from day 7 to day 56 in an ongoing study.",
+    "ko": "비바니가 투자자 자료에서 시제품 NanoPortal 레타트루타이드 임플란트가 진행 중인 랫드 시험에서 7~56일 혈중농도를 약 64~101 ng/mL로 유지했다고 제시."
+   },
+   "src": {
+    "label": "Vivani investor presentation (17 Aug 2026), slide 25",
+    "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
+   }
+  },
+  {
    "date": "2026-08-05",
    "region": "GL",
    "type": "Corporate",
@@ -924,8 +992,8 @@
    "region": "KR",
    "type": "Data",
    "text": {
-    "en": "Korea Biomedical Review reported G2GBio's ADA poster (2815-LB), listing semaglutide rather than CagriSema among the drugs tested, and said the company is not developing retatrutide itself.",
-    "ko": "코리아바이오메디컬리뷰는 지투지바이오의 ADA 포스터(2815-LB)를 보도하며 시험 약물로 카그리세마 대신 세마글루타이드를 언급했고, 회사가 레타트루타이드를 직접 개발하지는 않는다고 전했다."
+    "en": "Korea Biomedical Review covered G2GBio's ADA poster 2815-LB and said the company is not developing retatrutide itself. G2GBio had two abstracts: 2814-LB (CagriSema) and 2815-LB (tirzepatide and retatrutide).",
+    "ko": "코리아바이오메드가 지투지바이오의 ADA 포스터 2815-LB를 보도하며 회사가 레타트루타이드를 직접 개발하지 않는다고 전함. 초록은 2건: 2814-LB(카그리세마), 2815-LB(터제파타이드·레타트루타이드)."
    },
    "src": {
     "label": "Korea Biomedical Review (9 Jun 2026)",
@@ -1004,5 +1072,465 @@
   "WO2026198842A1": "https://worldwide.espacenet.com/patent/search/family/099803262/publication/WO2026198842A1?q=pn%3DWO2026198842A1",
   "CN119792245A": "https://patents.google.com/patent/CN119792245A/zh",
   "CN121774878A": "https://patents.google.com/patent/CN121774878A/zh"
+ },
+ "pk": {
+  "title": {
+   "en": "Has anyone shown a month of retatrutide in the blood?",
+   "ko": "레타트루타이드 혈중농도를 한 달 유지한 곳이 있는가?"
+  },
+  "lede": {
+   "en": "Two have, both in rats only: Vivani's implant held levels for 56 days and G2GBio's microspheres for over a month. No one has published how retatrutide exposure or peak compares with the weekly injection. The lower rows show what the same platforms and approved depots achieved with other drugs.",
+   "ko": "두 곳, 모두 랫드 데이터뿐입니다. 비바니 임플란트는 56일, 지투지바이오 미립구는 한 달 이상 혈중농도를 유지했습니다. 주 1회 주사 대비 노출량이나 최고농도를 공개한 곳은 없습니다. 아래 행은 같은 플랫폼과 허가 데포가 다른 약물로 달성한 수치입니다."
+  },
+  "target": 28,
+  "axis": 63,
+  "groups": [
+   {
+    "id": "reta",
+    "name": {
+     "en": "Long-acting retatrutide",
+     "ko": "장기지속형 레타트루타이드"
+    }
+   },
+   {
+    "id": "sib",
+    "name": {
+     "en": "Same platforms, other drugs",
+     "ko": "같은 플랫폼, 다른 약물"
+    }
+   },
+   {
+    "id": "ref",
+    "name": {
+     "en": "Weekly retatrutide and approved depots",
+     "ko": "주 1회 레타트루타이드와 허가 데포"
+    }
+   }
+  ],
+  "board": [
+   {
+    "group": "reta",
+    "name": {
+     "en": "Vivani implant",
+     "ko": "비바니 임플란트"
+    },
+    "card": "vivani-reta",
+    "ev": "animal",
+    "who": {
+     "en": "Rats, n=12→9",
+     "ko": "랫드, n=12→9"
+    },
+    "days": 56,
+    "open": true,
+    "bar": {
+     "en": "56 days, study ongoing",
+     "ko": "56일, 시험 진행 중"
+    },
+    "exp": null,
+    "peak": {
+     "en": "108 ng/mL on day 1, then 64–101 ng/mL to day 56",
+     "ko": "1일 108 ng/mL, 이후 56일까지 64~101 ng/mL"
+    },
+    "src": {
+     "label": "Vivani investor presentation (17 Aug 2026), slide 25",
+     "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
+    },
+    "kind": {
+     "peak": "figure"
+    },
+    "tag": {
+     "en": "Implant, not injectable",
+     "ko": "임플란트, 주사제 아님"
+    }
+   },
+   {
+    "group": "reta",
+    "name": {
+     "en": "G2GBio microspheres",
+     "ko": "지투지바이오 미립구"
+    },
+    "card": "g2gbio-reta",
+    "ev": "animal",
+    "who": {
+     "en": "Rats, n not stated",
+     "ko": "랫드, n 미공개"
+    },
+    "days": 30,
+    "open": true,
+    "bar": {
+     "en": "More than 1 month",
+     "ko": "1개월 이상"
+    },
+    "exp": null,
+    "peak": {
+     "en": "Under 5% released in the first 24 h",
+     "ko": "첫 24시간 방출 5% 미만"
+    },
+    "src": {
+     "label": "ADA 2026 abstract 2815-LB",
+     "url": "https://doi.org/10.2337/db26-2815-lb"
+    }
+   },
+   {
+    "group": "reta",
+    "name": {
+     "en": "Camurus lipid depot",
+     "ko": "Camurus 지질 데포"
+    },
+    "card": "camurus-reta",
+    "ev": "hidden",
+    "who": {
+     "en": "Rats, n=3",
+     "ko": "랫드, n=3"
+    },
+    "days": 28,
+    "open": false,
+    "bar": {
+     "en": "Sampled 28 days; result not public",
+     "ko": "28일 채혈, 결과 비공개"
+    },
+    "exp": null,
+    "peak": null,
+    "src": {
+     "label": "WO2026125238A1, Example 3",
+     "url": "https://patents.google.com/patent/WO2026125238A1/en"
+    }
+   },
+   {
+    "group": "reta",
+    "name": {
+     "en": "Aul Bio microspheres",
+     "ko": "올바이오 미립구"
+    },
+    "card": "aulbio-reta",
+    "ev": "none",
+    "who": {
+     "en": "No data",
+     "ko": "데이터 없음"
+    },
+    "days": null,
+    "open": false,
+    "bar": {
+     "en": "Named in patent claims only",
+     "ko": "특허 청구항에 명칭만 기재"
+    },
+    "exp": null,
+    "peak": null,
+    "src": {
+     "label": "EP4721726A1",
+     "url": "https://patents.google.com/patent/EP4721726A1/en"
+    }
+   },
+   {
+    "group": "sib",
+    "name": {
+     "en": "Camurus CAM2056 · semaglutide",
+     "ko": "Camurus CAM2056 · 세마글루타이드"
+    },
+    "ev": "human",
+    "who": {
+     "en": "People, n=80",
+     "ko": "사람, n=80"
+    },
+    "days": 28,
+    "open": false,
+    "bar": {
+     "en": "Dosed monthly",
+     "ko": "월 1회 투여"
+    },
+    "exp": null,
+    "peak": {
+     "en": "Cmax similar to weekly Wegovy given at 4× its monthly dose",
+     "ko": "주 1회 위고비 월 용량의 4배 투여 시와 유사한 Cmax"
+    },
+    "src": {
+     "label": "Camurus release (10 Nov 2025)",
+     "url": "https://www.camurus.com/media/press-releases/2025/camurus-reports-positive-topline-results-for-cam2056-semaglutide-monthly-depot/"
+    }
+   },
+   {
+    "group": "sib",
+    "name": {
+     "en": "Camurus Oczyesa · octreotide",
+     "ko": "Camurus Oczyesa · 옥트레오타이드"
+    },
+    "ev": "human",
+    "who": {
+     "en": "People, approved (EU)",
+     "ko": "사람, EU 허가"
+    },
+    "days": 28,
+    "open": false,
+    "bar": {
+     "en": "Dosed monthly",
+     "ko": "월 1회 투여"
+    },
+    "exp": {
+     "en": "92–98% of the daily injection (4–5× the PLGA monthly)",
+     "ko": "일반 주사의 92~98% (PLGA 월 1회 제형의 4~5배)"
+    },
+    "peak": {
+     "en": "Peak/trough 12.7 vs 13.6 for the daily injection",
+     "ko": "최고/최저 비 12.7, 일반 주사 13.6"
+    },
+    "src": {
+     "label": "EMA EPAR, Oczyesa (2025)",
+     "url": "https://www.ema.europa.eu/en/documents/assessment-report/oczyesa-epar-public-assessment-report_en.pdf"
+    }
+   },
+   {
+    "group": "sib",
+    "name": {
+     "en": "Aul Bio AUL009 · semaglutide",
+     "ko": "올바이오 AUL009 · 세마글루타이드"
+    },
+    "ev": "human",
+    "who": {
+     "en": "People, n=8",
+     "ko": "사람, n=8"
+    },
+    "days": 30,
+    "open": true,
+    "bar": {
+     "en": "30 days or more",
+     "ko": "30일 이상"
+    },
+    "exp": {
+     "en": "Patent: +95% vs own microspheres without additive (rats)",
+     "ko": "특허: 첨가제 없는 자사 미립구 대비 +95% (랫드)"
+    },
+    "peak": null,
+    "src": {
+     "label": "Dailypharm (11 Jun 2026)",
+     "url": "https://m.dailypharm.com/user/news/339336"
+    }
+   },
+   {
+    "group": "sib",
+    "name": {
+     "en": "G2GBio GB-7001 · semaglutide",
+     "ko": "지투지바이오 GB-7001 · 세마글루타이드"
+    },
+    "ev": "animal",
+    "who": {
+     "en": "Rats, minipigs",
+     "ko": "랫드, 미니피그"
+    },
+    "days": 28,
+    "open": false,
+    "bar": {
+     "en": "28 days",
+     "ko": "28일"
+    },
+    "exp": null,
+    "peak": {
+     "en": "Peak-to-trough 1.3 vs 1.8 for Ozempic",
+     "ko": "최고/최저 비 1.3, 오젬픽 1.8"
+    },
+    "src": [
+     {
+      "label": "ADA 2023 abstract 78-LB (28 days, rats and minipigs)",
+      "url": "https://doi.org/10.2337/db23-78-lb"
+     },
+     {
+      "label": "Money Today (21 Apr 2026), simulation",
+      "url": "https://www.mt.co.kr/article/2026042110551044753"
+     }
+    ],
+    "kind": {
+     "peak": "simulated"
+    }
+   },
+   {
+    "group": "ref",
+    "name": {
+     "en": "Weekly retatrutide (Lilly)",
+     "ko": "주 1회 레타트루타이드(릴리)"
+    },
+    "ev": "human",
+    "who": {
+     "en": "People, n=45",
+     "ko": "사람, n=45"
+    },
+    "days": 7,
+    "open": false,
+    "bar": {
+     "en": "Dosed weekly; half-life about 6 days",
+     "ko": "주 1회 투여, 반감기 약 6일"
+    },
+    "exp": {
+     "en": "The reference a depot is compared with",
+     "ko": "데포 비교의 기준 제품"
+    },
+    "peak": {
+     "en": "Peak 12–72 h after the dose",
+     "ko": "투여 12~72시간 후 최고농도"
+    },
+    "src": {
+     "label": "Review in Pharmaceutics 2026, citing Coskun et al. 2022",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13708278/"
+    }
+   },
+   {
+    "group": "ref",
+    "name": {
+     "en": "Bydureon · exenatide",
+     "ko": "바이듀리온 · 엑세나타이드"
+    },
+    "ev": "human",
+    "who": {
+     "en": "People, approved",
+     "ko": "사람, 허가"
+    },
+    "days": 7,
+    "open": false,
+    "bar": {
+     "en": "Dosed weekly (PLGA microspheres)",
+     "ko": "주 1회 투여(PLGA 미립구)"
+    },
+    "exp": {
+     "en": "About 22–25% of twice-daily Byetta",
+     "ko": "1일 2회 바이에타의 약 22~25%"
+    },
+    "peak": {
+     "en": "First-day peak 34 vs 211 pg/mL for Byetta",
+     "ko": "첫날 최고농도 34, 바이에타 211 pg/mL"
+    },
+    "src": {
+     "label": "FDA clinical pharmacology review, Bydureon",
+     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2012/022200Orig1s000ClinPharmR.pdf"
+    }
+   },
+   {
+    "group": "ref",
+    "name": {
+     "en": "Sandostatin LAR · octreotide",
+     "ko": "산도스타틴 LAR · 옥트레오타이드"
+    },
+    "ev": "human",
+    "who": {
+     "en": "People, approved",
+     "ko": "사람, 허가"
+    },
+    "days": 28,
+    "open": false,
+    "bar": {
+     "en": "Dosed monthly (PLGA microspheres)",
+     "ko": "월 1회 투여(PLGA 미립구)"
+    },
+    "exp": {
+     "en": "60–63% of the daily injection",
+     "ko": "일반 주사의 60~63%"
+    },
+    "peak": {
+     "en": "Peak-to-trough 44–68% vs 163–209% daily",
+     "ko": "최고-최저 변동 44~68%, 일반 주사 163~209%"
+    },
+    "src": {
+     "label": "US label, Sandostatin LAR",
+     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/021008s049lbl.pdf"
+    }
+   }
+  ],
+  "curve": {
+   "status": "public",
+   "species": {
+    "en": "Rats",
+    "ko": "랫드"
+   },
+   "unit": "ng/mL",
+   "xmax": 63,
+   "ymax": 150,
+   "pts": [
+    [
+     0,
+     2,
+     0
+    ],
+    [
+     1,
+     107.6,
+     24.0
+    ],
+    [
+     7,
+     63.8,
+     9.0
+    ],
+    [
+     14,
+     94.3,
+     10.7
+    ],
+    [
+     21,
+     100.6,
+     10.7
+    ],
+    [
+     28,
+     84.3,
+     9.3
+    ],
+    [
+     35,
+     87.4,
+     6.6
+    ],
+    [
+     42,
+     73.4,
+     5.1
+    ],
+    [
+     49,
+     74.4,
+     4.8
+    ],
+    [
+     56,
+     77.5,
+     6.4
+    ]
+   ],
+   "note": {
+    "en": "Mean ± SE, normalised to a 250 g rat. Values read from the published chart (about ±1 ng/mL).",
+    "ko": "평균 ± SE, 250 g 랫드 기준 보정. 공개 차트에서 판독한 값(약 ±1 ng/mL)."
+   },
+   "title": {
+    "en": "The only retatrutide depot curve in public: Vivani implant, rats",
+    "ko": "공개된 유일한 레타트루타이드 데포 곡선: 비바니 임플란트, 랫드"
+   }
+  },
+  "curveSrc": {
+   "label": "Vivani investor presentation (17 Aug 2026), slide 25",
+   "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
+  },
+  "judge": {
+   "text": {
+    "en": "How regulators judge a depot: total exposure (AUC, given as rBA) is the main bridge to the reference; the trough at steady state is the efficacy marker; peak, swing and first-day release are checked for safety.",
+    "ko": "규제기관의 데포 평가: 기준 제품과의 핵심 브릿지는 총 노출량(AUC, 상대 BA)이며, 정상상태 최저농도는 유효성 지표, 최고농도·변동폭·초기 방출은 안전성 확인 항목입니다."
+   },
+   "src": [
+    {
+     "label": "EMA guideline on modified-release dosage forms (EMA/CPMP/EWP/280/96 Rev1)",
+     "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-pharmacokinetic-and-clinical-evaluation-modified-release-dosage-forms_en.pdf"
+    },
+    {
+     "label": "EMA EPAR, Oczyesa (2025)",
+     "url": "https://www.ema.europa.eu/en/documents/assessment-report/oczyesa-epar-public-assessment-report_en.pdf"
+    }
+   ]
+  },
+  "caution": {
+   "text": {
+    "en": "Read the rat rows with care: the same exenatide microsphere reached about 63% relative bioavailability in rats, 23% in monkeys and 22–25% in people.",
+    "ko": "랫드 데이터는 신중히 해석해야 합니다. 같은 엑세나타이드 미립구의 상대 생체이용률이 랫드 약 63%, 원숭이 23%, 사람 22~25%였습니다."
+   },
+   "src": {
+    "label": "EMA EPAR, Bydureon",
+    "url": "https://www.ema.europa.eu/en/documents/assessment-report/bydureon-epar-public-assessment-report_en.pdf"
+   }
+  }
  }
 }
