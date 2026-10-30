@@ -95,7 +95,8 @@ module.exports = async function handler(req, res) {
   if (r.status === 429) return send(res, 429, { error: "quota" });
   if (!r.ok) {
     console.error("gemini", r.status, j && j.error && j.error.message);
-    return send(res, 502, { error: "failed" });
+    // Google's short status (e.g. NOT_FOUND, INVALID_ARGUMENT) tells a wrong model name from a bad key without exposing either
+    return send(res, 502, { error: "failed", detail: `${r.status} ${(j && j.error && j.error.status) || ""}`.trim() });
   }
   if (j.promptFeedback && j.promptFeedback.blockReason) return send(res, 200, { error: "blocked" });
   const cand = (j.candidates || [])[0] || {};
