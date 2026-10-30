@@ -1,4 +1,11 @@
-# Retatrutide LAI Radar
+# Incretin LAI Radar
+
+One tracker, two drugs: a Retatrutide | CagriSema switch in the header (`#reta/<page>`, `#cagri/<page>`; a bare `#<page>`
+opens retatrutide). Each drug has its own data file (`reta_data.json`, `cagri_data.json`) with the same shape, plus a `meta`
+block (name, originator, footer sources) that supplies every drug-specific word on the page. The retatrutide notes below
+apply to both files.
+
+## Retatrutide
 
 Bilingual (EN/KR) competitor tracker for long-acting retatrutide: microspheres, lipid depots, in-situ gels, hydrogels
 and implants dosed once a month or less often. Lilly's weekly retatrutide, oral drugs, generics and other triple-agonist
@@ -22,7 +29,7 @@ on the patent holder.
 
 | File | Role |
 |---|---|
-| `reta_data.json` | All ledes, cards, patents, Lilly patent families (`estate`), milestones (`plan`) and news |
+| `reta_data.json`, `cagri_data.json` | Per drug: all ledes, cards, patents, Lilly patent families (`estate`), milestones (`plan`) and news |
 | `template.html` | Page design and rendering code |
 | `build.py` | `python build.py [--as-of YYYY-MM-DD]` validates the data and renders `index.html`; `--check` validates only |
 

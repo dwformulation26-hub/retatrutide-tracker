@@ -1,0 +1,1635 @@
+{
+ "asOf": "2026-10-30",
+ "meta": {
+  "name": {
+   "en": "CagriSema",
+   "ko": "카그리세마"
+  },
+  "originator": {
+   "en": "Novo",
+   "ko": "노보"
+  },
+  "foot": {
+   "en": "Sources: ClinicalTrials.gov, Espacenet, Google Patents, company releases, Novo Nordisk reports and SEC filings, ADA coverage and trade press.",
+   "ko": "출처: ClinicalTrials.gov, Espacenet, Google Patents, 기업 발표, 노보 노디스크 보고서·SEC 공시, ADA 관련 보도 및 업계 언론."
+  }
+ },
+ "lede": {
+  "competitors": {
+   "en": "{n} programmes and filers working on cagrilintide with semaglutide (CagriSema) dosed once a month or less often. Novo's weekly CagriSema is the reference product and is not counted here; it is on the Novo timeline page. No long-acting CagriSema has reached human testing.",
+   "ko": "월 1회 이하로 투여하는 카그릴린타이드·세마글루타이드(카그리세마)를 개발하는 과제·출원인 {n}곳. 노보의 주 1회 카그리세마는 기준 제품으로 여기서 제외하며 노보 타임라인 페이지에 정리했습니다. 임상 단계에 진입한 장기지속형 카그리세마는 없습니다."
+  },
+  "patents": {
+   "en": "{p} patent families put cagrilintide in a long-acting depot claim or example. {q} broader platform families list cagrilintide among the drugs they cover. Novo has no long-acting CagriSema filing on record.",
+   "ko": "장기지속형 데포 청구항 또는 실시예에 카그릴린타이드를 둔 특허 패밀리는 {p}건. 적용 약물 목록에 카그릴린타이드를 포함한 포괄적 플랫폼 특허는 {q}건. 노보 자체의 장기지속형 카그리세마 출원은 확인되지 않습니다."
+  },
+  "timelineTitle": {
+   "en": "When Novo's CagriSema protection ends, and what Novo plans next",
+   "ko": "노보 카그리세마 특허 만료 시점과 향후 계획"
+  },
+  "timeline": {
+   "en": "Semaglutide's molecule patent has already lapsed in China and India and ends in 2031 in the EU and US; cagrilintide's runs to mid-2032. Novo filed CagriSema in the US in December 2025 and has no monthly version.",
+   "ko": "세마글루타이드 물질 특허는 중국·인도에서 이미 만료됐고 유럽·미국은 2031년, 카그릴린타이드는 2032년 중반까지입니다. 노보는 2025년 12월 미국에 카그리세마 허가를 신청했으며 월 1회 제형은 없습니다."
+  }
+ },
+ "keyfacts": [
+  {
+   "value": {
+    "en": "2032",
+    "ko": "2032"
+   },
+   "label": {
+    "en": "Cagrilintide molecule patent expires",
+    "ko": "카그릴린타이드 물질 특허 만료"
+   },
+   "sub": {
+    "en": "June, in the US, EU, Japan, China and Korea. Semaglutide's ends in 2031 (EU, US).",
+    "ko": "미국·유럽·일본·중국·한국 6월. 세마글루타이드는 2031년(유럽·미국)."
+   }
+  },
+  {
+   "value": {
+    "en": "~2037",
+    "ko": "~2037"
+   },
+   "label": {
+    "en": "Latest with an extension",
+    "ko": "연장 시 최대"
+   },
+   "sub": {
+    "en": "Estimate for cagrilintide. Extensions are granted only after approval.",
+    "ko": "카그릴린타이드 추정치. 연장은 허가 후에만 부여됩니다."
+   }
+  },
+  {
+   "value": {
+    "en": "4Q 2026",
+    "ko": "2026년 4분기"
+   },
+   "label": {
+    "en": "US decision expected",
+    "ko": "미국 허가 결정 예상"
+   },
+   "sub": {
+    "en": "Filed 18 Dec 2025. No EU filing found.",
+    "ko": "2025년 12월 18일 신청. 유럽 신청 확인 안 됨."
+   }
+  },
+  {
+   "value": {
+    "en": "None",
+    "ko": "없음"
+   },
+   "label": {
+    "en": "Monthly CagriSema from Novo",
+    "ko": "노보의 월 1회 카그리세마"
+   },
+   "sub": {
+    "en": "Every trial is weekly. Novo stopped its single-injection co-formulation in May 2026.",
+    "ko": "모든 임상이 주 1회. 노보는 2026년 5월 단일 주사 혼합제형 개발을 중단."
+   }
+  }
+ ],
+ "lanes": [
+  {
+   "id": "clinic",
+   "name": {
+    "en": "In human testing",
+    "ko": "임상 진행"
+   }
+  },
+  {
+   "id": "animal",
+   "name": {
+    "en": "Animal data",
+    "ko": "동물 데이터"
+   }
+  },
+  {
+   "id": "patent",
+   "name": {
+    "en": "Patent or research only",
+    "ko": "특허·연구 단계"
+   }
+  },
+  {
+   "id": "stopped",
+   "name": {
+    "en": "Inactive",
+    "ko": "중단·휴면"
+   }
+  }
+ ],
+ "techs": [
+  {
+   "id": "microsphere",
+   "en": "Polymer microsphere",
+   "ko": "고분자 미립구"
+  },
+  {
+   "id": "lipid",
+   "en": "Lipid depot",
+   "ko": "지질 데포"
+  },
+  {
+   "id": "gel",
+   "en": "In-situ gel",
+   "ko": "인시투 겔"
+  },
+  {
+   "id": "hydrogel",
+   "en": "Hydrogel",
+   "ko": "하이드로겔"
+  },
+  {
+   "id": "implant",
+   "en": "Implant",
+   "ko": "임플란트"
+  }
+ ],
+ "registries": [
+  {
+   "name": "ClinicalTrials.gov",
+   "result": "checked",
+   "note": {
+    "en": "All cagrilintide and CagriSema records are weekly or device studies. No long-acting CagriSema trial.",
+    "ko": "카그릴린타이드·카그리세마 기록 모두 주 1회 또는 주사기기 연구. 장기지속형 카그리세마 임상 없음."
+   }
+  },
+  {
+   "name": "PubMed",
+   "result": "checked",
+   "note": {
+    "en": "No paper on a long-acting cagrilintide or CagriSema formulation.",
+    "ko": "장기지속형 카그릴린타이드·카그리세마 제형 논문 없음."
+   }
+  },
+  {
+   "name": "China CDE",
+   "result": "unchecked",
+   "note": {
+    "en": "The registry page returned no content for automated reading.",
+    "ko": "자동 조회 시 등록부 페이지 내용이 표시되지 않음."
+   }
+  },
+  {
+   "name": "Korea MFDS · CRIS · EU CTIS · jRCT",
+   "result": "unchecked",
+   "note": {
+    "en": "Not readable automatically.",
+    "ko": "자동 조회 불가."
+   }
+  }
+ ],
+ "cards": [
+  {
+   "id": "g2gbio-cagri",
+   "lane": "animal",
+   "region": "KR",
+   "tech": "microsphere",
+   "company": {
+    "en": "G2GBio",
+    "ko": "지투지바이오"
+   },
+   "product": {
+    "en": "InnoLAMP CagriSema (no code)",
+    "ko": "InnoLAMP 카그리세마(코드 미공개)"
+   },
+   "api": {
+    "en": "Cagrilintide alone or co-encapsulated with semaglutide in PLGA microspheres with a phosphate burst inhibitor",
+    "ko": "카그릴린타이드 단독 또는 세마글루타이드와 동시 봉입한 PLGA 미립구, 인산염 초기방출 억제제"
+   },
+   "interval": {
+    "en": "Monthly (target)",
+    "ko": "월 1회(목표)"
+   },
+   "stage": {
+    "en": "Preclinical, rat PK",
+    "ko": "전임상, 랫드 PK"
+   },
+   "now": {
+    "en": "Jun 2026: ADA rat data held both drugs in plasma beyond 28 days. Its patents show cagrilintide release lasting 35–84 days with 1–6% on day 1.",
+    "ko": "2026년 6월: ADA 랫드 데이터에서 두 약물 모두 28일 이상 혈중 유지. 특허에서 카그릴린타이드 방출은 35~84일, 첫날 1~6%."
+   },
+   "platform": {
+    "en": "InnoLAMP microspheres; Korean cagrilintide microsphere patent granted in April 2025 (KR102792621B1). Same platform carries retatrutide and tirzepatide. No CagriSema partner named.",
+    "ko": "InnoLAMP 미립구. 한국 카그릴린타이드 미립구 특허 2025년 4월 등록(KR102792621B1). 같은 플랫폼으로 레타트루타이드·터제파타이드도 개발. 카그리세마 파트너 미공개."
+   },
+   "patents": [
+    {
+     "no": "KR102792621B1",
+     "status": {
+      "en": "Granted (KR)",
+      "ko": "등록(한국)"
+     }
+    },
+    {
+     "no": "WO2024248574A1",
+     "status": {
+      "en": "Pending (EP, CN, JP)",
+      "ko": "심사 중(유럽·중국·일본)"
+     }
+    },
+    {
+     "no": "WO2026005556A1",
+     "status": {
+      "en": "Pending (PCT)",
+      "ko": "심사 중(PCT)"
+     }
+    }
+   ],
+   "lastMove": "2026-06",
+   "trials": [],
+   "noTrial": {
+    "en": "No CagriSema trial or IND.",
+    "ko": "카그리세마 임상·IND 없음."
+   },
+   "src": {
+    "label": "ADA 2026 abstract 2814-LB",
+    "url": "https://doi.org/10.2337/db26-2814-lb"
+   },
+   "checked": "2026-10-30",
+   "added": "2026-10-30"
+  },
+  {
+   "id": "i2o-cagri",
+   "lane": "patent",
+   "region": "US",
+   "tech": "microsphere",
+   "company": {
+    "en": "i2o Therapeutics",
+    "ko": "i2o Therapeutics"
+   },
+   "product": {
+    "en": "Cagrilintide microspheres (claims)",
+    "ko": "카그릴린타이드 미립구(청구항)"
+   },
+   "api": {
+    "en": "Multiblock-copolymer microspheres with choline salts of the peptide",
+    "ko": "펩타이드 콜린염을 담은 멀티블록 공중합체 미립구"
+   },
+   "interval": {
+    "en": "Monthly (patent claim)",
+    "ko": "월 1회(특허 청구항)"
+   },
+   "stage": {
+    "en": "Named in patent claims",
+    "ko": "특허 청구항 기재"
+   },
+   "now": {
+    "en": "Jul 2026: WO2026152138A2 claims cagrilintide 10–15 mg once a month; its examples use semaglutide and pramlintide, not cagrilintide.",
+    "ko": "2026년 7월: WO2026152138A2가 카그릴린타이드 10~15 mg 월 1회를 청구. 실시예는 세마글루타이드·프람린타이드이며 카그릴린타이드 아님."
+   },
+   "platform": {
+    "en": "Polymer microspheres; a separate filing (WO2026044024A1) shows a choline salt makes cagrilintide soluble at 50 mg/mL.",
+    "ko": "고분자 미립구. 별도 출원(WO2026044024A1)에서 콜린염으로 카그릴린타이드 50 mg/mL 용해 확인."
+   },
+   "patents": [
+    {
+     "no": "WO2026152138A2",
+     "status": {
+      "en": "Pending (PCT)",
+      "ko": "심사 중(PCT)"
+     }
+    }
+   ],
+   "lastMove": "2026-07",
+   "trials": [],
+   "noTrial": {
+    "en": "No cagrilintide trial.",
+    "ko": "카그릴린타이드 임상 없음."
+   },
+   "src": {
+    "label": "Google Patents: WO2026152138A2",
+    "url": "https://patents.google.com/patent/WO2026152138A2/en"
+   },
+   "checked": "2026-10-30",
+   "added": "2026-10-30"
+  },
+  {
+   "id": "cpu-cagri",
+   "lane": "patent",
+   "region": "CN",
+   "tech": "gel",
+   "company": {
+    "en": "China Pharmaceutical University",
+    "ko": "중국약과대학"
+   },
+   "product": {
+    "en": "Two-drug colloid depot",
+    "ko": "2제 콜로이드 데포"
+   },
+   "api": {
+    "en": "Semaglutide and cagrilintide as colloid particles in PLGA dissolved in triacetin; forms a depot after injection",
+    "ko": "세마글루타이드·카그릴린타이드 콜로이드 입자를 트리아세틴에 녹인 PLGA에 분산, 주사 후 데포 형성"
+   },
+   "interval": {
+    "en": "Not stated",
+    "ko": "미공개"
+   },
+   "stage": {
+    "en": "Lab release data only",
+    "ko": "체외 방출 데이터만"
+   },
+   "now": {
+    "en": "Apr 2026: patent CN121774878A published; lab release over the first 24 h was 1–19% per drug. No animal data.",
+    "ko": "2026년 4월: 특허 CN121774878A 공개. 첫 24시간 체외 방출 약물별 1~19%. 동물 데이터 없음."
+   },
+   "platform": {
+    "en": "Liquid PLGA depot that sets after injection; the same patent pairs semaglutide with other peptides too.",
+    "ko": "주사 후 굳는 액상 PLGA 데포. 같은 특허에서 세마글루타이드와 다른 펩타이드 조합도 시험."
+   },
+   "patents": [
+    {
+     "no": "CN121774878A",
+     "status": {
+      "en": "Pending",
+      "ko": "심사 중"
+     }
+    }
+   ],
+   "lastMove": "2026-04",
+   "trials": [],
+   "noTrial": {
+    "en": "No trial.",
+    "ko": "임상 없음."
+   },
+   "src": {
+    "label": "Google Patents: CN121774878A",
+    "url": "https://patents.google.com/patent/CN121774878A/zh"
+   },
+   "checked": "2026-10-30",
+   "added": "2026-10-30"
+  }
+ ],
+ "patents": [
+  {
+   "cc": "KR",
+   "applicant": "G2GBio",
+   "no": "WO2024248574A1",
+   "family": "KR102792621B1, EP4721730A1, CN121620361A",
+   "tech": {
+    "en": "PLGA microspheres of cagrilintide (≥8 wt%) or cagrilintide + semaglutide, with a phosphate/carbonate burst inhibitor; rat release 35–84 days in examples",
+    "ko": "카그릴린타이드(8 wt% 이상) 또는 카그릴린타이드+세마글루타이드 PLGA 미립구, 인산염·탄산염 초기방출 억제제; 실시예 랫드 방출 35~84일"
+   },
+   "priority": "2023-06-02",
+   "published": "2024-12-05",
+   "status": {
+    "en": "Granted in KR (Apr 2025)",
+    "ko": "한국 등록(2025년 4월)"
+   }
+  },
+  {
+   "cc": "KR",
+   "applicant": "G2GBio",
+   "no": "WO2026005556A1",
+   "family": "KR20260002268A",
+   "tech": {
+    "en": "High-load W/O/W microparticles (40–71 wt% cagrilintide); 94–98% absorbed by day 28 in rats",
+    "ko": "고함량 W/O/W 미립자(카그릴린타이드 40~71 wt%); 랫드 28일 흡수 94~98%"
+   },
+   "priority": "2024-06-28",
+   "published": "2026-01-02",
+   "status": {
+    "en": "Pending (PCT)",
+    "ko": "심사 중(PCT)"
+   }
+  },
+  {
+   "cc": "US",
+   "applicant": "i2o Therapeutics",
+   "no": "WO2026152138A2",
+   "tech": {
+    "en": "Multiblock-copolymer microspheres; claims cagrilintide 10–15 mg once a month (no cagrilintide examples)",
+    "ko": "멀티블록 공중합체 미립구; 카그릴린타이드 10~15 mg 월 1회 청구(카그릴린타이드 실시예 없음)"
+   },
+   "priority": "2025-01-13",
+   "published": "2026-07-16",
+   "status": {
+    "en": "Pending (PCT)",
+    "ko": "심사 중(PCT)"
+   }
+  },
+  {
+   "cc": "CN",
+   "applicant": "China Pharmaceutical University",
+   "no": "CN121774878A",
+   "tech": {
+    "en": "Semaglutide + cagrilintide colloid particles in a PLGA/triacetin liquid depot; 24 h lab release only",
+    "ko": "세마글루타이드+카그릴린타이드 콜로이드 입자, PLGA/트리아세틴 액상 데포; 24시간 체외 방출만"
+   },
+   "priority": "2025-12-31",
+   "published": "2026-04-03",
+   "status": {
+    "en": "Pending",
+    "ko": "심사 중"
+   }
+  }
+ ],
+ "platforms": [
+  {
+   "cc": "KR",
+   "applicant": "Aul Bio",
+   "no": "WO2025159538A1",
+   "tech": {
+    "en": "GLP-1 microspheres with bioavailability enhancer (lists cagrilintide/semaglutide)",
+    "ko": "생체이용률 개선제 포함 GLP-1 미립구(카그릴린타이드/세마글루타이드 기재)"
+   },
+   "priority": "2024-01-26"
+  },
+  {
+   "cc": "US",
+   "applicant": "ProLynx",
+   "no": "WO2026020143A1",
+   "tech": {
+    "en": "Releasable conjugates of lipidated peptides",
+    "ko": "지질화 펩타이드의 방출형 결합체"
+   },
+   "priority": "2024-07-19"
+  },
+  {
+   "cc": "US",
+   "applicant": "ProLynx",
+   "no": "WO2026072809A1",
+   "tech": {
+    "en": "Hydrogel-microsphere drug conjugates",
+    "ko": "하이드로겔 미립구 약물 결합체"
+   },
+   "priority": "2024-09-25"
+  },
+  {
+   "cc": "US",
+   "applicant": "Stanford University",
+   "no": "WO2025024455A1",
+   "tech": {
+    "en": "Hydrogel with acylated peptide",
+    "ko": "아실화 펩타이드 하이드로겔"
+   },
+   "priority": "2023-07-24"
+  },
+  {
+   "cc": "US",
+   "applicant": "Stanford University",
+   "no": "WO2026161748A1",
+   "tech": {
+    "en": "Hydrogel with antioxidant",
+    "ko": "항산화제 포함 하이드로겔"
+   },
+   "priority": "2025-01-23"
+  }
+ ],
+ "estate": [
+  {
+   "no": "EP2718316B1",
+   "kind": "compound",
+   "short": {
+    "en": "Cagrilintide molecule",
+    "ko": "카그릴린타이드 물질"
+   },
+   "title": {
+    "en": "Acylated pramlintide analogues: the cagrilintide molecule (claim 10)",
+    "ko": "아실화 프람린타이드 유사체: 카그릴린타이드 물질(청구항 10)"
+   },
+   "granted": {
+    "en": "US, EP, JP, CN, KR",
+    "ko": "미국·유럽·일본·중국·한국"
+   },
+   "priority": "2011-06-10",
+   "expiry": "2032-06-08",
+   "extMax": "2037-06",
+   "note": {
+    "en": "Family WO2012168432 (US8722849B2). No opposition was filed in Europe. An extension after approval could reach about 2037 (estimate).",
+    "ko": "패밀리 WO2012168432(US8722849B2). 유럽 이의신청 없음. 허가 후 연장 시 약 2037년까지 가능(추정)."
+   },
+   "src": {
+    "label": "Google Patents: EP2718316B1",
+    "url": "https://patents.google.com/patent/EP2718316B1/en"
+   }
+  },
+  {
+   "no": "US8129343B2",
+   "kind": "compound",
+   "short": {
+    "en": "Semaglutide molecule",
+    "ko": "세마글루타이드 물질"
+   },
+   "title": {
+    "en": "Semaglutide molecule (family WO2006097537)",
+    "ko": "세마글루타이드 물질(패밀리 WO2006097537)"
+   },
+   "granted": {
+    "en": "US, EP, JP, CN, KR",
+    "ko": "미국·유럽·일본·중국·한국"
+   },
+   "priority": "2005-03-18",
+   "expiry": "2031-12-05",
+   "note": {
+    "en": "US date includes the term extension (Orange Book). The base patent lapsed in March 2026 in China, India and the EU, where an SPC runs to March 2031. Generics have launched in India and Canada.",
+    "ko": "미국 날짜는 존속기간 연장 포함(오렌지북). 기본 특허는 2026년 3월 중국·인도·유럽에서 만료, 유럽은 SPC로 2031년 3월까지. 인도·캐나다에서 제네릭 출시."
+   },
+   "src": {
+    "label": "FDA Orange Book: Wegovy NDA 215256",
+    "url": "https://www.accessdata.fda.gov/scripts/cder/ob/patent_info.cfm?Product_No=001&Appl_No=215256&Appl_type=N"
+   }
+  },
+  {
+   "no": "US12527844B2",
+   "kind": "formulation",
+   "short": {
+    "en": "Dual-chamber pen",
+    "ko": "이중 챔버 펜"
+   },
+   "title": {
+    "en": "Separate cagrilintide and semaglutide formulations in a two-chamber device",
+    "ko": "카그릴린타이드·세마글루타이드 개별 제형의 이중 챔버 기기"
+   },
+   "granted": {
+    "en": "US, CN",
+    "ko": "미국·중국"
+   },
+   "priority": "2020-02-18",
+   "expiry": "2043-02-08",
+   "note": {
+    "en": "Family WO2021144476; EP pending. US date includes term adjustment. In pigs, the dual-chamber syringe raised cagrilintide Cmax by up to 65% versus separate injections.",
+    "ko": "패밀리 WO2021144476, 유럽 심사 중. 미국 날짜는 기간 조정 포함. 돼지에서 이중 챔버 주사기가 개별 주사 대비 카그릴린타이드 Cmax를 최대 65% 높임."
+   },
+   "src": {
+    "label": "US12527844B2, Example 6",
+    "url": "https://patents.google.com/patent/US12527844B2/en"
+   }
+  },
+  {
+   "no": "WO2023110833A1",
+   "kind": "formulation",
+   "short": {
+    "en": "Single-chamber mix",
+    "ko": "단일 챔버 혼합"
+   },
+   "title": {
+    "en": "Cagrilintide and semaglutide co-formulated with hydroxypropyl-cyclodextrin",
+    "ko": "카그릴린타이드·세마글루타이드 하이드록시프로필 사이클로덱스트린 혼합제형"
+   },
+   "granted": {
+    "en": "JP, TW",
+    "ko": "일본·대만"
+   },
+   "priority": "2021-12-13",
+   "expiry": "2042-12-13",
+   "note": {
+    "en": "EP, CN and KR pending. Novo stopped this co-formulation in May 2026; the link between patent and project is inferred.",
+    "ko": "유럽·중국·한국 심사 중. 노보는 2026년 5월 이 혼합제형 개발 중단(특허와 과제 연결은 추정)."
+   },
+   "src": {
+    "label": "Google Patents: WO2023110833A1",
+    "url": "https://patents.google.com/patent/WO2023110833A1/en"
+   }
+  },
+  {
+   "no": "WO2023187067A1",
+   "kind": "process",
+   "short": {
+    "en": "Mixing process",
+    "ko": "혼합 공정"
+   },
+   "title": {
+    "en": "Process for dissolving semaglutide, then cagrilintide, in a cyclodextrin solution",
+    "ko": "사이클로덱스트린 용액에 세마글루타이드 후 카그릴린타이드를 녹이는 공정"
+   },
+   "granted": {
+    "en": "None yet",
+    "ko": "등록 없음"
+   },
+   "priority": "2022-03-30",
+   "expiry": "2043-03-30",
+   "note": {
+    "en": "EP, JP and CN pending. Expiry is filing plus 20 years (estimate).",
+    "ko": "유럽·일본·중국 심사 중. 만료일은 출원+20년(추정)."
+   },
+   "src": {
+    "label": "Google Patents: WO2023187067A1",
+    "url": "https://patents.google.com/patent/WO2023187067A1/en"
+   }
+  }
+ ],
+ "plan": [
+  {
+   "date": "2011-06-10",
+   "done": true,
+   "text": {
+    "en": "Novo files the patent that covers the cagrilintide molecule (priority date).",
+    "ko": "노보가 카그릴린타이드 물질 특허 출원(우선일)."
+   },
+   "src": {
+    "label": "Google Patents: WO2012168432A1",
+    "url": "https://patents.google.com/patent/WO2012168432A1/en"
+   }
+  },
+  {
+   "date": "2021-05-08",
+   "done": true,
+   "text": {
+    "en": "Phase 1b: cagrilintide with semaglutide 2.4 mg is dose-proportional and does not change semaglutide exposure; half-lives about 6–8 days.",
+    "ko": "1b상: 세마글루타이드 2.4 mg 병용 카그릴린타이드는 용량 비례, 세마글루타이드 노출 영향 없음, 반감기 약 6~8일."
+   },
+   "src": {
+    "label": "Enebo et al., Lancet 2021 (appendix Table S2)",
+    "url": "https://doi.org/10.1016/S0140-6736(21)00845-X"
+   }
+  },
+  {
+   "date": "2022-08-22",
+   "done": true,
+   "text": {
+    "en": "Phase 2 in type 2 diabetes: 15.6% weight loss versus 5.1% on semaglutide at 32 weeks.",
+    "ko": "제2형 당뇨 2상: 32주 체중 15.6% 감소, 세마글루타이드 5.1%."
+   },
+   "src": {
+    "label": "Novo Nordisk 6-K (22 Aug 2022)",
+    "url": "https://www.sec.gov/Archives/edgar/data/353278/000117184322005786/f6k_082222.htm"
+   }
+  },
+  {
+   "date": "2024-12-20",
+   "done": true,
+   "text": {
+    "en": "REDEFINE 1 (obesity, 68 weeks): 22.7% weight loss if taken as planned; only 57% of patients reached the top dose.",
+    "ko": "REDEFINE 1(비만, 68주): 계획대로 투여 시 체중 22.7% 감소. 최고 용량 도달 환자 57%."
+   },
+   "src": {
+    "label": "Novo Nordisk 6-K (20 Dec 2024)",
+    "url": "https://www.sec.gov/Archives/edgar/data/353278/000117184324007023/f6k_122024.htm"
+   }
+  },
+  {
+   "date": "2025-03-10",
+   "done": true,
+   "text": {
+    "en": "REDEFINE 2 (obesity with type 2 diabetes): 15.7% weight loss if taken as planned.",
+    "ko": "REDEFINE 2(제2형 당뇨 동반 비만): 계획대로 투여 시 체중 15.7% 감소."
+   },
+   "src": {
+    "label": "Novo Nordisk 6-K (10 Mar 2025)",
+    "url": "https://www.sec.gov/Archives/edgar/data/353278/000117184325001350/f6k_031025.htm"
+   }
+  },
+  {
+   "date": "2025-12-18",
+   "done": true,
+   "text": {
+    "en": "Novo files CagriSema 2.4/2.4 mg weekly with the FDA for obesity.",
+    "ko": "노보가 비만 적응증으로 카그리세마 2.4/2.4 mg 주 1회를 FDA에 허가 신청."
+   },
+   "src": {
+    "label": "Novo Nordisk release (18 Dec 2025)",
+    "url": "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=916470"
+   }
+  },
+  {
+   "date": "2026-02-23",
+   "done": true,
+   "text": {
+    "en": "REDEFINE 4 against tirzepatide misses its non-inferiority goal: 23.0% versus 25.5% weight loss.",
+    "ko": "REDEFINE 4(터제파타이드 비교) 비열등성 목표 미달: 체중 23.0% 대 25.5% 감소."
+   },
+   "src": {
+    "label": "Novo Nordisk release (23 Feb 2026)",
+    "url": "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=916501"
+   }
+  },
+  {
+   "date": "2026-05-06",
+   "done": true,
+   "text": {
+    "en": "Novo stops developing the single-injection CagriSema co-formulation “due to portfolio considerations”.",
+    "ko": "노보가 ‘포트폴리오 사유’로 단일 주사 카그리세마 혼합제형 개발 중단."
+   },
+   "src": {
+    "label": "Novo Nordisk Q1 2026 report (6 May 2026)",
+    "url": "https://filings.xbrl.org/549300DAQ1CVT6CXN342/2026-03-31/ESEF/DK/0/NOVO-2026-03-31-1-en/reports/NOVO-2026-03-31-1-en.xhtml"
+   }
+  },
+  {
+   "date": "2026-05-21",
+   "done": true,
+   "text": {
+    "en": "Phase 3 of high-dose CagriSema (cagrilintide 2.4 mg with semaglutide 7.2 mg) starts, about 2,500 patients.",
+    "ko": "고용량 카그리세마(카그릴린타이드 2.4 mg+세마글루타이드 7.2 mg) 3상 시작, 약 2,500명."
+   },
+   "src": {
+    "label": "ClinicalTrials.gov NCT07564414",
+    "url": "https://clinicaltrials.gov/study/NCT07564414"
+   }
+  },
+  {
+   "date": "2026-12",
+   "done": false,
+   "text": {
+    "en": "US FDA decision on CagriSema expected in Q4 2026 (Novo guidance).",
+    "ko": "카그리세마 미국 FDA 결정 2026년 4분기 예상(노보 발표)."
+   },
+   "src": {
+    "label": "Novo Nordisk H1 2026 report (4 Aug 2026)",
+    "url": "https://filings.xbrl.org/549300DAQ1CVT6CXN342/2026-06-30/ESEF/DK/0/NOVO-2026-06-30-1-en/reports/NOVO-2026-06-30-1-en.xhtml"
+   }
+  },
+  {
+   "date": "2027-09",
+   "done": false,
+   "text": {
+    "en": "REDEFINE 3 (heart outcomes, about 7,100 people) reaches primary completion (registry date).",
+    "ko": "REDEFINE 3(심혈관 결과, 약 7,100명) 1차 종료(등록부 날짜)."
+   },
+   "src": {
+    "label": "ClinicalTrials.gov NCT05669755",
+    "url": "https://clinicaltrials.gov/study/NCT05669755"
+   }
+  },
+  {
+   "date": "2028-06",
+   "done": false,
+   "text": {
+    "en": "High-dose CagriSema Phase 3 reads out in H1 2028 (Novo guidance).",
+    "ko": "고용량 카그리세마 3상 결과 2028년 상반기(노보 발표)."
+   },
+   "src": {
+    "label": "Novo Nordisk H1 2026 report, milestones",
+    "url": "https://filings.xbrl.org/549300DAQ1CVT6CXN342/2026-06-30/ESEF/DK/0/NOVO-2026-06-30-1-en/reports/NOVO-2026-06-30-1-en.xhtml#milestones"
+   }
+  },
+  {
+   "date": "2032-06-08",
+   "done": false,
+   "text": {
+    "en": "Cagrilintide molecule patent expires, before any extension.",
+    "ko": "카그릴린타이드 물질 특허 만료(연장 전)."
+   },
+   "src": {
+    "label": "Google Patents: EP2718316B1",
+    "url": "https://patents.google.com/patent/EP2718316B1/en#legal"
+   }
+  }
+ ],
+ "news": [
+  {
+   "date": "2026-07-16",
+   "region": "GL",
+   "type": "Patent",
+   "text": {
+    "en": "i2o Therapeutics' PCT application WO2026152138A2 was published, claiming cagrilintide 10–15 mg once a month in polymer microspheres.",
+    "ko": "i2o Therapeutics의 PCT 출원 WO2026152138A2 공개, 고분자 미립구로 카그릴린타이드 10~15 mg 월 1회 청구."
+   },
+   "src": {
+    "label": "Google Patents: WO2026152138A2",
+    "url": "https://patents.google.com/patent/WO2026152138A2/en"
+   }
+  },
+  {
+   "date": "2026-06-08",
+   "region": "KR",
+   "type": "Data",
+   "text": {
+    "en": "G2GBio showed a one-month InnoLAMP CagriSema at ADA 2026: plasma cagrilintide and semaglutide held beyond 28 days in rats.",
+    "ko": "지투지바이오가 ADA 2026에서 1개월 InnoLAMP 카그리세마 발표: 랫드에서 카그릴린타이드·세마글루타이드 혈중농도 28일 이상 유지."
+   },
+   "src": {
+    "label": "Dailypharm (8 Jun 2026)",
+    "url": "https://m.dailypharm.com/user/news/339242"
+   }
+  },
+  {
+   "date": "2026-05-06",
+   "region": "GL",
+   "type": "Corporate",
+   "text": {
+    "en": "Novo said it stopped developing a single-injection CagriSema co-formulation; the dual-chamber pen continues.",
+    "ko": "노보가 단일 주사 카그리세마 혼합제형 개발 중단을 밝힘. 이중 챔버 펜은 계속."
+   },
+   "src": {
+    "label": "Novo Nordisk Q1 2026 report (6 May 2026)",
+    "url": "https://filings.xbrl.org/549300DAQ1CVT6CXN342/2026-03-31/ESEF/DK/0/NOVO-2026-03-31-1-en/reports/NOVO-2026-03-31-1-en.xhtml"
+   }
+  },
+  {
+   "date": "2026-04-03",
+   "region": "GL",
+   "type": "Patent",
+   "text": {
+    "en": "China Pharmaceutical University's patent CN121774878A on a semaglutide + cagrilintide liquid depot was published, with 24-hour lab release data only.",
+    "ko": "중국약과대학의 세마글루타이드+카그릴린타이드 액상 데포 특허 CN121774878A 공개, 24시간 체외 방출 데이터만."
+   },
+   "src": {
+    "label": "Google Patents: CN121774878A",
+    "url": "https://patents.google.com/patent/CN121774878A/zh"
+   }
+  },
+  {
+   "date": "2026-02-23",
+   "region": "GL",
+   "type": "Trial",
+   "text": {
+    "en": "Novo's REDEFINE 4 found weekly CagriSema not non-inferior to tirzepatide on weight loss (23.0% versus 25.5%).",
+    "ko": "노보 REDEFINE 4에서 주 1회 카그리세마가 체중 감소에서 터제파타이드 대비 비열등성 미달(23.0% 대 25.5%)."
+   },
+   "src": {
+    "label": "Novo Nordisk release (23 Feb 2026)",
+    "url": "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=916501"
+   }
+  },
+  {
+   "date": "2026-01-20",
+   "region": "GL",
+   "type": "Patent",
+   "text": {
+    "en": "Novo's US patent on the CagriSema dual-chamber pen (US12527844B2) was granted, running to February 2043.",
+    "ko": "노보의 카그리세마 이중 챔버 펜 미국 특허(US12527844B2) 등록, 2043년 2월까지."
+   },
+   "src": {
+    "label": "US12527844B2, Example 6",
+    "url": "https://patents.google.com/patent/US12527844B2/en"
+   }
+  },
+  {
+   "date": "2026-01-02",
+   "region": "KR",
+   "type": "Patent",
+   "text": {
+    "en": "G2GBio's PCT application WO2026005556A1 on high-load microparticles was published; rats absorbed 94–98% of a cagrilintide dose by day 28.",
+    "ko": "지투지바이오의 고함량 미립자 PCT 출원 WO2026005556A1 공개. 랫드에서 카그릴린타이드 투여량의 94~98%가 28일까지 흡수."
+   },
+   "src": {
+    "label": "WO2026005556A1, Table 5",
+    "url": "https://patents.google.com/patent/WO2026005556A1/en"
+   }
+  },
+  {
+   "date": "2025-12-18",
+   "region": "GL",
+   "type": "Regulatory",
+   "text": {
+    "en": "Novo filed weekly CagriSema with the FDA for obesity.",
+    "ko": "노보가 비만 적응증으로 주 1회 카그리세마를 FDA에 허가 신청."
+   },
+   "src": {
+    "label": "Novo Nordisk release (18 Dec 2025)",
+    "url": "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=916470"
+   }
+  },
+  {
+   "date": "2025-04-08",
+   "region": "KR",
+   "type": "Patent",
+   "text": {
+    "en": "G2GBio's Korean patent on cagrilintide microspheres (KR102792621B1) was granted.",
+    "ko": "지투지바이오의 카그릴린타이드 미립구 한국 특허(KR102792621B1) 등록."
+   },
+   "src": {
+    "label": "Google Patents: KR102792621B1",
+    "url": "https://patents.google.com/patent/KR102792621B1/en"
+   }
+  }
+ ],
+ "patentLinks": {
+  "CN121774878A": "https://patents.google.com/patent/CN121774878A/zh"
+ },
+ "pk": {
+  "title": {
+   "en": "Has anyone shown a month of CagriSema in the blood?",
+   "ko": "카그리세마 혈중농도를 한 달 유지한 곳이 있는가?"
+  },
+  "lede": {
+   "en": "One has, in rats only: G2GBio. Its microspheres held cagrilintide and semaglutide in plasma for over 28 days, and its patents show cagrilintide release lasting 35–84 days. No one has published exposure or peak against weekly CagriSema. To match 2.4 + 2.4 mg weekly, a monthly depot would need to average about 356 ng/mL cagrilintide and 370 ng/mL semaglutide in people.",
+   "ko": "한 곳, 랫드 데이터뿐입니다: 지투지바이오. 미립구가 카그릴린타이드와 세마글루타이드 혈중농도를 28일 이상 유지했고, 특허에서 카그릴린타이드 방출은 35~84일입니다. 주 1회 카그리세마 대비 노출량이나 최고농도를 공개한 곳은 없습니다. 2.4+2.4 mg 주 1회와 같으려면 월 1회 데포는 사람에서 평균 카그릴린타이드 약 356 ng/mL, 세마글루타이드 약 370 ng/mL를 유지해야 합니다."
+  },
+  "judge": {
+   "text": {
+    "en": "How regulators judge a depot: total exposure (AUC, given as rBA) is the main bridge to the reference; the trough at steady state is the efficacy marker; peak, swing and first-day release are checked for safety.",
+    "ko": "규제기관의 데포 평가: 기준 제품과의 핵심 브릿지는 총 노출량(AUC, 상대 BA)이며, 정상상태 최저농도는 유효성 지표, 최고농도·변동폭·초기 방출은 안전성 확인 항목입니다."
+   },
+   "src": [
+    {
+     "label": "EMA guideline on modified-release dosage forms (EMA/CPMP/EWP/280/96 Rev1)",
+     "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-pharmacokinetic-and-clinical-evaluation-modified-release-dosage-forms_en.pdf"
+    },
+    {
+     "label": "EMA EPAR, Oczyesa (2025)",
+     "url": "https://www.ema.europa.eu/en/documents/assessment-report/oczyesa-epar-public-assessment-report_en.pdf"
+    }
+   ]
+  },
+  "caution": {
+   "text": {
+    "en": "Read the rat rows with care: the same exenatide microsphere reached about 63% relative bioavailability in rats but 22–25% in people, and cagrilintide's own bioavailability under the skin is about 30% in rats and unpublished in people.",
+    "ko": "랫드 데이터는 신중히 해석해야 합니다. 같은 엑세나타이드 미립구의 상대 생체이용률이 랫드 약 63%, 사람 22~25%였고, 카그릴린타이드의 피하 생체이용률은 랫드 약 30%이며 사람 값은 미공개입니다."
+   },
+   "src": [
+    {
+     "label": "EMA EPAR, Bydureon",
+     "url": "https://www.ema.europa.eu/en/documents/assessment-report/bydureon-epar-public-assessment-report_en.pdf"
+    },
+    {
+     "label": "Kruse et al., J Med Chem 2021, Table 7",
+     "url": "https://doi.org/10.1021/acs.jmedchem.1c00565"
+    }
+   ]
+  },
+  "target": 28,
+  "axis": 91,
+  "tick": 14,
+  "groups": [
+   {
+    "id": "cagri",
+    "name": {
+     "en": "Long-acting CagriSema",
+     "ko": "장기지속형 카그리세마"
+    }
+   },
+   {
+    "id": "ref",
+    "name": {
+     "en": "Weekly CagriSema and approved depots",
+     "ko": "주 1회 카그리세마와 허가 데포"
+    }
+   }
+  ],
+  "board": [
+   {
+    "group": "cagri",
+    "name": {
+     "en": "G2GBio · both drugs (ADA)",
+     "ko": "지투지바이오 · 두 약물(ADA)"
+    },
+    "card": "g2gbio-cagri",
+    "ev": "animal",
+    "who": {
+     "en": "Rats, n not stated",
+     "ko": "랫드, n 미공개"
+    },
+    "days": 30,
+    "open": true,
+    "bar": {
+     "en": "Both drugs held beyond 28 days",
+     "ko": "두 약물 모두 28일 이상 유지"
+    },
+    "exp": null,
+    "peak": {
+     "en": "“No excessive initial burst” (no number given)",
+     "ko": "‘과도한 초기 방출 없음’(수치 미공개)"
+    },
+    "src": {
+     "label": "ADA 2026 abstract 2814-LB",
+     "url": "https://doi.org/10.2337/db26-2814-lb"
+    }
+   },
+   {
+    "group": "cagri",
+    "name": {
+     "en": "G2GBio · cagrilintide alone",
+     "ko": "지투지바이오 · 카그릴린타이드 단독"
+    },
+    "card": "g2gbio-cagri",
+    "ev": "animal",
+    "who": {
+     "en": "Rats, 3.6 mg; 15–25% load",
+     "ko": "랫드, 3.6 mg; 함량 15~25%"
+    },
+    "days": 84,
+    "open": false,
+    "bar": {
+     "en": "44–61% absorbed by day 28; complete by day 70–84",
+     "ko": "28일 44~61% 흡수, 70~84일 완료"
+    },
+    "exp": {
+     "en": "Exposure per mg rises with load: 209 → 1,796 ng·day/mL per mg",
+     "ko": "함량에 따라 mg당 노출 증가: 209 → 1,796 ng·day/mL/mg"
+    },
+    "peak": {
+     "en": "Cmax 42–690 ng/mL; day 1 = 3–5% of dose",
+     "ko": "Cmax 42~690 ng/mL; 첫날 투여량의 3~5%"
+    },
+    "src": {
+     "label": "WO2024248574A1, Tables 11–12",
+     "url": "https://patents.google.com/patent/WO2024248574A1/en"
+    }
+   },
+   {
+    "group": "cagri",
+    "name": {
+     "en": "G2GBio · with semaglutide",
+     "ko": "지투지바이오 · 세마글루타이드 동시 봉입"
+    },
+    "card": "g2gbio-cagri",
+    "ev": "animal",
+    "who": {
+     "en": "Rats, 3.6 mg; 10 + 10% load",
+     "ko": "랫드, 3.6 mg; 함량 10+10%"
+    },
+    "days": 77,
+    "open": false,
+    "bar": {
+     "en": "12% by day 14, then 80% by day 28; complete by day 77",
+     "ko": "14일 12% 후 28일 80%, 77일 완료"
+    },
+    "exp": {
+     "en": "4,899 ng·day/mL per mg, about 2.7× the best single-drug batch",
+     "ko": "mg당 4,899 ng·day/mL, 단독 최고 배치의 약 2.7배"
+    },
+    "peak": {
+     "en": "Cmax 1,513 ng/mL; day 1 = 0.8% of dose",
+     "ko": "Cmax 1,513 ng/mL; 첫날 투여량의 0.8%"
+    },
+    "src": {
+     "label": "WO2024248574A1, Tables 11–12",
+     "url": "https://patents.google.com/patent/WO2024248574A1/en"
+    }
+   },
+   {
+    "group": "cagri",
+    "name": {
+     "en": "G2GBio · high-load particles",
+     "ko": "지투지바이오 · 고함량 미립자"
+    },
+    "card": "g2gbio-cagri",
+    "ev": "animal",
+    "who": {
+     "en": "Rats, 3.6 mg; 40–71% load",
+     "ko": "랫드, 3.6 mg; 함량 40~71%"
+    },
+    "days": 35,
+    "open": false,
+    "bar": {
+     "en": "94–98% absorbed by day 28; complete by day 35–42",
+     "ko": "28일 94~98% 흡수, 35~42일 완료"
+    },
+    "exp": null,
+    "peak": {
+     "en": "Day 1 about 3–7% of dose",
+     "ko": "첫날 투여량의 약 3~7%"
+    },
+    "src": {
+     "label": "WO2026005556A1, Table 5",
+     "url": "https://patents.google.com/patent/WO2026005556A1/en"
+    }
+   },
+   {
+    "group": "cagri",
+    "name": {
+     "en": "China Pharm. Univ. depot",
+     "ko": "중국약과대학 데포"
+    },
+    "card": "cpu-cagri",
+    "ev": "none",
+    "who": {
+     "en": "Lab only",
+     "ko": "체외 시험만"
+    },
+    "days": null,
+    "open": false,
+    "bar": {
+     "en": "24-hour lab release only; no animal data",
+     "ko": "24시간 체외 방출만, 동물 데이터 없음"
+    },
+    "exp": null,
+    "peak": {
+     "en": "First 24 h in the lab: semaglutide 1–17%, cagrilintide 2–19%",
+     "ko": "체외 첫 24시간: 세마글루타이드 1~17%, 카그릴린타이드 2~19%"
+    },
+    "kind": {
+     "peak": "figure"
+    },
+    "src": {
+     "label": "Google Patents: CN121774878A",
+     "url": "https://patents.google.com/patent/CN121774878A/zh"
+    }
+   },
+   {
+    "group": "cagri",
+    "name": {
+     "en": "i2o microspheres",
+     "ko": "i2o 미립구"
+    },
+    "card": "i2o-cagri",
+    "ev": "none",
+    "who": {
+     "en": "No data",
+     "ko": "데이터 없음"
+    },
+    "days": null,
+    "open": false,
+    "bar": {
+     "en": "Claims cagrilintide 10–15 mg monthly; no cagrilintide data",
+     "ko": "카그릴린타이드 10~15 mg 월 1회 청구, 데이터 없음"
+    },
+    "exp": null,
+    "peak": null,
+    "src": {
+     "label": "Google Patents: WO2026152138A2",
+     "url": "https://patents.google.com/patent/WO2026152138A2/en"
+    }
+   },
+   {
+    "group": "ref",
+    "name": {
+     "en": "Weekly CagriSema (Novo)",
+     "ko": "주 1회 카그리세마(노보)"
+    },
+    "ev": "human",
+    "who": {
+     "en": "People, n=12, 2.4 + 2.4 mg",
+     "ko": "사람, n=12, 2.4+2.4 mg"
+    },
+    "days": 7,
+    "open": false,
+    "bar": {
+     "en": "Dosed weekly",
+     "ko": "주 1회 투여"
+    },
+    "exp": {
+     "en": "Averages about 356 ng/mL cagrilintide and 370 ng/mL semaglutide at steady state (the level a monthly depot must match)",
+     "ko": "정상상태 평균 카그릴린타이드 약 356, 세마글루타이드 약 370 ng/mL (월 1회 데포가 맞춰야 할 수준)"
+    },
+    "peak": {
+     "en": "Cmax 103 / 120 nmol/L, 24 / 18 h after the dose; half-life 184 / 158 h",
+     "ko": "Cmax 103 / 120 nmol/L, 투여 24 / 18시간 후; 반감기 184 / 158시간"
+    },
+    "src": {
+     "label": "Enebo et al., Lancet 2021 (appendix Table S2)",
+     "url": "https://doi.org/10.1016/S0140-6736(21)00845-X"
+    }
+   },
+   {
+    "group": "ref",
+    "name": {
+     "en": "CagriSema, one syringe (pigs)",
+     "ko": "카그리세마 단일 주사기(돼지)"
+    },
+    "ev": "animal",
+    "who": {
+     "en": "Pigs, dual-chamber syringe",
+     "ko": "돼지, 이중 챔버 주사기"
+    },
+    "days": 7,
+    "open": false,
+    "bar": {
+     "en": "Dosed weekly",
+     "ko": "주 1회 투여"
+    },
+    "exp": {
+     "en": "Cagrilintide AUC up to +45% versus two separate injections",
+     "ko": "개별 주사 2회 대비 카그릴린타이드 AUC 최대 +45%"
+    },
+    "peak": {
+     "en": "Cagrilintide Cmax up to +65%; semaglutide about +22%",
+     "ko": "카그릴린타이드 Cmax 최대 +65%, 세마글루타이드 약 +22%"
+    },
+    "src": {
+     "label": "US12527844B2, Example 6",
+     "url": "https://patents.google.com/patent/US12527844B2/en"
+    }
+   },
+   {
+    "group": "ref",
+    "name": {
+     "en": "Daily CagriSema (rats)",
+     "ko": "매일 투여 카그리세마(랫드)"
+    },
+    "ev": "animal",
+    "who": {
+     "en": "Obese rats, 2 + 2 nmol/kg/day",
+     "ko": "비만 랫드, 2+2 nmol/kg/일"
+    },
+    "days": 1,
+    "open": false,
+    "bar": {
+     "en": "Dosed daily: the level a rat depot should reach",
+     "ko": "매일 투여: 랫드 데포가 도달해야 할 수준"
+    },
+    "exp": {
+     "en": "24 h after the dose: cagrilintide 14–23 nmol/L, semaglutide 5–14 nmol/L",
+     "ko": "투여 24시간 후: 카그릴린타이드 14~23, 세마글루타이드 5~14 nmol/L"
+    },
+    "peak": null,
+    "src": {
+     "label": "Novo, Nat Metab 2025, Extended Data Table 1",
+     "url": "https://doi.org/10.1038/s42255-025-01324-8"
+    }
+   },
+   {
+    "group": "ref",
+    "name": {
+     "en": "Bydureon · exenatide",
+     "ko": "바이듀리온 · 엑세나타이드"
+    },
+    "ev": "human",
+    "who": {
+     "en": "People, approved",
+     "ko": "사람, 허가"
+    },
+    "days": 7,
+    "open": false,
+    "bar": {
+     "en": "Dosed weekly (PLGA microspheres)",
+     "ko": "주 1회 투여(PLGA 미립구)"
+    },
+    "exp": {
+     "en": "About 22–25% of twice-daily Byetta",
+     "ko": "1일 2회 바이에타의 약 22~25%"
+    },
+    "peak": {
+     "en": "First-day peak 34 vs 211 pg/mL for Byetta",
+     "ko": "첫날 최고농도 34, 바이에타 211 pg/mL"
+    },
+    "src": {
+     "label": "FDA clinical pharmacology review, Bydureon",
+     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2012/022200Orig1s000ClinPharmR.pdf"
+    }
+   },
+   {
+    "group": "ref",
+    "name": {
+     "en": "Sandostatin LAR · octreotide",
+     "ko": "산도스타틴 LAR · 옥트레오타이드"
+    },
+    "ev": "human",
+    "who": {
+     "en": "People, approved",
+     "ko": "사람, 허가"
+    },
+    "days": 28,
+    "open": false,
+    "bar": {
+     "en": "Dosed monthly (PLGA microspheres)",
+     "ko": "월 1회 투여(PLGA 미립구)"
+    },
+    "exp": {
+     "en": "60–63% of the daily injection",
+     "ko": "일반 주사의 60~63%"
+    },
+    "peak": {
+     "en": "Peak-to-trough 44–68% vs 163–209% daily",
+     "ko": "최고-최저 변동 44~68%, 일반 주사 163~209%"
+    },
+    "src": {
+     "label": "US label, Sandostatin LAR",
+     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/021008s049lbl.pdf"
+    }
+   }
+  ],
+  "chart": {
+   "kind": "cumulative",
+   "title": {
+    "en": "How fast G2GBio's microspheres release cagrilintide (rats)",
+    "ko": "지투지바이오 미립구의 카그릴린타이드 방출 속도(랫드)"
+   },
+   "sub": {
+    "en": "Share of the dose absorbed by each day, worked out from plasma levels. The dashed line is an even release over 28 days. Hover a point for the value.",
+    "ko": "혈중농도로 계산한 날짜별 누적 흡수율. 점선은 28일 균등 방출. 점에 마우스를 올리면 값이 보입니다."
+   }
+  },
+  "curves": [
+   {
+    "name": {
+     "en": "Solution (no depot)",
+     "ko": "용액(데포 없음)"
+    },
+    "dose": {
+     "en": "1.2 mg",
+     "ko": "1.2 mg"
+    },
+    "col": "--lane-4",
+    "src": {
+     "label": "WO2024248574A1, Tables 11–12",
+     "url": "https://patents.google.com/patent/WO2024248574A1/en"
+    },
+    "pts": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0.25,
+      4.5,
+      0
+     ],
+     [
+      1,
+      35.2,
+      0
+     ],
+     [
+      4,
+      91.1,
+      0
+     ],
+     [
+      7,
+      100,
+      0
+     ]
+    ],
+    "note": {
+     "en": "WO2024248574A1 Table 12",
+     "ko": "WO2024248574A1 표 12"
+    }
+   },
+   {
+    "name": {
+     "en": "Cagrilintide alone, 25% load",
+     "ko": "카그릴린타이드 단독, 함량 25%"
+    },
+    "dose": {
+     "en": "3.6 mg",
+     "ko": "3.6 mg"
+    },
+    "col": "--lane-3",
+    "src": {
+     "label": "WO2024248574A1, Tables 11–12",
+     "url": "https://patents.google.com/patent/WO2024248574A1/en"
+    },
+    "pts": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0.25,
+      0.2,
+      0
+     ],
+     [
+      1,
+      4.7,
+      0
+     ],
+     [
+      4,
+      27.5,
+      0
+     ],
+     [
+      7,
+      37.3,
+      0
+     ],
+     [
+      10,
+      41.9,
+      0
+     ],
+     [
+      14,
+      48.2,
+      0
+     ],
+     [
+      17,
+      52.6,
+      0
+     ],
+     [
+      21,
+      56.5,
+      0
+     ],
+     [
+      28,
+      61.3,
+      0
+     ],
+     [
+      35,
+      70.5,
+      0
+     ],
+     [
+      42,
+      80.2,
+      0
+     ],
+     [
+      49,
+      86.8,
+      0
+     ],
+     [
+      56,
+      93.6,
+      0
+     ],
+     [
+      63,
+      97.4,
+      0
+     ],
+     [
+      70,
+      98.8,
+      0
+     ],
+     [
+      77,
+      99.6,
+      0
+     ],
+     [
+      84,
+      100,
+      0
+     ]
+    ],
+    "note": {
+     "en": "Ex 1-3, Table 12",
+     "ko": "실시예 1-3, 표 12"
+    }
+   },
+   {
+    "name": {
+     "en": "With semaglutide, 10 + 10%",
+     "ko": "세마글루타이드 동시 봉입, 10+10%"
+    },
+    "dose": {
+     "en": "3.6 mg",
+     "ko": "3.6 mg"
+    },
+    "col": "--lane-1",
+    "src": {
+     "label": "WO2024248574A1, Tables 11–12",
+     "url": "https://patents.google.com/patent/WO2024248574A1/en"
+    },
+    "pts": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0.25,
+      0.1,
+      0
+     ],
+     [
+      1,
+      0.8,
+      0
+     ],
+     [
+      4,
+      3.3,
+      0
+     ],
+     [
+      7,
+      4.4,
+      0
+     ],
+     [
+      10,
+      6.1,
+      0
+     ],
+     [
+      14,
+      12.4,
+      0
+     ],
+     [
+      17,
+      27.4,
+      0
+     ],
+     [
+      21,
+      55.8,
+      0
+     ],
+     [
+      28,
+      79.8,
+      0
+     ],
+     [
+      35,
+      83.5,
+      0
+     ],
+     [
+      42,
+      88.6,
+      0
+     ],
+     [
+      49,
+      93.4,
+      0
+     ],
+     [
+      56,
+      97.0,
+      0
+     ],
+     [
+      63,
+      99.2,
+      0
+     ],
+     [
+      70,
+      99.9,
+      0
+     ],
+     [
+      77,
+      100,
+      0
+     ]
+    ],
+    "note": {
+     "en": "Ex 5-1, Table 12; only cagrilintide measured",
+     "ko": "실시예 5-1, 표 12; 카그릴린타이드만 측정"
+    }
+   },
+   {
+    "name": {
+     "en": "High-load particles",
+     "ko": "고함량 미립자"
+    },
+    "dose": {
+     "en": "3.6 mg",
+     "ko": "3.6 mg"
+    },
+    "col": "--lane-2",
+    "src": {
+     "label": "WO2026005556A1, Table 5",
+     "url": "https://patents.google.com/patent/WO2026005556A1/en"
+    },
+    "pts": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0.04,
+      0,
+      0
+     ],
+     [
+      0.25,
+      0.3,
+      0
+     ],
+     [
+      1,
+      4.8,
+      0
+     ],
+     [
+      4,
+      30.2,
+      0
+     ],
+     [
+      7,
+      46.5,
+      0
+     ],
+     [
+      10,
+      57.1,
+      0
+     ],
+     [
+      14,
+      69.4,
+      0
+     ],
+     [
+      17,
+      76.4,
+      0
+     ],
+     [
+      21,
+      83.4,
+      0
+     ],
+     [
+      28,
+      94.2,
+      0
+     ],
+     [
+      35,
+      100,
+      0
+     ]
+    ],
+    "note": {
+     "en": "Ex 2-4, WO2026005556A1 Table 5",
+     "ko": "실시예 2-4, WO2026005556A1 표 5"
+    }
+   }
+  ]
+ }
+}

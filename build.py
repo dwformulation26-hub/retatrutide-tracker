@@ -1,4 +1,4 @@
-"""Validate reta_data.json and render index.html from template.html.
+"""Validate the per-drug data files and render index.html from template.html.
 
 Usage:
   python build.py                      validate + render
@@ -13,7 +13,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).parent
-DATA = HERE / "reta_data.json"
+# one data file per drug; the page switches between them
+DATA = {"reta": HERE / "reta_data.json", "cagri": HERE / "cagri_data.json"}
 LANES = {"clinic", "animal", "patent", "stopped"}
 NEWS_TYPES = {"Data", "Patent", "Deal", "Corporate", "Trial", "Regulatory", "Market"}
 TRIAL_STATUS = {"COMPLETED", "RECRUITING", "ACTIVE_NOT_RECRUITING", "NOT_YET_RECRUITING", "ENROLLING_BY_INVITATION",
@@ -39,6 +40,9 @@ def check_patent(p, where, out):
 
 def validate(d):
     p = []
+    for k in ("name", "originator", "foot"):
+        if not bilingual((d.get("meta") or {}).get(k)):
+            p.append(f"meta {k}: needs en and ko")
     techs = {a["id"] for a in d["techs"]}
     ids = set()
     for c in d["cards"]:
@@ -197,8 +201,11 @@ def validate(d):
             for col, k in (r.get("kind") or {}).items():
                 if col not in ("exp", "peak") or k not in ("figure", "simulated") or not r.get(col):
                     p.append(f"pk row {r['name']['en']}: kind {col}={k} must tag a filled exp or peak as figure or simulated")
-        if not all(len(t) == 3 and all(isinstance(x, (int, float)) for x in t) for t in pk["curve"]["pts"]):
-            p.append("pk curve: pts must be [day, mean, se] numbers")
+        for cv in pk["curves"]:
+            if not all(len(t) == 3 and all(isinstance(x, (int, float)) for x in t) for t in cv["pts"]):
+                p.append(f"pk curve {cv['name']['en']}: pts must be [day, mean, se] numbers")
+            if not cv.get("src", {}).get("url", "").startswith("http"):
+                p.append(f"pk curve {cv['name']['en']}: src url missing")
     dates = [n["date"] for n in d["news"]]
     if dates != sorted(dates, reverse=True):
         p.append("news must be sorted newest first")
@@ -207,21 +214,24 @@ def validate(d):
     return p
 
 
-def render(d):
+def render(all_d):
     tpl = (HERE / "template.html").read_text(encoding="utf-8")
-    blob = json.dumps(d, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    blob = json.dumps(all_d, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     html = tpl.replace("/*DATA*/null", blob)
     (HERE / "index.html").write_text(html, encoding="utf-8")
-    print(f"wrote index.html ({len(html) // 1024} KB): {len(d['cards'])} cards, {len(d['patents'])} + {len(d['platforms'])} patents, "
-          f"{len(d['estate'])} Lilly families, {len(d['plan'])} milestones, {len(d['news'])} news, as of {d['asOf']}")
+    print(f"wrote index.html ({len(html) // 1024} KB)")
+    for key, d in all_d.items():
+        print(f"  {key}: {len(d['cards'])} cards, {len(d['patents'])} + {len(d['platforms'])} patents, {len(d['estate'])} originator families, "
+              f"{len(d['plan'])} milestones, {len(d['news'])} news, {len(d['pk']['board'])} PK rows, as of {d['asOf']}")
 
 
 def main():
-    d = json.loads(DATA.read_text(encoding="utf-8"))
+    all_d = {key: json.loads(f.read_text(encoding="utf-8")) for key, f in DATA.items()}
     if "--as-of" in sys.argv:
-        d["asOf"] = sys.argv[sys.argv.index("--as-of") + 1]
-        DATA.write_text(json.dumps(d, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    problems = validate(d)
+        for key, f in DATA.items():
+            all_d[key]["asOf"] = sys.argv[sys.argv.index("--as-of") + 1]
+            f.write_text(json.dumps(all_d[key], ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    problems = [f"{key}: {x}" for key, d in all_d.items() for x in validate(d)]
     for x in problems:
         print("PROBLEM:", x)
     if problems:
@@ -229,7 +239,7 @@ def main():
         sys.exit(1)
     print("validation passed")
     if "--check" not in sys.argv:
-        render(d)
+        render(all_d)
 
 
 if __name__ == "__main__":

@@ -1079,8 +1079,8 @@
    "ko": "레타트루타이드 혈중농도를 한 달 유지한 곳이 있는가?"
   },
   "lede": {
-   "en": "Two have, both in rats only: Vivani's implant held levels for 56 days and G2GBio's microspheres for over a month. No one has published how retatrutide exposure or peak compares with the weekly injection. The lower rows show what the same platforms and approved depots achieved with other drugs.",
-   "ko": "두 곳, 모두 랫드 데이터뿐입니다. 비바니 임플란트는 56일, 지투지바이오 미립구는 한 달 이상 혈중농도를 유지했습니다. 주 1회 주사 대비 노출량이나 최고농도를 공개한 곳은 없습니다. 아래 행은 같은 플랫폼과 허가 데포가 다른 약물로 달성한 수치입니다."
+   "en": "Three have, all in rats only: Vivani's implant held levels for 56 days, and Camurus's lipid depot and G2GBio's microspheres for about a month. No one has published exposure or peak against weekly retatrutide. To match the 12 mg weekly dose, a monthly depot would need to average about 1,600 ng/mL in people.",
+   "ko": "세 곳, 모두 랫드 데이터뿐입니다. 비바니 임플란트는 56일, Camurus 지질 데포와 지투지바이오 미립구는 약 한 달간 혈중농도를 유지했습니다. 주 1회 레타트루타이드 대비 노출량이나 최고농도를 공개한 곳은 없습니다. 주 1회 12 mg과 같으려면 월 1회 데포는 사람에서 평균 약 1,600 ng/mL를 유지해야 합니다."
   },
   "target": 28,
   "axis": 63,
@@ -1178,22 +1178,25 @@
      "ko": "Camurus 지질 데포"
     },
     "card": "camurus-reta",
-    "ev": "hidden",
+    "ev": "animal",
     "who": {
-     "en": "Rats, n=3",
-     "ko": "랫드, n=3"
+     "en": "Rats, n=3, 1 mg/rat",
+     "ko": "랫드, n=3, 1 mg/마리"
     },
     "days": 28,
-    "open": false,
+    "open": true,
     "bar": {
-     "en": "Sampled 28 days; result not public",
-     "ko": "28일 채혈, 결과 비공개"
+     "en": "28 days; 16% of peak still left on day 28",
+     "ko": "28일, 28일차에도 최고농도의 16% 유지"
     },
     "exp": null,
-    "peak": null,
+    "peak": {
+     "en": "1,121 ng/mL at 48 h, near-flat to day 7, 184 ng/mL on day 28",
+     "ko": "48시간 1,121 ng/mL, 7일까지 거의 평탄, 28일 184 ng/mL"
+    },
     "src": {
-     "label": "WO2026125238A1, Example 3",
-     "url": "https://patents.google.com/patent/WO2026125238A1/en"
+     "label": "WO2026125238A1, Table 10 (Espacenet original document)",
+     "url": "https://worldwide.espacenet.com/patent/search?q=pn%3DWO2026125238A1"
     }
    },
    {
@@ -1349,27 +1352,33 @@
     },
     "ev": "human",
     "who": {
-     "en": "People, n=45",
-     "ko": "사람, n=45"
+     "en": "People with T2D, 12 weeks",
+     "ko": "제2형 당뇨 환자, 12주"
     },
     "days": 7,
     "open": false,
     "bar": {
-     "en": "Dosed weekly; half-life about 6 days",
-     "ko": "주 1회 투여, 반감기 약 6일"
+     "en": "Dosed weekly",
+     "ko": "주 1회 투여"
     },
     "exp": {
-     "en": "The reference a depot is compared with",
-     "ko": "데포 비교의 기준 제품"
+     "en": "12 mg weekly averages 1,620 ng/mL at steady state (the level a monthly depot must match)",
+     "ko": "12 mg 주 1회 정상상태 평균 1,620 ng/mL (월 1회 데포가 맞춰야 할 수준)"
     },
     "peak": {
-     "en": "Peak 12–72 h after the dose",
-     "ko": "투여 12~72시간 후 최고농도"
+     "en": "2,410 ng/mL at steady state (12 mg), 12–48 h after each dose; half-life about 6 days",
+     "ko": "정상상태 2,410 ng/mL(12 mg), 투여 12~48시간 후, 반감기 약 6일"
     },
-    "src": {
-     "label": "Review in Pharmaceutics 2026, citing Coskun et al. 2022",
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13708278/"
-    }
+    "src": [
+     {
+      "label": "Urva et al., Lancet 2022, appendix Table S3",
+      "url": "https://doi.org/10.1016/S0140-6736(22)02033-5"
+     },
+     {
+      "label": "ClinicalTrials.gov NCT04867785, posted population-PK results",
+      "url": "https://clinicaltrials.gov/study/NCT04867785?tab=results"
+     }
+    ]
    },
    {
     "group": "ref",
@@ -1432,80 +1441,6 @@
     }
    }
   ],
-  "curve": {
-   "status": "public",
-   "species": {
-    "en": "Rats",
-    "ko": "랫드"
-   },
-   "unit": "ng/mL",
-   "xmax": 63,
-   "ymax": 150,
-   "pts": [
-    [
-     0,
-     2,
-     0
-    ],
-    [
-     1,
-     107.6,
-     24.0
-    ],
-    [
-     7,
-     63.8,
-     9.0
-    ],
-    [
-     14,
-     94.3,
-     10.7
-    ],
-    [
-     21,
-     100.6,
-     10.7
-    ],
-    [
-     28,
-     84.3,
-     9.3
-    ],
-    [
-     35,
-     87.4,
-     6.6
-    ],
-    [
-     42,
-     73.4,
-     5.1
-    ],
-    [
-     49,
-     74.4,
-     4.8
-    ],
-    [
-     56,
-     77.5,
-     6.4
-    ]
-   ],
-   "note": {
-    "en": "Mean ± SE, normalised to a 250 g rat. Values read from the published chart (about ±1 ng/mL).",
-    "ko": "평균 ± SE, 250 g 랫드 기준 보정. 공개 차트에서 판독한 값(약 ±1 ng/mL)."
-   },
-   "title": {
-    "en": "The only retatrutide depot curve in public: Vivani implant, rats",
-    "ko": "공개된 유일한 레타트루타이드 데포 곡선: 비바니 임플란트, 랫드"
-   }
-  },
-  "curveSrc": {
-   "label": "Vivani investor presentation (17 Aug 2026), slide 25",
-   "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
-  },
   "judge": {
    "text": {
     "en": "How regulators judge a depot: total exposure (AUC, given as rBA) is the main bridge to the reference; the trough at steady state is the efficacy marker; peak, swing and first-day release are checked for safety.",
@@ -1531,6 +1466,181 @@
     "label": "EMA EPAR, Bydureon",
     "url": "https://www.ema.europa.eu/en/documents/assessment-report/bydureon-epar-public-assessment-report_en.pdf"
    }
+  },
+  "curves": [
+   {
+    "name": {
+     "en": "Vivani implant",
+     "ko": "비바니 임플란트"
+    },
+    "dose": {
+     "en": "dose not stated",
+     "ko": "용량 미공개"
+    },
+    "col": "--lane-1",
+    "src": {
+     "label": "Vivani investor presentation (17 Aug 2026), slide 25",
+     "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
+    },
+    "pts": [
+     [
+      0,
+      2,
+      0
+     ],
+     [
+      1,
+      107.6,
+      24.0
+     ],
+     [
+      7,
+      63.8,
+      9.0
+     ],
+     [
+      14,
+      94.3,
+      10.7
+     ],
+     [
+      21,
+      100.6,
+      10.7
+     ],
+     [
+      28,
+      84.3,
+      9.3
+     ],
+     [
+      35,
+      87.4,
+      6.6
+     ],
+     [
+      42,
+      73.4,
+      5.1
+     ],
+     [
+      49,
+      74.4,
+      4.8
+     ],
+     [
+      56,
+      77.5,
+      6.4
+     ]
+    ],
+    "note": {
+     "en": "Mean ± SE, normalised to a 250 g rat, read from the published chart",
+     "ko": "평균 ± SE, 250 g 랫드 보정, 공개 차트에서 판독"
+    }
+   },
+   {
+    "name": {
+     "en": "Camurus lipid depot",
+     "ko": "Camurus 지질 데포"
+    },
+    "dose": {
+     "en": "1 mg/rat",
+     "ko": "1 mg/마리"
+    },
+    "col": "--lane-3",
+    "src": {
+     "label": "WO2026125238A1, Table 10 (Espacenet original document)",
+     "url": "https://worldwide.espacenet.com/patent/search?q=pn%3DWO2026125238A1"
+    },
+    "pts": [
+     [
+      0.0,
+      0,
+      0
+     ],
+     [
+      0.042,
+      83,
+      0
+     ],
+     [
+      0.125,
+      233,
+      0
+     ],
+     [
+      0.25,
+      414,
+      0
+     ],
+     [
+      1.0,
+      1096,
+      0
+     ],
+     [
+      2.0,
+      1121,
+      0
+     ],
+     [
+      3.0,
+      947,
+      0
+     ],
+     [
+      7.0,
+      940,
+      0
+     ],
+     [
+      14.0,
+      587,
+      0
+     ],
+     [
+      21.0,
+      321,
+      0
+     ],
+     [
+      28.0,
+      184,
+      0
+     ]
+    ],
+    "note": {
+     "en": "Mean of 3 rats, from the patent table",
+     "ko": "랫드 3마리 평균, 특허 표 수치"
+    }
+   }
+  ],
+  "chart": {
+   "kind": "peak",
+   "title": {
+    "en": "The two retatrutide depot curves in public",
+    "ko": "공개된 레타트루타이드 데포 곡선 2개"
+   },
+   "sub": {
+    "en": "Both in rats. Doses differ, so each line is shown as % of its own peak: compare the shape, not the height. Hover a point for the real ng/mL.",
+    "ko": "모두 랫드 데이터. 용량이 달라 각 곡선을 자체 최고농도 대비 %로 표시했습니다. 높이가 아닌 모양을 비교하세요. 점에 마우스를 올리면 실제 ng/mL가 보입니다."
+   }
+  },
+  "tick": 7
+ },
+ "meta": {
+  "name": {
+   "en": "retatrutide",
+   "ko": "레타트루타이드"
+  },
+  "originator": {
+   "en": "Lilly",
+   "ko": "릴리"
+  },
+  "foot": {
+   "en": "Sources: ClinicalTrials.gov, Espacenet, Google Patents, company releases, Lilly SEC filings, ADA coverage and trade press.",
+   "ko": "출처: ClinicalTrials.gov, Espacenet, Google Patents, 기업 발표, 릴리 SEC 공시, ADA 관련 보도 및 업계 언론."
   }
  }
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Retatrutide LAI Radar</title>
+<title>Incretin LAI Radar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
@@ -72,6 +72,9 @@ nav a[aria-current="page"]::after { transform: scaleX(1); }
 nav .ko-inline { margin-left: 0; }
 :root:not([data-lang="ko"]) nav .ko-inline { display: none; }
 :root[data-lang="ko"] nav .en { display: none; }
+.drug { display: inline-flex; padding: 3px; gap: 2px; background: var(--accent-soft); border-radius: 999px; }
+.drug button { border: 0; background: none; color: var(--accent-ink); font: 600 12.5px var(--sans); padding: 5px 12px; border-radius: 999px; cursor: pointer; }
+.drug button[aria-pressed="true"] { background: var(--accent); color: var(--surface); }
 .lang { display: inline-flex; padding: 3px; gap: 2px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; }
 .lang button { border: 0; background: none; color: var(--muted); font: 600 12px var(--sans); padding: 5px 11px; border-radius: 999px; cursor: pointer; transition: background .15s, color .15s; }
 .lang button:hover { color: var(--ink); }
@@ -85,6 +88,7 @@ nav .ko-inline { margin-left: 0; }
   .name .t { overflow: hidden; text-overflow: ellipsis; font-size: 15px; }
   .mark { width: 30px; height: 30px; border-radius: 9px; } .mark svg { width: 18px; height: 18px; }
   .lang button { padding: 4px 8px; font-size: 11.5px; }
+  .drug { order: 2; flex: 1 1 100%; margin-top: 8px; } .drug button { flex: 1; padding: 6px 14px; }
 }
 .seg { display: inline-flex; border: 1px solid var(--line-2); border-radius: 8px; overflow: hidden; flex-wrap: wrap; }
 .seg button { border: 0; background: var(--surface); color: var(--ink-2); font: inherit; font-size: 12.5px; padding: 5px 10px; cursor: pointer; }
@@ -291,7 +295,7 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
 .pkr.reta .nm { color: var(--accent-ink); }
 .pkr .who { font-size: 12px; color: var(--muted); margin-top: 2px; }
 .pkr .who .ko-inline { color: var(--muted); }
-.trk { position: relative; height: 18px; margin-top: 2px; background: repeating-linear-gradient(to right, var(--line) 0 1px, transparent 1px calc(100% / 9)); }
+.trk { position: relative; height: 18px; margin-top: 2px; background: repeating-linear-gradient(to right, var(--line) 0 1px, transparent 1px calc(100% / var(--gn, 9))); }
 .trk::after { content: ""; position: absolute; top: -6px; bottom: -6px; left: var(--tg); border-left: 1.5px solid var(--crit); }
 .trk .bb { position: absolute; top: 3px; height: 12px; left: 0; border-radius: 0 4px 4px 0; background: var(--k); }
 .trk .bb.open { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); border-radius: 0; }
@@ -318,7 +322,7 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
   .pkb { padding: 0 16px 4px; }
   .pkb-h, .pkr { grid-template-columns: minmax(0, 1fr); }
   .pkb-h > :not(.axis-c) { display: none; }
-  .pkb-h { top: 108px; }
+  .pkb-h { top: 153px; }
   .num .tl { display: inline; font-size: 11px; font-weight: 600; color: var(--muted); margin-right: 6px; text-transform: uppercase; letter-spacing: .04em; }
   .num.nil { display: none; }
 }
@@ -330,8 +334,15 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
 .ch .ax { stroke: var(--line-2); stroke-width: 1; }
 .ch text { fill: var(--muted); font: 11px var(--mono); }
 .ch .tgl { stroke: var(--crit); stroke-width: 1.5; }
+.ch .guide { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 4; }
 .ch text.tgt { fill: var(--crit); }
 .ch .ln { stroke: var(--lane-2); stroke-width: 2; fill: none; stroke-linejoin: round; }
+.ch .ln2 { stroke: var(--k); stroke-width: 2; fill: none; stroke-linejoin: round; }
+.ch .pt2 { fill: var(--k); stroke: var(--surface); stroke-width: 2; pointer-events: none; }
+.ch text.lbl2 { fill: var(--ink); font: 600 12px var(--sans); }
+.cvl { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); }
+.cvl i { display: inline-block; width: 16px; height: 3px; border-radius: 2px; background: var(--k); vertical-align: middle; margin-right: 6px; }
+.cvl b { color: var(--ink); font-weight: 600; }
 .ch .eb { stroke: var(--lane-2); stroke-width: 1.5; opacity: .45; }
 .ch .pt { fill: var(--lane-2); stroke: var(--surface); stroke-width: 2; }
 .ch .hit { fill: transparent; }
@@ -346,12 +357,13 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
   <div class="wrap top-in">
     <div class="name">
       <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.4"/><circle cx="12" cy="12" r="4.6" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="1.4"/><circle cx="12" cy="12" r="1.8" fill="#fff"/><path d="M12 12 L18.2 6.2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-      <div><div class="t">Retatrutide LAI Radar</div><small id="asof"></small></div>
+      <div><div class="t">Incretin LAI Radar</div><small id="asof"></small></div>
     </div>
+    <div class="drug" id="drug" role="group" aria-label="Drug"><button type="button" data-d="reta">Retatrutide</button><button type="button" data-d="cagri">CagriSema</button></div>
     <nav aria-label="Pages">
       <a href="#competitors" data-page="competitors"><span><span class="en">Competitors</span><span class="ko-inline">경쟁사</span></span></a>
       <a href="#patents" data-page="patents"><span><span class="en">Patents</span><span class="ko-inline">특허</span></span></a>
-      <a href="#timeline" data-page="timeline"><span><span class="en">Lilly timeline</span><span class="ko-inline">릴리 타임라인</span></span></a>
+      <a href="#timeline" data-page="timeline"><span id="tabTl"></span></a>
       <a href="#pk" data-page="pk" id="pkTab"><span><span class="en">PK data</span><span class="ko-inline">PK 데이터</span></span></a>
       <a href="#news" data-page="news"><span><span class="en">News</span><span class="ko-inline">뉴스</span></span></a>
     </nav>
@@ -371,10 +383,13 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
 <footer class="wrap foot" id="foot"></footer>
 <div class="tip" id="tip" hidden></div>
 
-<script>window.RETA = /*DATA*/null;</script>
+<script>window.DRUGS = /*DATA*/null;</script>
 <script>
 "use strict";
-const D = window.RETA;
+// the drug comes from the hash (#cagri/pk); bare page hashes (#pk) stay on retatrutide so old links keep working
+const DRUGS = window.DRUGS;
+let DRUG = "reta", D = DRUGS.reta;
+const cap = (x) => x[0].toUpperCase() + x.slice(1);
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 // bilingual text: block (two lines) or inline
@@ -397,7 +412,6 @@ function setLang(l) {
 let saved = null; try { saved = localStorage.getItem("reta-lang"); } catch (e) { /* storage unavailable */ }
 setLang(["both", "en", "ko"].includes(saved) ? saved : "both");
 $("#lang").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) setLang(b.dataset.l); });
-$("#asof").innerHTML = `<span class="en">Data as of </span>${D.asOf}<span class="ko-inline">기준</span>`;
 
 // ═════════ PAGE 1 — COMPETITORS ═════════
 const LANE_C = { clinic: "--lane-1", animal: "--lane-2", patent: "--lane-3", stopped: "--lane-4" };
@@ -419,7 +433,7 @@ function trialHtml(c) {
 }
 const patHtml = (c) => c.patents.length
   ? `<div class="pat">${c.patents.map((p) => `<span><a href="${patUrl(p.no)}" target="_blank" rel="noopener">${p.no}</a> ${Ti(p.status.en, p.status.ko)}</span>`).join("")}</div>`
-  : `<span class="muted">${Ti("No retatrutide-specific filing found", "레타트루타이드 특정 출원 확인 안 됨")}</span>`;
+  : `<span class="muted">${Ti(`No ${D.meta.name.en}-specific filing found`, `${D.meta.name.ko} 특정 출원 확인 안 됨`)}</span>`;
 
 // "New" for cards added in the last 30 days, "Updated" for a card change in the last 14 days
 const daysAgo = (d) => (new Date(D.asOf) - new Date(d)) / 864e5;
@@ -455,7 +469,7 @@ function renderCompetitors() {
   el.innerHTML = `
     <div>
       <div class="eyebrow">${Ti("Page 1 · Competitors by development stage", "1페이지 · 개발 단계별 경쟁사")}</div>
-      <h1>${T({ en: "Who is building a long-acting retatrutide", ko: "장기지속형 레타트루타이드를 개발하는 곳" })}</h1>
+      <h1>${T({ en: `Who is building a long-acting ${D.meta.name.en}`, ko: `장기지속형 ${D.meta.name.ko}를 개발하는 곳` })}</h1>
       <p class="lede">${T(fill(D.lede.competitors, { n: D.cards.length }))}</p>
       <div class="strip">${D.lanes.map((l) => `<a href="#lane-${l.id}" style="--c:var(${LANE_C[l.id]})"><span class="n">${sorted(l.id).length}</span><span class="l">${T(l.name)}</span></a>`).join("")}</div>
       <div class="reg">${D.registries.map((r) => `<div><b>${esc(r.name)} <span class="st ${r.result === "checked" ? "go" : "unk"}">${r.result === "checked" ? Ti("Checked", "확인") : Ti("Not checked", "미확인")}</span></b>${T(r.note)}</div>`).join("")}</div>
@@ -483,7 +497,7 @@ function renderCompetitors() {
     ${D.lanes.map((l) => {
       const list = sorted(l.id);
       const head = `<div class="lane-h"><h2>${Ti(l.name.en, l.name.ko)}</h2><span class="count">${list.length}</span></div>`;
-      const none = l.id === "clinic" ? Ti("No long-acting retatrutide has a registered trial or IND", "임상시험·IND가 등록된 장기지속형 레타트루타이드 없음") : Ti("Nothing at this stage for the current filter", "현재 필터에 해당하는 과제 없음");
+      const none = l.id === "clinic" ? Ti(`No long-acting ${D.meta.name.en} has a registered trial or IND`, `임상시험·IND가 등록된 장기지속형 ${D.meta.name.ko} 없음`) : Ti("Nothing at this stage for the current filter", "현재 필터에 해당하는 과제 없음");
       const body = list.length ? `<div class="cards">${list.map(card).join("")}</div>` : `<div class="empty">${none}</div>`;
       return l.id === "stopped"
         ? `<details class="lane stopped" open id="lane-${l.id}" style="--c:var(${LANE_C[l.id]})"><summary>${head}</summary>${body}</details>`
@@ -511,16 +525,16 @@ function renderPatents() {
   el.innerHTML = `
     <div>
       <div class="eyebrow">${Ti("Page 2 · Patent landscape", "2페이지 · 특허 현황")}</div>
-      <h1>${T({ en: "Who has filed on long-acting retatrutide", ko: "장기지속형 레타트루타이드 특허 출원 현황" })}</h1>
+      <h1>${T({ en: `Who has filed on long-acting ${D.meta.name.en}`, ko: `장기지속형 ${D.meta.name.ko} 특허 출원 현황` })}</h1>
       <p class="lede">${T(fill(D.lede.patents, { p: P.length, q: Q.length }))}</p>
       <div class="counts">
-        <div><span class="n">${P.length}</span><span class="l">${Ti("Retatrutide-specific families", "레타트루타이드 특정 패밀리")}</span></div>
+        <div><span class="n">${P.length}</span><span class="l">${Ti(`${cap(D.meta.name.en)}-specific families`, `${D.meta.name.ko} 특정 패밀리`)}</span></div>
         <div><span class="n">${granted}</span><span class="l">${Ti("Granted somewhere", "등록 완료")}</span></div>
         ${cc.map(([k, n]) => `<div><span class="n">${n}</span><span class="l">${esc(k)}</span></div>`).join("")}
       </div>
     </div>
     <div>
-      <div class="section-h"><h2>${Ti("Retatrutide-specific families", "레타트루타이드 특정 특허")}</h2>
+      <div class="section-h"><h2>${Ti(`${cap(D.meta.name.en)}-specific families`, `${D.meta.name.ko} 특정 특허`)}</h2>
         <p>${T({ en: "Oldest priority first. Status is the most advanced office decision found.", ko: "우선일 오래된 순. 상태는 확인된 가장 진전된 심사 결과입니다." })}</p></div>
       <div class="tbl-wrap"><table class="pt-tbl"><thead><tr>
         <th>${T({ en: "Priority", ko: "우선일" })}</th><th>${T({ en: "Applicant", ko: "출원인" })}</th><th>${T({ en: "Publication", ko: "공개번호" })}</th>
@@ -534,8 +548,8 @@ function renderPatents() {
       </tbody></table></div>
     </div>
     <div>
-      <div class="section-h"><h2>${Ti("Platform families that list retatrutide", "레타트루타이드를 포함하는 플랫폼 특허")}</h2>
-        <p>${T({ en: "Broader depot inventions where retatrutide is one of several named drugs. They show who could enter, not who is developing.", ko: "레타트루타이드가 여러 약물 중 하나로 기재된 포괄적 데포 발명. 개발 여부가 아니라 진입 가능성을 보여줍니다." })}</p></div>
+      <div class="section-h"><h2>${Ti(`Platform families that list ${D.meta.name.en}`, `${D.meta.name.ko}를 포함하는 플랫폼 특허`)}</h2>
+        <p>${T({ en: `Broader depot inventions where ${D.meta.name.en} is one of several named drugs. They show who could enter, not who is developing.`, ko: `${D.meta.name.ko}가 여러 약물 중 하나로 기재된 포괄적 데포 발명. 개발 여부가 아니라 진입 가능성을 보여줍니다.` })}</p></div>
       <div class="tbl-wrap"><table class="pt-tbl"><thead><tr>
         <th>${T({ en: "Priority", ko: "우선일" })}</th><th>${T({ en: "Applicant", ko: "출원인" })}</th><th>${T({ en: "Publication", ko: "공개번호" })}</th><th>${T({ en: "Technology", ko: "기술" })}</th></tr></thead><tbody>
         ${[...Q].sort((a, b) => a.priority.localeCompare(b.priority)).map((p) => `<tr>
@@ -558,7 +572,7 @@ function renderTimeline() {
   const ticks = []; for (let y = Math.ceil(y0 / 5) * 5; y < y1; y += 5) ticks.push(y);
   // the molecule patent carries the story; later families are drawn quieter
   const col = (p) => (p.kind === "compound" ? "--lane-1" : "--lane-3");
-  const gantt = `<div class="gantt" role="img" aria-label="${esc("Retatrutide patent families from priority date to expiry")}">
+  const gantt = `<div class="gantt" role="img" aria-label="${esc(`${cap(D.meta.name.en)} patent families from priority date to expiry`)}">
     <div class="grid">${ticks.map((y) => `<i style="left:${pct(y)}%"></i>${Math.abs(pct(y) - pct(D.asOf)) < 8 ? "" : `<b style="left:${pct(y)}%">${y}</b>`}`).join("")}
       <i class="now" style="left:${pct(D.asOf)}%"></i><span class="nowl" style="left:${pct(D.asOf)}%">${Ti("Today", "오늘")}</span></div>
     <div class="head"></div>
@@ -568,7 +582,7 @@ function renderTimeline() {
         <a class="gm" href="${patUrl(p.no)}" target="_blank" rel="noopener">${p.no}</a></div>
       <div class="bar"><span class="b" style="left:${pct(p.priority)}%;width:${pct(p.expiry) - pct(p.priority)}%"></span>${p.extMax ? `<span class="x" style="left:calc(${pct(p.expiry)}% - 4px);width:calc(${pct(p.extMax) - pct(p.expiry)}% + 4px)"></span>` : ""}</div>
     </div>`).join("")}
-    <div class="gkey"><span style="--k:var(--lane-1)"><i></i>${Ti("Molecule patent", "물질 특허")}</span><span style="--k:var(--lane-3)"><i></i>${Ti("Later Lilly patents", "릴리 후속 특허")}</span>
+    <div class="gkey"><span style="--k:var(--lane-1)"><i></i>${Ti("Molecule patent", "물질 특허")}</span><span style="--k:var(--lane-3)"><i></i>${Ti(`Later ${D.meta.originator.en} patents`, `${D.meta.originator.ko} 후속 특허`)}</span>
       <span><i class="dash"></i>${Ti("Possible extension (estimate)", "연장 가능 기간(추정)")}</span><span><i class="tdk"></i>${Ti("Today", "오늘")}</span></div>
   </div>`;
   const table = `<details class="dtl"><summary>${Ti("Patent details", "특허 상세")}</summary><div class="tbl-wrap"><table class="pt-tbl"><thead><tr>
@@ -604,7 +618,7 @@ function renderTimeline() {
       ${gantt}${table}
     </div>
     <div>
-      <div class="section-h"><h2>${Ti("Lilly's road map", "릴리 로드맵")}</h2>
+      <div class="section-h"><h2>${Ti(`${D.meta.originator.en}'s road map`, `${D.meta.originator.ko} 로드맵`)}</h2>
         <p>${T({ en: "Done in grey, planned in purple.", ko: "회색은 완료, 보라색은 계획입니다." })}</p></div>
       <div class="road">${road}</div>
     </div>`;
@@ -619,19 +633,29 @@ const srcLinks = (src) => { const l = [].concat(src);
   return l.length === 1 ? `<a href="${esc(l[0].url)}" target="_blank" rel="noopener" title="${esc(l[0].label)}">${Ti("Source", "출처")} ↗</a>`
     : `${Ti("Sources", "출처")} ${l.map((x, i) => `<a href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.label)}">${i + 1} ↗</a>`).join(" ")}`; };
 
-function curveSvg(cv, target) {
-  const W = 640, H = 240, l = 36, r = 10, t = 16, b = 24, xmax = 63, ymax = 150;
-  const x = (d) => l + (W - l - r) * d / xmax, y = (v) => t + (H - t - b) * (1 - v / ymax);
-  const path = cv.pts.map(([d, m], i) => `${i ? "L" : "M"}${x(d).toFixed(1)},${y(m).toFixed(1)}`).join("");
-  return `<svg class="ch" viewBox="0 0 ${W} ${H}" role="img" aria-label="Plasma retatrutide in ng/mL by day, Vivani implant in rats">
-    ${[0, 50, 100, 150].map((v) => `<line class="g" x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}"/><text x="${l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`).join("")}
+// curve shapes on one axis: each product as % of its own peak (doses differ), with real ng/mL in the tooltip
+function shapeSvg(curves, P, w) {
+  const target = P.target, cum = P.chart.kind === "cumulative";
+  // drawn at the box width so text stays at its real size on a phone
+  const W = Math.round(Math.min(680, Math.max(300, w))), narrow = W < 520, H = narrow ? 230 : 260, l = 40, r = narrow || cum ? 12 : 120, t = 16, b = 24, xmax = P.axis, step = (P.tick || 7) * (narrow ? 2 : 1);
+  const x = (d) => l + (W - l - r) * d / xmax, y = (v) => t + (H - t - b) * (1 - v / 100);
+  const lines = curves.map((cv) => {
+    const pk = cum ? 100 : Math.max(...cv.pts.map((q) => q[1]));
+    const pts = cv.pts.map(([d, m, se]) => [d, m / pk * 100, m, se]);
+    const last = pts[pts.length - 1];
+    return `<g style="--k:var(${cv.col})">
+      <path class="ln2" d="${pts.map(([d, v], i) => `${i ? "L" : "M"}${x(d).toFixed(1)},${y(v).toFixed(1)}`).join("")}"/>
+      ${pts.map(([d, v, m, se]) => `<circle class="hit" cx="${x(d)}" cy="${y(v)}" r="10" data-tip="${esc(cum ? `${cv.name.en} · day ${+d.toFixed(2)}: ${m}% of dose absorbed` : `${cv.name.en} · day ${+d.toFixed(2)}: ${m} ng/mL${se ? ` ± ${se} SE` : ""} (${Math.round(v)}% of peak)`)}"/><circle class="pt2" cx="${x(d)}" cy="${y(v)}" r="3.5"/>`).join("")}
+      ${cum ? "" : `<text class="lbl2" ${!narrow ? `x="${x(last[0]) + 8}" y="${y(last[1]) + 4}"` : last[0] < 40 ? `x="${x(last[0]) + 6}" y="${y(last[1]) + 4}"` : `x="${x(last[0])}" y="${y(last[1]) + 20}" text-anchor="end"`}>${esc(cv.name.en)}</text>`}</g>`;
+  }).join("");
+  return `<svg class="ch" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(P.chart.title.en)}">
+    ${[0, 25, 50, 75, 100].map((v) => `<line class="g" x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}"/><text x="${l - 6}" y="${y(v) + 4}" text-anchor="end">${v}%</text>`).join("")}
     <line class="ax" x1="${l}" x2="${W - r}" y1="${y(0)}" y2="${y(0)}"/>
-    ${[0, 7, 14, 21, 28, 35, 42, 49, 56].map((d) => `<text x="${x(d)}" y="${H - 6}" text-anchor="middle"${d === target ? ' class="tgt"' : ""}>${d}</text>`).join("")}
+    ${Array.from({ length: Math.floor((xmax - 1) / step) + 1 }, (_, i) => i * step).map((d) => `<text x="${x(d)}" y="${H - 6}" text-anchor="middle"${d === target ? ' class="tgt"' : ""}>${d}</text>`).join("")}
     <line class="tgl" x1="${x(target)}" x2="${x(target)}" y1="${t}" y2="${y(0)}"/>
-    <text x="${l}" y="${t - 5}">ng/mL</text><text x="${W - r}" y="${y(0) - 6}" text-anchor="end">day</text>
-    ${cv.pts.filter((q) => q[2]).map(([d, m, se]) => `<line class="eb" x1="${x(d)}" x2="${x(d)}" y1="${y(m - se)}" y2="${y(m + se)}"/>`).join("")}
-    <path class="ln" d="${path}"/>
-    ${cv.pts.map(([d, m, se]) => `<circle class="hit" cx="${x(d)}" cy="${y(m)}" r="12" data-tip="${esc(`Day ${d}: ${m} ng/mL${se ? ` ± ${se} SE` : ""}`)}"/><circle class="pt" cx="${x(d)}" cy="${y(m)}" r="4.5"/>`).join("")}
+    <text x="${l}" y="${t - 5}">${cum ? "% of dose absorbed" : "% of peak"}</text>
+    ${cum ? `<line class="guide" x1="${x(0)}" y1="${y(0)}" x2="${x(target)}" y2="${y(100)}"/>` : ""}<text x="${W - r}" y="${y(0) - 6}" text-anchor="end">day</text>
+    ${lines}
   </svg>`;
 }
 const tip = $("#tip");
@@ -647,9 +671,10 @@ addEventListener("scroll", () => { tip.hidden = true; }, { passive: true });
 function renderPK() {
   const el = $("#p-pk"), P = D.pk;
   const pct = (d) => `${(d / P.axis * 100).toFixed(2)}%`;
-  const ticks = [0, 7, 14, 21, 28, 35, 42, 49, 56];
+  const step = P.tick || 7, ticks = [];
+  for (let dd = 0; dd < P.axis; dd += step) ticks.push(dd);
   const num = (v, en, ko, k) => (v ? `<div class="num"><span class="tl">${Ti(en, ko)}</span>${T(v)}${kindTag(k)}</div>` : `<div class="num nil">—</div>`);
-  const row = (r) => `<div class="pkr${r.group === "reta" ? " reta" : ""}" style="--k:var(${EV[r.ev]});--tg:${pct(P.target)}">
+  const row = (r) => `<div class="pkr${r.group === P.groups[0].id ? " reta" : ""}" style="--k:var(${EV[r.ev]});--tg:${pct(P.target)};--gn:${P.axis / 7}">
       <div><div class="nm">${T(r.name)}</div><div class="who">${Ti(r.who.en, r.who.ko)} · ${srcLinks(r.src)}</div>${r.tag ? `<span class="tag2">${Ti(r.tag.en, r.tag.ko)}</span>` : ""}</div>
       <div><div class="trk">${r.days ? `<span class="bb${r.open ? " open" : ""}${r.ev === "hidden" ? " hid" : ""}" style="width:${pct(r.days)}"></span>` : ""}</div>
         <div class="bt">${Ti(r.bar.en, r.bar.ko)}</div></div>
@@ -677,9 +702,10 @@ function renderPK() {
       <p class="pk-note">${T(P.caution.text)} ${srcLinks(P.caution.src)}</p>
     </div>
     <div>
-      <div class="section-h"><h2>${Ti("The only retatrutide depot curve", "유일한 레타트루타이드 데포 곡선")}</h2>
-        <p>${T({ en: "Vivani implant in rats. Red line: the 28-day monthly target.", ko: "비바니 임플란트, 랫드. 빨간 선: 월 1회 목표 28일." })}</p></div>
-      <div class="cvbox">${curveSvg(P.curve, P.target)}<div class="meta">${T(P.curve.note)} <a href="${esc(P.curveSrc.url)}" target="_blank" rel="noopener">${esc(P.curveSrc.label)} ↗</a></div></div>
+      <div class="section-h"><h2>${Ti(P.chart.title.en, P.chart.title.ko)}</h2>
+        <p>${T(P.chart.sub)}</p></div>
+      <div class="cvbox">${shapeSvg(P.curves, P, el.clientWidth - 42)}
+        <div class="cvl">${P.curves.map((cv) => `<div style="--k:var(${cv.col})"><i></i><b>${Ti(cv.name.en, cv.name.ko)}</b> · ${Ti(cv.dose.en, cv.dose.ko)} · ${Ti(cv.note.en, cv.note.ko)} ${srcLinks(cv.src)}</div>`).join("")}</div></div>
     </div>`;
 }
 
@@ -703,7 +729,7 @@ function renderNews() {
   el.innerHTML = `
     <div>
       <div class="eyebrow">${Ti("Page 5 · News", "5페이지 · 뉴스")}</div>
-      <h1>${T({ en: "Long-acting retatrutide news", ko: "장기지속형 레타트루타이드 뉴스" })}</h1>
+      <h1>${T({ en: `Long-acting ${D.meta.name.en} news`, ko: `장기지속형 ${D.meta.name.ko} 뉴스` })}</h1>
       <p class="lede">${T({ en: `${D.news.length} dated events since Jan 2025, newest first, one sentence each. Patent publications are dated by publication, not priority.`,
         ko: `2025년 1월 이후 날짜별 이벤트 ${D.news.length}건, 최신순, 한 문장 요약. 특허는 우선일이 아닌 공개일 기준입니다.` })}</p>
       <div class="toolbar"><div class="tools">${segHtml("nscope", nscope, [["All", "All", "전체"], ["Korea", "Korea", "국내"], ["Global", "Global", "글로벌"]])}
@@ -716,20 +742,37 @@ function renderNews() {
 }
 
 // ═════════ ROUTER ═════════
-const PAGES = { competitors: renderCompetitors, patents: renderPatents, timeline: renderTimeline, news: renderNews };
-PAGES.pk = renderPK;
-const done = {};
+const PAGES = { competitors: renderCompetitors, patents: renderPatents, timeline: renderTimeline, pk: renderPK, news: renderNews };
+let done = {};
+function route() {
+  const [a, b] = location.hash.slice(1).split("/");
+  return DRUGS[a] ? [a, PAGES[b] ? b : "competitors"] : ["reta", PAGES[a] ? a : "competitors"];
+}
+function setDrug(key) {
+  if (key === DRUG && done.__drug === key) return;
+  DRUG = key; D = DRUGS[key]; done = { __drug: key };
+  scope = tech = nscope = ntype = "All";
+  document.querySelectorAll("#drug button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.d === key));
+  document.querySelectorAll("nav a").forEach((a) => (a.href = `#${key}/${a.dataset.page}`));
+  $("#tabTl").innerHTML = Ti(`${D.meta.originator.en} timeline`, `${D.meta.originator.ko} 타임라인`);
+  $("#asof").innerHTML = `<span class="en">Data as of </span>${D.asOf}<span class="ko-inline">기준</span>`;
+  document.title = `${cap(D.meta.name.en)} · Incretin LAI Radar`;
+  $("#foot").innerHTML = T({ en: `${D.meta.foot.en} Patent expiry dates are estimates unless a grant states them. Research current to ${D.asOf}. Internal use only.`,
+    ko: `${D.meta.foot.ko} 특허 만료일은 등록 문서에 명시되지 않은 경우 추정치입니다. ${D.asOf} 기준 조사. 내부용 자료.` });
+}
 function show() {
-  const h = location.hash.slice(1);
-  const page = PAGES[h] ? h : "competitors";
+  const [drug, page] = route();
+  setDrug(drug);
   Object.keys(PAGES).forEach((p) => ($(`#p-${p}`).hidden = p !== page));
   document.querySelectorAll("nav a").forEach((a) => (a.dataset.page === page ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current")));
   if (!done[page]) { PAGES[page](); done[page] = true; }
 }
-addEventListener("hashchange", () => { const h = location.hash.slice(1); show(); if (PAGES[h]) scrollTo({ top: 0 }); });
+$("#drug").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-d]");
+  if (b && b.dataset.d !== DRUG) location.hash = `${b.dataset.d}/${route()[1]}`;
+});
+addEventListener("hashchange", () => { show(); scrollTo({ top: 0 }); });
 show();
-$("#foot").innerHTML = T({ en: "Sources: ClinicalTrials.gov, Espacenet, Google Patents, company releases, Lilly SEC filings, ADA coverage and trade press. Patent expiry dates are estimates unless a grant states them. Research current to " + D.asOf + ". Internal use only.",
-  ko: "출처: ClinicalTrials.gov, Espacenet, Google Patents, 기업 발표, 릴리 SEC 공시, ADA 관련 보도 및 업계 언론. 특허 만료일은 등록 문서에 명시되지 않은 경우 추정치입니다. " + D.asOf + " 기준 조사. 내부용 자료." });
 </script>
 </body>
 </html>
