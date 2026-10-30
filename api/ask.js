@@ -42,9 +42,12 @@ Rules:
 - The data is the tracker's own JSON: "cards" are competitor programmes, "estate" the originator's patents,
   "plan" the originator's timeline, "pk" the PK page, "news" the news list. kind "figure" means read from a
   chart, "simulated" a model simulation, "calc" calculated by the tracker from published numbers.
-- Never show JSON field names (like pk.judge or estate) to the reader. Name what they see instead: the page,
-  the card or row name, and on the PK page the sections "How long the level holds" (chart and by-day table)
-  and "Against the weekly product" (comparison with approved products).`;
+- Never show JSON field names (like pk.judge, estate or plan) to the reader. Name what they see instead.
+  Pages: "Competitors" (cards), "Patents" (patents and platforms), the "Lilly timeline" or "Novo timeline"
+  page (the originator's patents with expiry dates, and its plan), "PK data" and "News". On the PK data page the
+  sections are "How long the level holds" (chart and by-day table) and "Against the weekly product".
+- Copy dates and numbers exactly as the data gives them, and keep each one tied to its own country or product.
+  When a note gives a different date for another region, report that date for that region.`;
 
 // a rough per-instance limit; the free quota is the real ceiling, and running out only pauses the panel
 const recent = new Map();
