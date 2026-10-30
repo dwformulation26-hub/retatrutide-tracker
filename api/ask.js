@@ -4,8 +4,9 @@
 "use strict";
 
 const DATA = { reta: require("../reta_data.json"), cagri: require("../cagri_data.json") };
-// 3.6 Flash answered in seconds at launch while 3.8 Flash was often overloaded or slow; the others are tried in turn
-const MODELS = [process.env.GEMINI_MODEL || "gemini-3.6-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite"];
+// at launch (30 Oct 2026) Flash-Lite answered in seconds while both Flash models often took over 15 s or were overloaded;
+// the others are tried in turn
+const MODELS = [process.env.GEMINI_MODEL || "gemini-3.5-flash-lite", "gemini-3.6-flash", "gemini-3.8-flash"];
 const LIMITS = { question: 600, turns: 6, turnText: 1500, perMinute: 8, wait: 15000 };
 
 // English only: the Korean copies would double the tokens without adding facts
