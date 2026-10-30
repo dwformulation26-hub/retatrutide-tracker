@@ -12,7 +12,7 @@
    page 3 = the originator's patent clock and plan, page 4 = dated news list */
 :root {
   --bg: #f5f5f8; --surface: #ffffff; --ink: #15151d; --ink-2: #4a4a5a; --muted: #7c7c8c; --line: #e0e0e8; --line-2: #cbcbd8;
-  --accent: #4b4a9a; --accent-soft: #ebeaf6; --accent-ink: #3a3982;
+  --accent: #4b4a9a; --accent-soft: #ebeaf6; --accent-ink: #3a3982; --on-accent: #ffffff;
   --ok: #1d7f47; --ok-soft: #e3f3e8; --warn: #9a6512; --warn-soft: #fbf0dc; --crit: #b23a30; --crit-soft: #fbe7e4;
   --lane-1: #3a3982; --lane-2: #5b5ab0; --lane-3: #9897cf; --lane-4: #b9bcc4;
   --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4;
@@ -23,7 +23,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0f0f15; --surface: #17171f; --ink: #ebebf2; --ink-2: #b6b6c6; --muted: #82828f; --line: #272733; --line-2: #363645;
-    --accent: #a6a5ea; --accent-soft: #23234a; --accent-ink: #c4c3f3;
+    --accent: #a6a5ea; --accent-soft: #23234a; --accent-ink: #c4c3f3; --on-accent: #15151d;
     --ok: #4cc27f; --ok-soft: #143222; --warn: #e2a64a; --warn-soft: #33270f; --crit: #ef7a6e; --crit-soft: #3a1c19;
     --lane-1: #c4c3f3; --lane-2: #8f8ee0; --lane-3: #5e5db0; --lane-4: #4a4d55;
     --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
@@ -32,7 +32,7 @@
 }
 :root[data-theme="dark"] {
   --bg: #0f0f15; --surface: #17171f; --ink: #ebebf2; --ink-2: #b6b6c6; --muted: #82828f; --line: #272733; --line-2: #363645;
-  --accent: #a6a5ea; --accent-soft: #23234a; --accent-ink: #c4c3f3;
+  --accent: #a6a5ea; --accent-soft: #23234a; --accent-ink: #c4c3f3; --on-accent: #15151d;
   --ok: #4cc27f; --ok-soft: #143222; --warn: #e2a64a; --warn-soft: #33270f; --crit: #ef7a6e; --crit-soft: #3a1c19;
   --lane-1: #c4c3f3; --lane-2: #8f8ee0; --lane-3: #5e5db0; --lane-4: #4a4d55;
   --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
@@ -364,6 +364,54 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
 }
 .foot { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-block: 18px 28px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* ask panel: floating button bottom right; a side card on desktop, a bottom sheet on phones */
+.ask-fab { position: fixed; right: max(20px, env(safe-area-inset-right, 0px)); bottom: max(20px, env(safe-area-inset-bottom, 0px)); z-index: 20;
+  display: inline-flex; align-items: center; gap: 7px; border: 0; border-radius: 999px; padding: 10px 16px 10px 12px; cursor: pointer;
+  background: var(--accent); color: var(--on-accent); font: 600 14px var(--sans); box-shadow: 0 6px 18px rgb(0 0 0 / .18); }
+.ask-fab[hidden] { display: none; }
+.ask-fab svg { width: 18px; height: 18px; }
+.ask-fab .ko-inline { color: inherit; margin-left: 0; }
+:root:not([data-lang="ko"]) .ask-fab .ko-inline { display: none; }
+:root[data-lang="ko"] .ask-fab .en { display: none; }
+.ask { position: fixed; right: max(20px, env(safe-area-inset-right, 0px)); bottom: max(20px, env(safe-area-inset-bottom, 0px)); z-index: 21;
+  width: 390px; height: min(580px, calc(100vh - 100px)); display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 16px 40px rgb(0 0 0 / .22); overflow: hidden; }
+.ask[hidden] { display: none; }
+.ask-h { display: flex; align-items: center; gap: 8px; padding: 12px 12px 10px 16px; border-bottom: 1px solid var(--line); }
+.ask-h b { font-size: 15px; flex: 1; }
+.ask-h button { border: 0; background: none; color: var(--muted); font: 500 12.5px var(--sans); cursor: pointer; padding: 4px 6px; border-radius: 6px; }
+.ask-h button:hover { color: var(--ink); background: var(--bg); }
+.ask-h .x { font-size: 20px; line-height: 1; padding: 2px 8px; }
+.ask-h .ko-inline, .ask-f .ko-inline, .ask-st .ko-inline, .ask-m .ko-inline { margin-left: 0; color: inherit; }
+:root:not([data-lang="ko"]) .ask .ko-inline { display: none; }
+:root[data-lang="ko"] .ask .en { display: none; }
+.ask-note { margin: 0; padding: 8px 16px; font-size: 11.5px; line-height: 1.45; color: var(--muted); background: var(--bg); border-bottom: 1px solid var(--line); }
+.ask-note .ko { font-size: inherit; color: inherit; margin-top: 3px; }
+.ask-log { flex: 1; overflow-y: auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.ask-m { max-width: 92%; padding: 9px 12px; border-radius: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+.ask-m.u { align-self: flex-end; background: var(--accent-soft); color: var(--ink); border-bottom-right-radius: 4px; }
+.ask-m.a { align-self: flex-start; background: var(--bg); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+.ask-m.a p { margin: 0 0 6px; } .ask-m.a p:last-child { margin: 0; }
+.ask-m.a ul { margin: 0 0 6px; padding-left: 18px; }
+.ask-m.err { color: var(--warn); }
+.ask-m.wait { color: var(--muted); }
+.ask-st { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+.ask-st small { color: var(--muted); font-size: 12px; }
+.ask-st button { text-align: left; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 10px; padding: 7px 11px; font: 13px var(--sans); cursor: pointer; }
+.ask-st button:hover { border-color: var(--accent); color: var(--ink); }
+.ask-f { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid var(--line); }
+.ask-f textarea { flex: 1; resize: none; height: 42px; border: 1px solid var(--line-2); border-radius: 10px; padding: 10px 12px;
+  font: 14px/1.4 var(--sans); background: var(--surface); color: var(--ink); }
+.ask-f textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.ask-f button { border: 0; border-radius: 10px; padding: 0 14px; background: var(--accent); color: var(--on-accent); font: 600 13.5px var(--sans); cursor: pointer; }
+.ask-f button:disabled { opacity: .5; cursor: default; }
+@media (max-width: 620px) {
+  .ask-fab { right: 16px; bottom: max(16px, env(safe-area-inset-bottom, 0px)); padding: 9px 14px 9px 11px; }
+  .ask { left: 8px; right: 8px; bottom: max(8px, env(safe-area-inset-bottom, 0px)); width: auto; height: min(78vh, 620px); }
+  .ask-f textarea { font-size: 16px; }
+}
+@media print { .ask-fab, .ask { display: none !important; } }
 </style>
 </head>
 <body>
@@ -395,6 +443,17 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
   <section id="p-news" class="stack" hidden></section>
 </main>
 <footer class="wrap foot" id="foot"></footer>
+
+<button type="button" class="ask-fab" id="askBtn" aria-controls="ask" aria-expanded="false">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.4 9.3a2.7 2.7 0 0 1 5.2 1c0 1.8-2.6 2.3-2.6 3.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.1" fill="currentColor"/></svg>
+  <span class="en">Ask</span><span class="ko-inline">질문</span>
+</button>
+<section class="ask" id="ask" role="dialog" aria-labelledby="askTitle" hidden>
+  <div class="ask-h"><b id="askTitle"></b><button type="button" id="askClear"></button><button type="button" class="x" id="askClose" aria-label="Close">×</button></div>
+  <p class="ask-note" id="askNote"></p>
+  <div class="ask-log" id="askLog" aria-live="polite"></div>
+  <form class="ask-f" id="askForm"><textarea id="askQ" rows="1" maxlength="600" aria-label="Your question"></textarea><button type="submit" id="askSend"></button></form>
+</section>
 
 <script>window.DRUGS = /*DATA*/null;</script>
 <script>
@@ -827,8 +886,83 @@ $("#drug").addEventListener("click", (e) => {
   const b = e.target.closest("button[data-d]");
   if (b && b.dataset.d !== DRUG) location.hash = `${b.dataset.d}/${route()[1]}`;
 });
-addEventListener("hashchange", () => { show(); scrollTo({ top: 0 }); });
+addEventListener("hashchange", () => { show(); scrollTo({ top: 0 }); if (!$("#ask").hidden) askRender(); });
 show();
+
+// ═════════ ASK PANEL ═════════
+// questions go to /api/ask, which adds this tracker's data and asks Google's Gemini (free tier); history lives only in this tab
+const ASK = { turns: [], busy: false };
+const isKo = () => document.documentElement.dataset.lang === "ko";
+function askFmt(text) {
+  // escape first, then the little formatting an answer may use: **bold**, "- " lines, links
+  const inl = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/https?:\/\/[^\s<)]+/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
+  return text.split(/\n{2,}/).map((blk) => {
+    const lines = blk.split("\n").filter((l) => l.trim());
+    return lines.length && lines.every((l) => /^\s*[-*•]\s/.test(l))
+      ? `<ul>${lines.map((l) => `<li>${inl(l.replace(/^\s*[-*•]\s/, ""))}</li>`).join("")}</ul>`
+      : `<p>${lines.map(inl).join("<br>")}</p>`;
+  }).join("");
+}
+const ASK_ERR = {
+  not_configured: ["The assistant is not connected yet.", "질문 기능이 아직 연결되지 않았습니다."],
+  quota: ["Today's free question allowance is used up. Please try again tomorrow.", "오늘의 무료 질문 한도를 다 썼습니다. 내일 다시 시도해 주세요."],
+  busy: ["Too many questions in a minute. Please wait a moment.", "1분 내 질문이 너무 많습니다. 잠시 후 다시 시도해 주세요."],
+  blocked: ["No answer came back for that question. Try wording it differently.", "이 질문에는 답변이 없습니다. 다르게 질문해 보세요."],
+  too_long: ["The answer ran too long. Try a narrower question.", "답변이 너무 깁니다. 질문 범위를 좁혀 주세요."],
+  failed: ["Something went wrong. Please try again.", "문제가 생겼습니다. 다시 시도해 주세요."],
+};
+function askRender() {
+  const ko = isKo();
+  $("#askTitle").innerHTML = Ti("Ask the tracker", "트래커에 질문");
+  $("#askClear").innerHTML = Ti("New chat", "새 대화");
+  $("#askClear").hidden = !ASK.turns.length;
+  $("#askSend").innerHTML = Ti("Send", "보내기");
+  $("#askNote").innerHTML = T({ en: "Answered by Google's free AI (Gemini) from this tracker's data. It can be wrong: check the source it names. Google may read questions, so don't type confidential information.",
+    ko: "이 트래커 데이터로 Google 무료 AI(Gemini)가 답합니다. 틀릴 수 있으니 출처를 확인하세요. Google이 질문을 볼 수 있으니 기밀 정보는 입력하지 마세요." });
+  $("#askQ").placeholder = ko ? "용어나 질문을 입력하세요" : "Type a hard term or a question";
+  const starters = [["What is the difference between Cmax and AUC?", "Cmax와 AUC의 차이는 무엇인가요?"],
+    [`Who is closest to a monthly ${D.meta.name.en}?`, `월 1회 ${D.meta.name.ko}에 가장 가까운 곳은 어디인가요?`],
+    ['What does "Calculated" mean on the PK page?', "PK 페이지의 '계산값'은 무슨 뜻인가요?"]];
+  $("#askLog").innerHTML = ASK.turns.map((t) => `<div class="ask-m ${t.role === "user" ? "u" : "a"}${t.err && t.role !== "user" ? " err" : ""}">${t.role === "user" || t.err ? esc(t.text) : askFmt(t.text)}</div>`).join("")
+    + (ASK.busy ? `<div class="ask-m a wait">${Ti("Thinking…", "답변 작성 중…")}</div>` : "")
+    + (ASK.turns.length ? "" : `<div class="ask-st"><small>${Ti("Try one of these", "예시 질문")}</small>${starters.map(([en, k]) => `<button type="button" data-q="${esc(ko ? k : en)}">${esc(ko ? k : en)}</button>`).join("")}</div>`);
+  $("#askLog").scrollTop = $("#askLog").scrollHeight;
+  $("#askSend").disabled = ASK.busy;
+}
+async function askSend(q) {
+  q = q.trim();
+  if (!q || ASK.busy) return;
+  const history = ASK.turns.filter((t) => !t.err).map(({ role, text }) => ({ role, text }));
+  ASK.turns.push({ role: "user", text: q });
+  ASK.busy = true; askRender();
+  let reply;
+  try {
+    const r = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q, drug: DRUG, page: route()[1], history }) });
+    const j = await r.json().catch(() => ({ error: r.status === 404 || r.status === 501 ? "not_configured" : "failed" }));
+    if (j.answer) reply = { role: "model", text: j.answer };
+    else reply = { role: "model", err: true, text: (ASK_ERR[j.error] || ASK_ERR.failed)[isKo() ? 1 : 0] };
+  } catch (e) {
+    reply = { role: "model", err: true, text: isKo() ? "연결할 수 없습니다. 인터넷 연결을 확인하세요." : "Could not reach the assistant. Check your connection." };
+  }
+  // a failed question stays on screen but is left out of what the next question sends
+  if (reply.err) ASK.turns[ASK.turns.length - 1].err = true;
+  ASK.turns.push(reply);
+  ASK.busy = false; askRender();
+}
+function askOpen(open) {
+  $("#ask").hidden = !open; $("#askBtn").hidden = open;
+  $("#askBtn").setAttribute("aria-expanded", open);
+  if (open) { askRender(); $("#askQ").focus(); } else $("#askBtn").focus();
+}
+$("#askBtn").addEventListener("click", () => askOpen(true));
+$("#askClose").addEventListener("click", () => askOpen(false));
+$("#askClear").addEventListener("click", () => { ASK.turns = []; askRender(); $("#askQ").focus(); });
+$("#ask").addEventListener("keydown", (e) => { if (e.key === "Escape") askOpen(false); });
+$("#askLog").addEventListener("click", (e) => { const b = e.target.closest("button[data-q]"); if (b) askSend(b.dataset.q); });
+$("#askForm").addEventListener("submit", (e) => { e.preventDefault(); const q = $("#askQ").value; $("#askQ").value = ""; askSend(q); });
+$("#askQ").addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); $("#askForm").requestSubmit(); } });
+$("#lang").addEventListener("click", () => { if (!$("#ask").hidden) askRender(); });
+
 </script>
 </body>
 </html>

@@ -53,6 +53,23 @@ Edit `reta_data.json`, run `python build.py`, commit both the JSON and `index.ht
   never type a value that is not in a source.
 - Ledes carry `{n}`, `{p}` and `{q}` placeholders for the card, patent and platform counts; reread them when facts change.
 
+## Ask panel
+
+The "Ask" button (bottom right) opens a chat that sends the reader's question to `api/ask.js`, a Vercel function.
+The function adds both drugs' data (English only, about 13k tokens) and asks Google's Gemini API on the free tier,
+then returns an answer of up to about 150 words that names the page and card it used. Nothing is stored; the chat
+history lives only in the reader's tab.
+
+- Set `GEMINI_API_KEY` in Vercel (Project → Settings → Environment Variables), from a key made in Google AI Studio.
+  Never put the key in the repo. Without it the panel says the assistant is not connected.
+- Optional `GEMINI_MODEL` (default `gemini-3.8-flash`).
+- Keep the Google project without a billing account: the free tier can then never charge, and when the daily free
+  allowance runs out (reset at midnight US Pacific time) the panel says so until the next day.
+- Free-tier terms: Google may use questions and answers to improve its products and people may review them, so the
+  panel tells readers not to type confidential information. Apps offered to users in the EEA, UK or Switzerland need
+  the paid tier.
+- The function only accepts calls from this site's own pages and allows about 8 questions a minute per visitor.
+
 Initial research: 2026-10-29, from ClinicalTrials.gov, Espacenet, Google Patents (rate-limited part-way), Lilly's SEC
 filings and releases, Camurus releases, Korean and US trade press. China CDE, Korea MFDS/CRIS, EU CTIS and jRCT could not
 be read automatically and are shown as not checked. Open questions at first build:
