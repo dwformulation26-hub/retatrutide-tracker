@@ -326,6 +326,10 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
 .pkc svg.focus [data-row]:not(.on) { opacity: .15; }
 .dt .sw { display: inline-block; width: 14px; height: 3px; border-radius: 2px; background: var(--c); vertical-align: middle; margin-right: 8px; }
 .dt .sw.mute { background: var(--muted); height: 2px; }
+.dt .ck { appearance: none; -webkit-appearance: none; width: 15px; height: 15px; margin: 0 8px 0 0; vertical-align: -3px; cursor: pointer;
+  border: 2px solid var(--c); border-radius: 3px; background: transparent center / 11px no-repeat; }
+.dt .ck:checked { background-color: var(--c); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.6 9.6 3.6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.dt .ck:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
 .dt .sw.band { height: 8px; background: color-mix(in srgb, var(--muted) 30%, transparent); }
 .dt .sw.guide { background: none; border-top: 2px dashed var(--muted); height: 0; }
 .dt tbody tr[data-row] { cursor: default; }
@@ -642,17 +646,28 @@ const srcLinks = (src) => { const l = [].concat(src);
     : `${Ti("Sources", "출처")} ${l.map((x, i) => `<a href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.label)}">${i + 1} ↗</a>`).join(" ")}`; };
 
 // the table's own measure over time, on one axis; series keep their table row index so row and line can light up together
+// lines switched off in the table, per drug; kept while the page is re-rendered
+const PKOFF = {};
+// a round axis top and step for the largest value shown: 3 to 4 steps of 1, 1.5, 2, 2.5, 3 or 5 x a power of ten
+function pkScale(m) {
+  const e = 10 ** Math.floor(Math.log10(m / 3)), st = [1, 1.5, 2, 2.5, 3, 5, 10].map((k) => k * e).find((k) => Math.ceil(m / k) <= 4);
+  const top = Math.ceil(m / st) * st, ticks = [];
+  for (let v = 0; v <= top + st / 2; v += st) ticks.push(+v.toFixed(6));
+  return { top, ticks };
+}
 function pkChart(X, w) {
   const narrow = w < 560, W = Math.round(Math.max(300, w)), H = narrow ? 200 : 230, l = 38, r = 10, t = 24, b = 22;
-  const C = X.chart, step = X.tick * (narrow ? 2 : 1), x = (dd) => l + (W - l - r) * dd / X.axis, y = (v) => t + (H - t - b) * (1 - v / C.max);
+  const C = X.chart, off = PKOFF[DRUG] || new Set(), shown = X.rows.filter((row, i) => row.conc && !off.has(i));
+  const S = shown.length ? pkScale(Math.max(...shown.flatMap((row) => row.conc.map(([, v]) => v)))) : { top: C.max, ticks: C.ticks };
+  const step = X.tick * (narrow ? 2 : 1), x = (dd) => l + (W - l - r) * dd / X.axis, y = (v) => t + (H - t - b) * (1 - v / S.top);
   const path = (pts) => pts.map(([dd, v], i) => `${i ? "L" : "M"}${x(dd).toFixed(1)},${y(v).toFixed(1)}`).join("");
   const ticks = []; for (let dd = 0; dd < X.axis; dd += step) ticks.push(dd);
   // one line per row that has measured or calculated concentrations; data-row keeps the table link
-  const series = X.rows.map((row, i) => row.conc
+  const series = X.rows.map((row, i) => row.conc && !off.has(i)
     ? `<g data-row="${i}" style="--c:var(--s${row.col})"><path class="ln" d="${path(row.conc)}"/>${row.conc.slice(1).map(([dd, v]) => `<circle class="pt" cx="${x(dd).toFixed(1)}" cy="${y(v).toFixed(1)}" r="2.6"/>`).join("")}<path class="hit" d="${path(row.conc)}"/></g>`
     : "").join("");
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`${C.yLabel.en} by day`)}">
-    ${C.ticks.map((v) => `<line class="g" x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}"/><text x="${l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`).join("")}
+    ${S.ticks.map((v) => `<line class="g" x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}"/><text x="${l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`).join("")}
     <line class="ax" x1="${l}" x2="${W - r}" y1="${y(0)}" y2="${y(0)}"/>
     ${ticks.map((dd) => `<text x="${x(dd)}" y="${H - 5}" text-anchor="middle"${dd === X.target ? ' class="tg"' : ""}>${dd}</text>`).join("")}
     ${ticks.includes(X.target) ? "" : `<text x="${x(X.target)}" y="${H - 5}" text-anchor="middle" class="tg">${X.target}</text>`}
@@ -671,6 +686,7 @@ function drawPK(el, X) {
     box._w = w; box.innerHTML = pkChart(X, w) + `<p class="pkn">${Ti(X.chart.note.en, X.chart.note.ko)}</p>`;
   };
   el._ro = new ResizeObserver(draw); el._ro.observe(box); draw();
+  el._redraw = () => { box._w = 0; draw(); };
 }
 // hovering a table row or a line lights up both; delegated, so redraws keep working
 function linkPK(el) {
@@ -706,10 +722,12 @@ function renderPK() {
   };
   const opt = (v, c = "") => (v ? `<td${c}>${Ti(v.en, v.ko)}</td>` : `<td${c}><span class="nil">–</span></td>`);
   const sw = (r, guide) => `<span class="sw${guide ? " guide" : r.band ? " band" : r.col ? "" : " mute"}"${r.col ? ` style="--c:var(--s${r.col})"` : ""}></span>`;
-  const nameCell = (r, guide) => `<td>${sw(r, guide)}<span class="nm">${Ti(r.name.en, r.name.ko)}</span>${kindTag(r.kind)}${guide ? "" : `<span class="sb">${Ti(r.sub.en, r.sub.ko)} · ${srcLinks(r.src)}</span>`}</td>`;
-  const row = (r, guide, i) => `<tr class="${guide ? "guide" : r.muted ? "muted" : ""}"${guide ? "" : ` data-row="${i}"`}>${nameCell(r, guide)}${X.days.map((dd, i) => cell(r.vals[i], dd, guide || r.muted)).join("")}
+  const off = PKOFF[DRUG] || (PKOFF[DRUG] = new Set());
+  const ck = (r, i) => `<input type="checkbox" class="ck" data-i="${i}" style="--c:var(--s${r.col})"${off.has(i) ? "" : " checked"} aria-label="${esc(`Show ${r.name.en} on the chart`)}">`;
+  const nameCell = (r, guide, i) => `<td>${!guide && r.conc ? ck(r, i) : sw(r, guide)}<span class="nm">${Ti(r.name.en, r.name.ko)}</span>${kindTag(r.kind)}${guide ? "" : `<span class="sb">${Ti(r.sub.en, r.sub.ko)} · ${srcLinks(r.src)}</span>`}</td>`;
+  const row = (r, guide, i) => `<tr class="${guide ? "guide" : r.muted ? "muted" : ""}"${guide ? "" : ` data-row="${i}"`}>${nameCell(r, guide, i)}${X.days.map((dd, i) => cell(r.vals[i], dd, guide || r.muted)).join("")}
     ${X.endLabel ? opt(r.end) : ""}${(X.metrics || []).map((m) => metric(guide ? null : r, m)).join("")}</tr>`;
-  const head = `<tr><th>${Ti("Formulation", "제형")}</th>${X.days.map((dd) => `<th${cls(dd)}>${Ti(`Day ${dd}`, `${dd}일`)}${dd === 1 ? `<small>${Ti("burst", "초기 방출")}</small>` : dd === X.target ? `<small>${Ti("monthly target", "월 1회 목표")}</small>` : ""}</th>`).join("")}
+  const head = `<tr><th>${Ti("Formulation", "제형")}<small>${Ti("Tick to show on the chart", "체크하면 그래프에 표시")}</small></th>${X.days.map((dd) => `<th${cls(dd)}>${Ti(`Day ${dd}`, `${dd}일`)}${dd === 1 ? `<small>${Ti("burst", "초기 방출")}</small>` : dd === X.target ? `<small>${Ti("monthly target", "월 1회 목표")}</small>` : ""}</th>`).join("")}
     ${X.endLabel ? `<th>${Ti(X.endLabel.en, X.endLabel.ko)}</th>` : ""}${(X.metrics || []).map((m) => `<th class="opt mt">${Ti(m.label.en, m.label.ko)}<small>${esc(m.unit)}</small></th>`).join("")}</tr>`;
   const val = (v, en, ko, k) => (v ? `<div class="val"><span class="tl">${Ti(en, ko)}</span>${T(v)}${kindTag(k)}</div>` : `<div class="val nil">–</div>`);
   const cmp = (r) => `<div class="cmp-r${r.target ? " target" : ""}"><div><div class="nm">${Ti(r.name.en, r.name.ko)}</div><div class="sb">${Ti(r.sub.en, r.sub.ko)} · ${srcLinks(r.src)}</div></div>
@@ -740,6 +758,11 @@ function renderPK() {
     </div>`;
   drawPK(el, X);
   linkPK(el);
+  el.onchange = (e) => {
+    if (!e.target.matches(".ck")) return;
+    off[e.target.checked ? "delete" : "add"](+e.target.dataset.i);
+    el._redraw();
+  };
 }
 
 // ═════════ PAGE 5 — NEWS ═════════
