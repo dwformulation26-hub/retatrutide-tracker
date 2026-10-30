@@ -319,10 +319,8 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
 .pkc text { fill: var(--muted); font: 11px var(--mono); }
 .pkc text.tg { fill: var(--crit); font-weight: 600; }
 .pkc .tgl { stroke: var(--crit); stroke-width: 1.5; }
-.pkc .guide { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 4; fill: none; }
+.pkc .pkn { margin: 6px 0 6px; font-size: 11.5px; color: var(--muted); }
 .pkc .ln { fill: none; stroke: var(--c); stroke-width: 2.25; stroke-linejoin: round; stroke-linecap: round; transition: opacity .15s; }
-.pkc .ln.mute { stroke: var(--muted); stroke-width: 1.5; }
-.pkc .band { fill: var(--muted); opacity: .14; transition: opacity .15s; }
 .pkc .pt { fill: var(--c); stroke: var(--surface); stroke-width: 1.5; }
 .pkc .hit { fill: none; stroke: transparent; stroke-width: 12; pointer-events: stroke; cursor: pointer; }
 .pkc svg.focus [data-row]:not(.on) { opacity: .15; }
@@ -646,25 +644,20 @@ const srcLinks = (src) => { const l = [].concat(src);
 // the table's own measure over time, on one axis; series keep their table row index so row and line can light up together
 function pkChart(X, w) {
   const narrow = w < 560, W = Math.round(Math.max(300, w)), H = narrow ? 200 : 230, l = 38, r = 10, t = 24, b = 22;
-  const step = X.tick * (narrow ? 2 : 1), x = (dd) => l + (W - l - r) * dd / X.axis, y = (v) => t + (H - t - b) * (1 - v / 100);
+  const C = X.chart, step = X.tick * (narrow ? 2 : 1), x = (dd) => l + (W - l - r) * dd / X.axis, y = (v) => t + (H - t - b) * (1 - v / C.max);
   const path = (pts) => pts.map(([dd, v], i) => `${i ? "L" : "M"}${x(dd).toFixed(1)},${y(v).toFixed(1)}`).join("");
   const ticks = []; for (let dd = 0; dd < X.axis; dd += step) ticks.push(dd);
-  const series = X.rows.map((row, i) => {
-    if (row.band) {
-      const up = row.band.map(([dd, , hi]) => [dd, hi]), lo = row.band.map(([dd, l0]) => [dd, l0]).reverse();
-      return `<g data-row="${i}"><path class="band" d="${path(up)}${path(lo).replace("M", "L")}Z"/><path class="hit" d="${path(up)}"/></g>`;
-    }
-    const c = row.col ? `--c:var(--s${row.col})` : "";
-    return `<g data-row="${i}" style="${c}"><path class="ln${row.col ? "" : " mute"}" d="${path(row.pts)}"/>${row.col ? row.pts.map(([dd, v]) => `<circle class="pt" cx="${x(dd).toFixed(1)}" cy="${y(v).toFixed(1)}" r="2.6"/>`).join("") : ""}<path class="hit" d="${path(row.pts)}"/></g>`;
-  }).join("");
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`${X.title.en}: ${X.yLabel.en} by day`)}">
-    ${[0, 50, 100].map((v) => `<line class="g" x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}"/><text x="${l - 6}" y="${y(v) + 4}" text-anchor="end">${v}%</text>`).join("")}
+  // one line per row that has measured or calculated concentrations; data-row keeps the table link
+  const series = X.rows.map((row, i) => row.conc
+    ? `<g data-row="${i}" style="--c:var(--s${row.col})"><path class="ln" d="${path(row.conc)}"/>${row.conc.slice(1).map(([dd, v]) => `<circle class="pt" cx="${x(dd).toFixed(1)}" cy="${y(v).toFixed(1)}" r="2.6"/>`).join("")}<path class="hit" d="${path(row.conc)}"/></g>`
+    : "").join("");
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`${C.yLabel.en} by day`)}">
+    ${C.ticks.map((v) => `<line class="g" x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}"/><text x="${l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`).join("")}
     <line class="ax" x1="${l}" x2="${W - r}" y1="${y(0)}" y2="${y(0)}"/>
     ${ticks.map((dd) => `<text x="${x(dd)}" y="${H - 5}" text-anchor="middle"${dd === X.target ? ' class="tg"' : ""}>${dd}</text>`).join("")}
     ${ticks.includes(X.target) ? "" : `<text x="${x(X.target)}" y="${H - 5}" text-anchor="middle" class="tg">${X.target}</text>`}
     <line class="tgl" x1="${x(X.target)}" x2="${x(X.target)}" y1="${t}" y2="${y(0)}"/>
-    <text x="${l - 30}" y="${t - 12}">${esc(X.yLabel.en)}</text><text x="${W - r}" y="${y(0) - 6}" text-anchor="end">day</text>
-    ${X.guide ? `<path class="guide" d="${path(X.guide.pts)}"/>` : ""}
+    <text x="${l - 30}" y="${t - 12}">${esc(C.yLabel.en)}</text><text x="${W - r}" y="${y(0) - 6}" text-anchor="end">day</text>
     ${series}
   </svg>`;
 }
@@ -675,7 +668,7 @@ function drawPK(el, X) {
   const draw = () => {
     const w = box.clientWidth - 24;
     if (w < 200 || Math.abs(w - (box._w || 0)) < 8) return;
-    box._w = w; box.innerHTML = pkChart(X, w);
+    box._w = w; box.innerHTML = pkChart(X, w) + `<p class="pkn">${Ti(X.chart.note.en, X.chart.note.ko)}</p>`;
   };
   el._ro = new ResizeObserver(draw); el._ro.observe(box); draw();
 }

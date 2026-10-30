@@ -200,6 +200,13 @@ def validate(d):
                     p.append(f"{where}: {m['key']} must be a positive number or null")
                 if r.get(m["key"] + "Kind") not in (None, "figure", "simulated", "calc"):
                     p.append(f"{where}: {m['key']}Kind must be figure, simulated or calc")
+            if "conc" in r:
+                C = X.get("chart") or {}
+                if not r.get("col"):
+                    p.append(f"{where}: a row with conc needs a col")
+                for pt in r["conc"]:
+                    if not (0 <= pt[0] <= X["axis"] and 0 <= pt[1] <= C.get("max", 0)):
+                        p.append(f"{where}: conc point {pt} outside the chart axes")
             if r.get("col") is not None and r["col"] not in range(1, 6):
                 p.append(f"{where}: col must be 1-5 (the five chart colours)")
             if r is not X.get("guide"):

@@ -385,8 +385,8 @@
     "ko": "레타트루타이드 임상 없음."
    },
    "src": {
-    "label": "Vivani investor presentation (17 Aug 2026), slide 25",
-    "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
+    "label": "Vivani investor presentation (29 Oct 2026), slide 24",
+    "url": "https://d1io3yog0oux5.cloudfront.net/_96ecf2125c74f5ddded433c39b684f98/vivanimedical/db/2227/20917/pdf/Vivani_Corporate_Deck_October_2026_Final.pdf"
    },
    "checked": "2026-10-29",
    "added": "2026-10-29"
@@ -931,8 +931,8 @@
     "ko": "비바니가 투자자 자료에서 시제품 NanoPortal 레타트루타이드 임플란트가 진행 중인 랫드 시험에서 7~56일 혈중농도를 약 64~101 ng/mL로 유지했다고 제시."
    },
    "src": {
-    "label": "Vivani investor presentation (17 Aug 2026), slide 25",
-    "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
+    "label": "Vivani investor presentation (29 Oct 2026), slide 24",
+    "url": "https://d1io3yog0oux5.cloudfront.net/_96ecf2125c74f5ddded433c39b684f98/vivanimedical/db/2227/20917/pdf/Vivani_Corporate_Deck_October_2026_Final.pdf"
    }
   },
   {
@@ -1121,8 +1121,8 @@
      ],
      "kind": "figure",
      "src": {
-      "label": "Vivani investor presentation (17 Aug 2026), slide 25",
-      "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
+      "label": "Vivani investor presentation (29 Oct 2026), slide 24",
+      "url": "https://d1io3yog0oux5.cloudfront.net/_96ecf2125c74f5ddded433c39b684f98/vivanimedical/db/2227/20917/pdf/Vivani_Corporate_Deck_October_2026_Final.pdf"
      },
      "pts": [
       [
@@ -1173,7 +1173,49 @@
       "ko": "1일"
      },
      "auc": 2450,
-     "aucKind": "calc"
+     "aucKind": "calc",
+     "conc": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       108
+      ],
+      [
+       7,
+       64
+      ],
+      [
+       14,
+       94
+      ],
+      [
+       21,
+       101
+      ],
+      [
+       28,
+       84
+      ],
+      [
+       35,
+       87
+      ],
+      [
+       42,
+       73
+      ],
+      [
+       49,
+       74
+      ],
+      [
+       56,
+       77
+      ]
+     ]
     },
     {
      "name": {
@@ -1249,7 +1291,53 @@
       "ko": "48시간"
      },
      "auc": 16800,
-     "aucKind": "calc"
+     "aucKind": "calc",
+     "conc": [
+      [
+       0.0,
+       0
+      ],
+      [
+       0.042,
+       83
+      ],
+      [
+       0.125,
+       233
+      ],
+      [
+       0.25,
+       414
+      ],
+      [
+       1.0,
+       1096
+      ],
+      [
+       2.0,
+       1121
+      ],
+      [
+       3.0,
+       947
+      ],
+      [
+       7.0,
+       940
+      ],
+      [
+       14.0,
+       587
+      ],
+      [
+       21.0,
+       321
+      ],
+      [
+       28.0,
+       184
+      ]
+     ]
     }
    ],
    "none": {
@@ -1279,7 +1367,24 @@
      },
      "unit": "ng·day/mL"
     }
-   ]
+   ],
+   "chart": {
+    "yLabel": {
+     "en": "Plasma retatrutide, ng/mL",
+     "ko": "혈중 레타트루타이드, ng/mL"
+    },
+    "max": 1200,
+    "ticks": [
+     0,
+     400,
+     800,
+     1200
+    ],
+    "note": {
+     "en": "Rats. Camurus 1 mg/rat; Vivani dose not stated and its curve is read from a chart.",
+     "ko": "랫드. Camurus 1 mg/마리, 비바니는 용량 미공개이며 곡선은 차트 판독값."
+    }
+   }
   },
   "judge": {
    "text": {
