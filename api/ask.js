@@ -4,9 +4,9 @@
 "use strict";
 
 const DATA = { reta: require("../reta_data.json"), cagri: require("../cagri_data.json") };
-// the newest free model is often overloaded (503); the next ones are tried in turn
-const MODELS = [process.env.GEMINI_MODEL || "gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite"];
-const LIMITS = { question: 600, turns: 6, turnText: 1500, perMinute: 8, wait: 20000 };
+// 3.6 Flash answered in seconds at launch while 3.8 Flash was often overloaded or slow; the others are tried in turn
+const MODELS = [process.env.GEMINI_MODEL || "gemini-3.6-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite"];
+const LIMITS = { question: 600, turns: 6, turnText: 1500, perMinute: 8, wait: 15000 };
 
 // English only: the Korean copies would double the tokens without adding facts
 function english(o) {
@@ -38,7 +38,10 @@ Rules:
   Use **bold** sparingly for the key term or number.
 - The data is the tracker's own JSON: "cards" are competitor programmes, "estate" the originator's patents,
   "plan" the originator's timeline, "pk" the PK page, "news" the news list. kind "figure" means read from a
-  chart, "simulated" a model simulation, "calc" calculated by the tracker from published numbers.`;
+  chart, "simulated" a model simulation, "calc" calculated by the tracker from published numbers.
+- Never show JSON field names (like pk.judge or estate) to the reader. Name what they see instead: the page,
+  the card or row name, and on the PK page the sections "How long the level holds" (chart and by-day table)
+  and "Against the weekly product" (comparison with approved products).`;
 
 // a rough per-instance limit; the free quota is the real ceiling, and running out only pauses the panel
 const recent = new Map();
