@@ -15,6 +15,7 @@
   --accent: #4b4a9a; --accent-soft: #ebeaf6; --accent-ink: #3a3982;
   --ok: #1d7f47; --ok-soft: #e3f3e8; --warn: #9a6512; --warn-soft: #fbf0dc; --crit: #b23a30; --crit-soft: #fbe7e4;
   --lane-1: #3a3982; --lane-2: #5b5ab0; --lane-3: #9897cf; --lane-4: #b9bcc4;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4;
   --sans: "IBM Plex Sans", "IBM Plex Sans KR", system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   color-scheme: light;
@@ -25,6 +26,7 @@
     --accent: #a6a5ea; --accent-soft: #23234a; --accent-ink: #c4c3f3;
     --ok: #4cc27f; --ok-soft: #143222; --warn: #e2a64a; --warn-soft: #33270f; --crit: #ef7a6e; --crit-soft: #3a1c19;
     --lane-1: #c4c3f3; --lane-2: #8f8ee0; --lane-3: #5e5db0; --lane-4: #4a4d55;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
     color-scheme: dark;
   }
 }
@@ -33,6 +35,7 @@
   --accent: #a6a5ea; --accent-soft: #23234a; --accent-ink: #c4c3f3;
   --ok: #4cc27f; --ok-soft: #143222; --warn: #e2a64a; --warn-soft: #33270f; --crit: #ef7a6e; --crit-soft: #3a1c19;
   --lane-1: #c4c3f3; --lane-2: #8f8ee0; --lane-3: #5e5db0; --lane-4: #4a4d55;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -54,7 +57,7 @@ a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid
 
 /* header: brand mark, underline tabs, pill language switch */
 .top { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
-.top-in { display: flex; align-items: center; gap: 4px 28px; min-height: 64px; flex-wrap: wrap; }
+.top-in { display: flex; align-items: center; gap: 4px 20px; min-height: 64px; flex-wrap: wrap; }
 .name { display: flex; align-items: center; gap: 12px; margin-right: auto; min-width: 0; }
 .mark { width: 34px; height: 34px; flex: none; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--lane-2), var(--lane-1)); box-shadow: 0 1px 2px rgb(0 0 0 / .12), inset 0 1px 0 rgb(255 255 255 / .18); }
 .mark svg { width: 20px; height: 20px; }
@@ -275,79 +278,88 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
 .tag.pt { background: var(--warn-soft); color: var(--warn); }
 .item .s { font-size: 12.5px; white-space: nowrap; padding-top: 2px; }
 @media (max-width: 600px) { .item { grid-template-columns: 1fr; } .item .s { white-space: normal; } }
-/* PK page: one board - every row on the same day axis, with the same two number columns */
-.pkb { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0 20px 4px; }
-.pkb-h, .pkr { display: grid; grid-template-columns: 230px minmax(0, 1.3fr) minmax(0, .9fr) minmax(0, .9fr); gap: 4px 22px; }
-.pkb-h { padding: 14px 0 8px; font-size: 11.5px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line-2); align-items: end; position: sticky; top: 64px; background: var(--surface); z-index: 2; }
-.pkb-h .ko { font-weight: 500; font-size: 11px; }
-.axis { position: relative; height: 16px; margin-top: 4px; }
-.axis b { position: absolute; bottom: 0; transform: translateX(-50%); font: 500 11px var(--mono); color: var(--muted); }
-.axis b:first-child { transform: none; }
-.axis b.tg { color: var(--crit); font-weight: 600; }
-.pkg { padding: 16px 0 2px; font-size: 12px; font-weight: 650; color: var(--ink); display: flex; align-items: center; gap: 10px; }
-.pkg::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
-.pkg .ko-inline { font-weight: 500; }
-.pkr { padding: 10px 0; align-items: start; }
-.pkr + .pkr { border-top: 1px dashed var(--line); }
-.pkr .nm { font-weight: 600; font-size: 14px; line-height: 1.3; }
-.pkr .nm .ko { font-weight: 500; font-size: 12.5px; }
-:root[data-lang="ko"] .pkr .nm .ko { font-size: inherit; font-weight: inherit; }
-.pkr.reta .nm { color: var(--accent-ink); }
-.pkr .who { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.pkr .who .ko-inline { color: var(--muted); }
-.trk { position: relative; height: 18px; margin-top: 2px; background: repeating-linear-gradient(to right, var(--line) 0 1px, transparent 1px calc(100% / var(--gn, 9))); }
-.trk::after { content: ""; position: absolute; top: -6px; bottom: -6px; left: var(--tg); border-left: 1.5px solid var(--crit); }
-.trk .bb { position: absolute; top: 3px; height: 12px; left: 0; border-radius: 0 4px 4px 0; background: var(--k); }
-.trk .bb.open { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); border-radius: 0; }
-.trk .bb.hid { background: none; border: 1.5px dashed var(--lane-2); border-left: 0; }
-.bt { font-size: 12px; color: var(--ink-2); margin-top: 5px; line-height: 1.35; }
-.bt .ko-inline { color: var(--muted); }
-.num { font-size: 13px; line-height: 1.45; min-width: 0; }
-.num .ko { font-size: 12px; }
-.num.nil { color: var(--line-2); font-family: var(--mono); }
-.num .tl { display: none; }
-.pk-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; color: var(--muted); padding: 12px 0 10px; border-top: 1px solid var(--line); margin-top: 6px; }
-.pk-key i { display: inline-block; width: 18px; height: 9px; border-radius: 0 3px 3px 0; background: var(--k); margin-right: 6px; vertical-align: middle; }
-.pk-key i.hid { background: none; border: 1.5px dashed var(--lane-2); border-left: 0; }
-.pk-key i.open { border-radius: 0; -webkit-mask-image: linear-gradient(to right, #000 30%, transparent); mask-image: linear-gradient(to right, #000 30%, transparent); }
-.pk-key i.tg { width: 0; height: 13px; border-left: 1.5px solid var(--crit); border-radius: 0; }
-.pk-note { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
-.pk-judge { font-size: 13.5px; color: var(--ink-2); margin: 0 0 12px; padding: 10px 14px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
-.pk-judge a, .pk-note a { white-space: nowrap; }
-.kind { font: 500 10.5px var(--mono); padding: 1px 5px; border-radius: 4px; white-space: nowrap; display: inline-block; margin-top: 3px; }
+/* PK page: an answer line, then (1) how the dose comes out by day and (2) how that compares with the weekly product */
+.pk-ans { font-size: 17px; line-height: 1.55; margin: 12px 0 0; color: var(--ink); }
+.pk-ans .ko { font-size: 15px; margin-top: 4px; }
+:root[data-lang="ko"] .pk-ans .ko { font-size: inherit; }
+.kind { font: 500 10.5px var(--mono); padding: 1px 5px; border-radius: 4px; white-space: nowrap; display: inline-block; margin-left: 6px; vertical-align: 1px; }
 .kind.figure { background: var(--accent-soft); color: var(--accent-ink); }
 .kind.simulated { background: var(--warn-soft); color: var(--warn); }
-.pkr .tag2 { display: inline-block; font-size: 11px; font-weight: 600; padding: 0 7px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-2); margin-top: 4px; }
-@media (max-width: 760px) {
-  .pkb { padding: 0 16px 4px; }
-  .pkb-h, .pkr { grid-template-columns: minmax(0, 1fr); }
-  .pkb-h > :not(.axis-c) { display: none; }
-  .pkb-h { top: 153px; }
-  .num .tl { display: inline; font-size: 11px; font-weight: 600; color: var(--muted); margin-right: 6px; text-transform: uppercase; letter-spacing: .04em; }
-  .num.nil { display: none; }
+.dt-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.dt { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 660px; }
+.dt th { font-size: 11.5px; font-weight: 600; color: var(--muted); text-align: right; padding: 12px 12px 8px; border-bottom: 1px solid var(--line-2); white-space: nowrap; vertical-align: bottom; }
+.dt th small { display: block; font-weight: 500; font-size: 10.5px; }
+.dt th.tg { color: var(--crit); }
+.dt td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dt tr:last-child td { border-bottom: 0; }
+.dt th:first-child, .dt td:first-child { text-align: left; position: sticky; left: 0; background: var(--surface); z-index: 1; }
+.dt td:first-child { white-space: normal; min-width: 210px; max-width: 300px; }
+.dt .nm { font-weight: 600; font-size: 13.5px; }
+.dt .sb { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+.dt .v { display: inline-block; min-width: 52px; padding: 3px 8px; border-radius: 6px; background: color-mix(in srgb, var(--accent) var(--a), transparent); }
+.dt td.tg .v { font-weight: 700; color: var(--ink); }
+.dt td.tg { box-shadow: inset 1.5px 0 0 color-mix(in srgb, var(--crit) 35%, transparent), inset -1.5px 0 0 color-mix(in srgb, var(--crit) 35%, transparent); }
+.dt .nil { color: var(--line-2); }
+.dt th.mt { border-left: 1px solid var(--line); }
+.dt td.mt { border-left: 1px solid var(--line); font-family: var(--mono); font-size: 12.5px; }
+.dt td.mt small { display: block; font-family: var(--sans); font-size: 11px; color: var(--muted); }
+.dt td.mt .kind { margin-left: 0; }
+.dt tr.guide td { background: var(--bg); color: var(--ink-2); }
+.dt tr.guide td:first-child { background: var(--bg); }
+.dt tr.guide .v { background: none; box-shadow: inset 0 0 0 1px var(--line-2); border-radius: 6px; font-style: italic; }
+.dt tr.muted td, .dt tr.muted .nm { color: var(--muted); font-weight: 500; }
+.dt tr.muted .v { background: none; }
+.dt .ko-inline, .cmp .ko-inline, .cmp .ko { margin-left: 0; }
+:root:not([data-lang="ko"]) .dt .ko-inline, :root:not([data-lang="ko"]) .cmp .ko-inline, :root:not([data-lang="ko"]) .cmp .ko { display: none; }
+.pkc { background: var(--surface); border: 1px solid var(--line); border-bottom: 0; border-radius: 10px 10px 0 0; padding: 14px 12px 4px; }
+.pkc + .dt-wrap { border-radius: 0 0 10px 10px; }
+.pkc svg { display: block; width: 100%; height: auto; overflow: visible; }
+.pkc .g { stroke: var(--line); stroke-width: 1; }
+.pkc .ax { stroke: var(--line-2); stroke-width: 1; }
+.pkc text { fill: var(--muted); font: 11px var(--mono); }
+.pkc text.tg { fill: var(--crit); font-weight: 600; }
+.pkc .tgl { stroke: var(--crit); stroke-width: 1.5; }
+.pkc .guide { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 4; fill: none; }
+.pkc .ln { fill: none; stroke: var(--c); stroke-width: 2.25; stroke-linejoin: round; stroke-linecap: round; transition: opacity .15s; }
+.pkc .ln.mute { stroke: var(--muted); stroke-width: 1.5; }
+.pkc .band { fill: var(--muted); opacity: .14; transition: opacity .15s; }
+.pkc .pt { fill: var(--c); stroke: var(--surface); stroke-width: 1.5; }
+.pkc .hit { fill: none; stroke: transparent; stroke-width: 12; pointer-events: stroke; cursor: pointer; }
+.pkc svg.focus [data-row]:not(.on) { opacity: .15; }
+.dt .sw { display: inline-block; width: 14px; height: 3px; border-radius: 2px; background: var(--c); vertical-align: middle; margin-right: 8px; }
+.dt .sw.mute { background: var(--muted); height: 2px; }
+.dt .sw.band { height: 8px; background: color-mix(in srgb, var(--muted) 30%, transparent); }
+.dt .sw.guide { background: none; border-top: 2px dashed var(--muted); height: 0; }
+.dt tbody tr[data-row] { cursor: default; }
+.dt tbody tr.on td { background: color-mix(in srgb, var(--accent) 6%, var(--surface)); }
+.dt tbody tr.on td:first-child { background: color-mix(in srgb, var(--accent) 6%, var(--surface)); }
+.pk-none { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; }
+.cmp { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.cmp-h, .cmp-r { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 4px 22px; padding: 11px 18px; }
+.cmp-h { font-size: 11.5px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line-2); padding-bottom: 8px; }
+.cmp-r + .cmp-r { border-top: 1px solid var(--line); }
+.cmp-r.target { background: var(--accent-soft); }
+.cmp-g { padding: 14px 18px 4px; font-size: 12px; font-weight: 650; color: var(--ink); border-top: 1px solid var(--line); }
+.cmp-g .ko-inline { font-weight: 500; }
+.cmp .nm { font-weight: 600; font-size: 14px; line-height: 1.3; }
+.cmp .sb { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.cmp .val { font-size: 13px; line-height: 1.45; min-width: 0; }
+.cmp .val.nil { color: var(--line-2); font-family: var(--mono); }
+.cmp .tl { display: none; }
+.pk-note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; }
+.pk-note a, .section-h p a { white-space: nowrap; }
+@media (max-width: 620px) {
+  .cmp-h { display: none; }
+  .cmp-r { grid-template-columns: minmax(0, 1fr); padding: 12px 16px; }
+  .cmp .tl { display: inline; font-size: 11px; font-weight: 600; color: var(--muted); margin-right: 6px; text-transform: uppercase; letter-spacing: .04em; }
+  .cmp .val.nil { display: none; }
+  .dt { min-width: 0; font-size: 13px; }
+  .dt .opt { display: none; }
+  .dt th, .dt td { padding-left: 6px; padding-right: 6px; }
+  .dt td:first-child { min-width: 0; max-width: none; width: 38%; }
+  .dt .v { min-width: 0; padding: 3px 5px; }
+  .dt .sb .ko-inline + .ko-inline { display: none; }
 }
-.cvbox { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; display: grid; gap: 8px; }
-.cvbox .ch { max-width: 720px; }
-.cvbox .meta { font-size: 12.5px; color: var(--muted); }
-.ch { width: 100%; height: auto; display: block; overflow: visible; }
-.ch .g { stroke: var(--line); stroke-width: 1; }
-.ch .ax { stroke: var(--line-2); stroke-width: 1; }
-.ch text { fill: var(--muted); font: 11px var(--mono); }
-.ch .tgl { stroke: var(--crit); stroke-width: 1.5; }
-.ch .guide { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 4; }
-.ch text.tgt { fill: var(--crit); }
-.ch .ln { stroke: var(--lane-2); stroke-width: 2; fill: none; stroke-linejoin: round; }
-.ch .ln2 { stroke: var(--k); stroke-width: 2; fill: none; stroke-linejoin: round; }
-.ch .pt2 { fill: var(--k); stroke: var(--surface); stroke-width: 2; pointer-events: none; }
-.ch text.lbl2 { fill: var(--ink); font: 600 12px var(--sans); }
-.cvl { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); }
-.cvl i { display: inline-block; width: 16px; height: 3px; border-radius: 2px; background: var(--k); vertical-align: middle; margin-right: 6px; }
-.cvl b { color: var(--ink); font-weight: 600; }
-.ch .eb { stroke: var(--lane-2); stroke-width: 1.5; opacity: .45; }
-.ch .pt { fill: var(--lane-2); stroke: var(--surface); stroke-width: 2; }
-.ch .hit { fill: transparent; }
-.ch .hit:hover + .pt { fill: var(--lane-1); }
-.tip { position: fixed; z-index: 20; pointer-events: none; background: var(--ink); color: var(--surface); font: 12px/1.4 var(--sans); padding: 6px 9px; border-radius: 6px; white-space: nowrap; transform: translate(-50%, calc(-100% - 10px)); }
 .foot { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-block: 18px 28px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 </style>
@@ -381,7 +393,6 @@ td .sub { display: block; color: var(--muted); font-size: 12px; font-family: var
   <section id="p-news" class="stack" hidden></section>
 </main>
 <footer class="wrap foot" id="foot"></footer>
-<div class="tip" id="tip" hidden></div>
 
 <script>window.DRUGS = /*DATA*/null;</script>
 <script>
@@ -625,88 +636,117 @@ function renderTimeline() {
 }
 
 // ═════════ PAGE 4 — PK DATA ═════════
-// one board: every programme and benchmark on the same day axis, with the same two number columns beside it
-const KIND = { figure: ["Read from chart", "차트 판독"], simulated: ["Simulation", "시뮬레이션"] };
-const kindTag = (k) => (KIND[k] ? ` <span class="kind ${k}">${Ti(KIND[k][0], KIND[k][1])}</span>` : "");
-const EV = { human: "--lane-1", animal: "--lane-3", hidden: "--lane-3", none: "--lane-4" };
+// an answer line, then (1) how the dose comes out by day and (2) how that compares with the weekly product
+const KIND = { figure: ["Read from chart", "차트 판독"], simulated: ["Simulation", "시뮬레이션"], calc: ["Calculated", "계산값"] };
+const kindTag = (k) => (KIND[k] ? `<span class="kind ${k}">${Ti(KIND[k][0], KIND[k][1])}</span>` : "");
 const srcLinks = (src) => { const l = [].concat(src);
   return l.length === 1 ? `<a href="${esc(l[0].url)}" target="_blank" rel="noopener" title="${esc(l[0].label)}">${Ti("Source", "출처")} ↗</a>`
     : `${Ti("Sources", "출처")} ${l.map((x, i) => `<a href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.label)}">${i + 1} ↗</a>`).join(" ")}`; };
 
-// curve shapes on one axis: each product as % of its own peak (doses differ), with real ng/mL in the tooltip
-function shapeSvg(curves, P, w) {
-  const target = P.target, cum = P.chart.kind === "cumulative";
-  // drawn at the box width so text stays at its real size on a phone
-  const W = Math.round(Math.min(680, Math.max(300, w))), narrow = W < 520, H = narrow ? 230 : 260, l = 40, r = narrow || cum ? 12 : 120, t = 16, b = 24, xmax = P.axis, step = (P.tick || 7) * (narrow ? 2 : 1);
-  const x = (d) => l + (W - l - r) * d / xmax, y = (v) => t + (H - t - b) * (1 - v / 100);
-  const lines = curves.map((cv) => {
-    const pk = cum ? 100 : Math.max(...cv.pts.map((q) => q[1]));
-    const pts = cv.pts.map(([d, m, se]) => [d, m / pk * 100, m, se]);
-    const last = pts[pts.length - 1];
-    return `<g style="--k:var(${cv.col})">
-      <path class="ln2" d="${pts.map(([d, v], i) => `${i ? "L" : "M"}${x(d).toFixed(1)},${y(v).toFixed(1)}`).join("")}"/>
-      ${pts.map(([d, v, m, se]) => `<circle class="hit" cx="${x(d)}" cy="${y(v)}" r="10" data-tip="${esc(cum ? `${cv.name.en} · day ${+d.toFixed(2)}: ${m}% of dose absorbed` : `${cv.name.en} · day ${+d.toFixed(2)}: ${m} ng/mL${se ? ` ± ${se} SE` : ""} (${Math.round(v)}% of peak)`)}"/><circle class="pt2" cx="${x(d)}" cy="${y(v)}" r="3.5"/>`).join("")}
-      ${cum ? "" : `<text class="lbl2" ${!narrow ? `x="${x(last[0]) + 8}" y="${y(last[1]) + 4}"` : last[0] < 40 ? `x="${x(last[0]) + 6}" y="${y(last[1]) + 4}"` : `x="${x(last[0])}" y="${y(last[1]) + 20}" text-anchor="end"`}>${esc(cv.name.en)}</text>`}</g>`;
+// the table's own measure over time, on one axis; series keep their table row index so row and line can light up together
+function pkChart(X, w) {
+  const narrow = w < 560, W = Math.round(Math.max(300, w)), H = narrow ? 200 : 230, l = 38, r = 10, t = 24, b = 22;
+  const step = X.tick * (narrow ? 2 : 1), x = (dd) => l + (W - l - r) * dd / X.axis, y = (v) => t + (H - t - b) * (1 - v / 100);
+  const path = (pts) => pts.map(([dd, v], i) => `${i ? "L" : "M"}${x(dd).toFixed(1)},${y(v).toFixed(1)}`).join("");
+  const ticks = []; for (let dd = 0; dd < X.axis; dd += step) ticks.push(dd);
+  const series = X.rows.map((row, i) => {
+    if (row.band) {
+      const up = row.band.map(([dd, , hi]) => [dd, hi]), lo = row.band.map(([dd, l0]) => [dd, l0]).reverse();
+      return `<g data-row="${i}"><path class="band" d="${path(up)}${path(lo).replace("M", "L")}Z"/><path class="hit" d="${path(up)}"/></g>`;
+    }
+    const c = row.col ? `--c:var(--s${row.col})` : "";
+    return `<g data-row="${i}" style="${c}"><path class="ln${row.col ? "" : " mute"}" d="${path(row.pts)}"/>${row.col ? row.pts.map(([dd, v]) => `<circle class="pt" cx="${x(dd).toFixed(1)}" cy="${y(v).toFixed(1)}" r="2.6"/>`).join("") : ""}<path class="hit" d="${path(row.pts)}"/></g>`;
   }).join("");
-  return `<svg class="ch" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(P.chart.title.en)}">
-    ${[0, 25, 50, 75, 100].map((v) => `<line class="g" x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}"/><text x="${l - 6}" y="${y(v) + 4}" text-anchor="end">${v}%</text>`).join("")}
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`${X.title.en}: ${X.yLabel.en} by day`)}">
+    ${[0, 50, 100].map((v) => `<line class="g" x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}"/><text x="${l - 6}" y="${y(v) + 4}" text-anchor="end">${v}%</text>`).join("")}
     <line class="ax" x1="${l}" x2="${W - r}" y1="${y(0)}" y2="${y(0)}"/>
-    ${Array.from({ length: Math.floor((xmax - 1) / step) + 1 }, (_, i) => i * step).map((d) => `<text x="${x(d)}" y="${H - 6}" text-anchor="middle"${d === target ? ' class="tgt"' : ""}>${d}</text>`).join("")}
-    <line class="tgl" x1="${x(target)}" x2="${x(target)}" y1="${t}" y2="${y(0)}"/>
-    <text x="${l}" y="${t - 5}">${cum ? "% of dose absorbed" : "% of peak"}</text>
-    ${cum ? `<line class="guide" x1="${x(0)}" y1="${y(0)}" x2="${x(target)}" y2="${y(100)}"/>` : ""}<text x="${W - r}" y="${y(0) - 6}" text-anchor="end">day</text>
-    ${lines}
+    ${ticks.map((dd) => `<text x="${x(dd)}" y="${H - 5}" text-anchor="middle"${dd === X.target ? ' class="tg"' : ""}>${dd}</text>`).join("")}
+    ${ticks.includes(X.target) ? "" : `<text x="${x(X.target)}" y="${H - 5}" text-anchor="middle" class="tg">${X.target}</text>`}
+    <line class="tgl" x1="${x(X.target)}" x2="${x(X.target)}" y1="${t}" y2="${y(0)}"/>
+    <text x="${l - 30}" y="${t - 12}">${esc(X.yLabel.en)}</text><text x="${W - r}" y="${y(0) - 6}" text-anchor="end">day</text>
+    ${X.guide ? `<path class="guide" d="${path(X.guide.pts)}"/>` : ""}
+    ${series}
   </svg>`;
 }
-const tip = $("#tip");
-document.addEventListener("pointerover", (e) => {
-  const h = e.target.closest && e.target.closest("[data-tip]");
-  if (!h) { tip.hidden = true; return; }
-  const bx = h.getBoundingClientRect();
-  tip.textContent = h.dataset.tip; tip.hidden = false;
-  tip.style.left = `${bx.left + bx.width / 2}px`; tip.style.top = `${bx.top + bx.height / 2 - 4}px`;
-});
-addEventListener("scroll", () => { tip.hidden = true; }, { passive: true });
+// the chart is drawn at its box's real width (and redrawn when that changes), so its text stays at page size
+function drawPK(el, X) {
+  const box = $(".pkc", el);
+  if (el._ro) el._ro.disconnect();
+  const draw = () => {
+    const w = box.clientWidth - 24;
+    if (w < 200 || Math.abs(w - (box._w || 0)) < 8) return;
+    box._w = w; box.innerHTML = pkChart(X, w);
+  };
+  el._ro = new ResizeObserver(draw); el._ro.observe(box); draw();
+}
+// hovering a table row or a line lights up both; delegated, so redraws keep working
+function linkPK(el) {
+  if (el._linked) return;
+  el._linked = true;
+  const on = (i) => {
+    const svg = $(".pkc svg", el);
+    if (svg) svg.classList.toggle("focus", i != null);
+    el.querySelectorAll("[data-row]").forEach((n) => n.classList.toggle("on", n.dataset.row === i));
+  };
+  el.addEventListener("pointerover", (e) => { const n = e.target.closest && e.target.closest(".pkc [data-row], .dt tr[data-row]"); on(n ? n.dataset.row : null); });
+  el.addEventListener("pointerleave", () => on(null));
+}
 
 function renderPK() {
-  const el = $("#p-pk"), P = D.pk;
-  const pct = (d) => `${(d / P.axis * 100).toFixed(2)}%`;
-  const step = P.tick || 7, ticks = [];
-  for (let dd = 0; dd < P.axis; dd += step) ticks.push(dd);
-  const num = (v, en, ko, k) => (v ? `<div class="num"><span class="tl">${Ti(en, ko)}</span>${T(v)}${kindTag(k)}</div>` : `<div class="num nil">—</div>`);
-  const row = (r) => `<div class="pkr${r.group === P.groups[0].id ? " reta" : ""}" style="--k:var(${EV[r.ev]});--tg:${pct(P.target)};--gn:${P.axis / 7}">
-      <div><div class="nm">${T(r.name)}</div><div class="who">${Ti(r.who.en, r.who.ko)} · ${srcLinks(r.src)}</div>${r.tag ? `<span class="tag2">${Ti(r.tag.en, r.tag.ko)}</span>` : ""}</div>
-      <div><div class="trk">${r.days ? `<span class="bb${r.open ? " open" : ""}${r.ev === "hidden" ? " hid" : ""}" style="width:${pct(r.days)}"></span>` : ""}</div>
-        <div class="bt">${Ti(r.bar.en, r.bar.ko)}</div></div>
-      ${num(r.exp, "Exposure", "노출량", (r.kind || {}).exp)}${num(r.peak, "Peak", "최고농도", (r.kind || {}).peak)}
-    </div>`;
+  const el = $("#p-pk"), P = D.pk, X = P.table;
+  // one decimal below 10% (burst values), whole numbers above; a [lo, hi] pair is a range
+  const fmt = (v) => (Array.isArray(v) ? `${Math.round(v[0])}–${Math.round(v[1])}%` : `${v < 10 && v % 1 ? v.toFixed(1) : Math.round(v)}%`);
+  const mid = (v) => (Array.isArray(v) ? (v[0] + v[1]) / 2 : v);
+  const keep = (day) => day === 1 || day === 7 || day === X.target;
+  const cls = (day) => (day === X.target ? ' class="tg"' : keep(day) ? "" : ' class="opt"');
+  const cell = (v, day, plain) => {
+    const tg = cls(day);
+    return v == null ? `<td${tg}><span class="nil">–</span></td>`
+      : `<td${tg}><span class="v" style="--a:${plain ? 0 : Math.round(mid(v) * 0.22)}%">${fmt(v)}</span></td>`;
+  };
+  // Cmax / AUC: the number alone in the cell, its unit in the header; a time note or a "calculated" tag when there is one
+  const metric = (r, m) => {
+    const v = r && r[m.key];
+    if (v == null) return `<td class="opt mt"><span class="nil">–</span></td>`;
+    const at = r[`${m.key}At`], k = r[`${m.key}Kind`];
+    return `<td class="opt mt">${Math.round(v).toLocaleString("en-US")}${at ? `<small>${Ti(at.en, at.ko)}</small>` : ""}${k ? `<small>${kindTag(k)}</small>` : ""}</td>`;
+  };
+  const opt = (v, c = "") => (v ? `<td${c}>${Ti(v.en, v.ko)}</td>` : `<td${c}><span class="nil">–</span></td>`);
+  const sw = (r, guide) => `<span class="sw${guide ? " guide" : r.band ? " band" : r.col ? "" : " mute"}"${r.col ? ` style="--c:var(--s${r.col})"` : ""}></span>`;
+  const nameCell = (r, guide) => `<td>${sw(r, guide)}<span class="nm">${Ti(r.name.en, r.name.ko)}</span>${kindTag(r.kind)}${guide ? "" : `<span class="sb">${Ti(r.sub.en, r.sub.ko)} · ${srcLinks(r.src)}</span>`}</td>`;
+  const row = (r, guide, i) => `<tr class="${guide ? "guide" : r.muted ? "muted" : ""}"${guide ? "" : ` data-row="${i}"`}>${nameCell(r, guide)}${X.days.map((dd, i) => cell(r.vals[i], dd, guide || r.muted)).join("")}
+    ${X.endLabel ? opt(r.end) : ""}${(X.metrics || []).map((m) => metric(guide ? null : r, m)).join("")}</tr>`;
+  const head = `<tr><th>${Ti("Formulation", "제형")}</th>${X.days.map((dd) => `<th${cls(dd)}>${Ti(`Day ${dd}`, `${dd}일`)}${dd === 1 ? `<small>${Ti("burst", "초기 방출")}</small>` : dd === X.target ? `<small>${Ti("monthly target", "월 1회 목표")}</small>` : ""}</th>`).join("")}
+    ${X.endLabel ? `<th>${Ti(X.endLabel.en, X.endLabel.ko)}</th>` : ""}${(X.metrics || []).map((m) => `<th class="opt mt">${Ti(m.label.en, m.label.ko)}<small>${esc(m.unit)}</small></th>`).join("")}</tr>`;
+  const val = (v, en, ko, k) => (v ? `<div class="val"><span class="tl">${Ti(en, ko)}</span>${T(v)}${kindTag(k)}</div>` : `<div class="val nil">–</div>`);
+  const cmp = (r) => `<div class="cmp-r${r.target ? " target" : ""}"><div><div class="nm">${Ti(r.name.en, r.name.ko)}</div><div class="sb">${Ti(r.sub.en, r.sub.ko)} · ${srcLinks(r.src)}</div></div>
+    ${val(r.exp, "Exposure", "노출량", (r.kind || {}).exp)}${val(r.peak, "Peak", "최고농도", (r.kind || {}).peak)}</div>`;
+  const groups = ["sib", "ref"].filter((g) => P.refs.some((r) => r.group === g));
   el.innerHTML = `
     <div>
       <div class="eyebrow">${Ti("Page 4 · PK data", "4페이지 · PK 데이터")}</div>
       <h1>${T(P.title)}</h1>
-      <p class="lede">${T(P.lede)}</p>
+      <p class="pk-ans">${T(P.answer)}</p>
     </div>
     <div>
-      <p class="pk-judge">${T(P.judge.text)} ${srcLinks(P.judge.src)}</p>
-      <div class="pkb">
-        <div class="pkb-h"><div>${T({ en: "Programme", ko: "과제" })}</div>
-          <div class="axis-c">${T({ en: "Days one dose keeps drug in the blood", ko: "1회 투여 후 혈중 유지 일수" })}
-            <div class="axis">${ticks.map((dd) => `<b style="left:${pct(dd)}"${dd === P.target ? ' class="tg"' : ""}>${dd}</b>`).join("")}</div></div>
-          <div>${T({ en: "Exposure vs reference", ko: "기준 대비 노출량" })}</div><div>${T({ en: "Peak and first day", ko: "최고농도·초기 방출" })}</div></div>
-        ${P.groups.map((g) => `<div class="pkg">${Ti(g.name.en, g.name.ko)}</div>${P.board.filter((r) => r.group === g.id).map(row).join("")}`).join("")}
-        <div class="pk-key"><span style="--k:var(--lane-1)"><i></i>${Ti("Human data", "사람 데이터")}</span><span style="--k:var(--lane-3)"><i></i>${Ti("Animal data", "동물 데이터")}</span>
-          <span style="--k:var(--lane-3)"><i class="open"></i>${Ti("Lasts longer than shown", "표시보다 더 유지")}</span><span><i class="hid"></i>${Ti("Sampled, result not public", "채혈했으나 결과 비공개")}</span>
-          <span><i class="tg"></i>${Ti("Monthly target, 28 days", "월 1회 목표, 28일")}</span></div>
+      <div class="section-h"><h2>${Ti(X.title.en, X.title.ko)}</h2><p>${T(X.sub)}</p></div>
+      <div class="pkc"></div>
+      <div class="dt-wrap"><table class="dt"><thead>${head}</thead><tbody>
+        ${X.guide ? row(X.guide, true) : ""}${X.rows.map((r, i) => row(r, false, i)).join("")}
+      </tbody></table></div>
+      <p class="pk-none">${T(X.none)}</p>
+    </div>
+    <div>
+      <div class="section-h"><h2>${Ti("Against the weekly product", "주 1회 제품과 비교")}</h2><p>${T(P.judge.text)} ${srcLinks(P.judge.src)}</p></div>
+      <div class="cmp">
+        <div class="cmp-h"><div>${Ti("Product", "제품")}</div><div>${Ti("Exposure vs reference", "기준 대비 노출량")}</div><div>${Ti("Peak", "최고농도")}</div></div>
+        ${P.refs.filter((r) => r.target).map(cmp).join("")}
+        ${groups.map((g) => `<div class="cmp-g">${Ti(P.refGroups[g].en, P.refGroups[g].ko)}</div>${P.refs.filter((r) => r.group === g).map(cmp).join("")}`).join("")}
       </div>
-      <p class="pk-note">${T({ en: "For approved and weekly products the bar is the dosing interval; for the rest it is how long blood levels were shown. A dash means no public number.", ko: "허가·주 1회 제품의 막대는 투여 간격, 나머지는 혈중농도가 확인된 기간입니다. 대시(—)는 공개된 수치가 없다는 뜻입니다." })}</p>
       <p class="pk-note">${T(P.caution.text)} ${srcLinks(P.caution.src)}</p>
-    </div>
-    <div>
-      <div class="section-h"><h2>${Ti(P.chart.title.en, P.chart.title.ko)}</h2>
-        <p>${T(P.chart.sub)}</p></div>
-      <div class="cvbox">${shapeSvg(P.curves, P, el.clientWidth - 42)}
-        <div class="cvl">${P.curves.map((cv) => `<div style="--k:var(${cv.col})"><i></i><b>${Ti(cv.name.en, cv.name.ko)}</b> · ${Ti(cv.dose.en, cv.dose.ko)} · ${Ti(cv.note.en, cv.note.ko)} ${srcLinks(cv.src)}</div>`).join("")}</div></div>
     </div>`;
+  drawPK(el, X);
+  linkPK(el);
 }
 
 // ═════════ PAGE 5 — NEWS ═════════

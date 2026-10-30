@@ -1078,288 +1078,234 @@
    "en": "Has anyone shown a month of retatrutide in the blood?",
    "ko": "레타트루타이드 혈중농도를 한 달 유지한 곳이 있는가?"
   },
-  "lede": {
-   "en": "Three have, all in rats only: Vivani's implant held levels for 56 days, and Camurus's lipid depot and G2GBio's microspheres for about a month. No one has published exposure or peak against weekly retatrutide. To match the 12 mg weekly dose, a monthly depot would need to average about 1,600 ng/mL in people.",
-   "ko": "세 곳, 모두 랫드 데이터뿐입니다. 비바니 임플란트는 56일, Camurus 지질 데포와 지투지바이오 미립구는 약 한 달간 혈중농도를 유지했습니다. 주 1회 레타트루타이드 대비 노출량이나 최고농도를 공개한 곳은 없습니다. 주 1회 12 mg과 같으려면 월 1회 데포는 사람에서 평균 약 1,600 ng/mL를 유지해야 합니다."
+  "answer": {
+   "en": "Three have, all in rats only. Vivani's implant still held 78% of its peak on day 28; Camurus's depot was down to 16%; G2GBio gave no numbers. To match 12 mg weekly in people, a monthly depot must average about 1,620 ng/mL.",
+   "ko": "세 곳, 모두 랫드 데이터뿐입니다. 비바니 임플란트는 28일에도 최고농도의 78%를 유지했고, Camurus 데포는 16%로 떨어졌으며, 지투지바이오는 수치를 공개하지 않았습니다. 사람에서 주 1회 12 mg과 같으려면 월 1회 데포는 평균 약 1,620 ng/mL를 유지해야 합니다."
   },
-  "target": 28,
-  "axis": 63,
-  "groups": [
-   {
-    "id": "reta",
-    "name": {
-     "en": "Long-acting retatrutide",
-     "ko": "장기지속형 레타트루타이드"
-    }
+  "table": {
+   "title": {
+    "en": "How long the level holds",
+    "ko": "혈중농도 유지 기간"
    },
-   {
-    "id": "sib",
-    "name": {
-     "en": "Same platforms, other drugs",
-     "ko": "같은 플랫폼, 다른 약물"
-    }
+   "sub": {
+    "en": "Plasma level on each day as % of the product's own peak, in rats. Doses differ (Camurus 1 mg/rat; Vivani not stated), so compare how the level holds, not its height.",
+    "ko": "랫드에서 날짜별 혈중농도를 제품 자체 최고농도 대비 %로 표시. 용량이 달라(Camurus 1 mg/마리, 비바니 미공개) 높이가 아니라 유지 양상을 비교하세요."
    },
-   {
-    "id": "ref",
-    "name": {
-     "en": "Weekly retatrutide and approved depots",
-     "ko": "주 1회 레타트루타이드와 허가 데포"
+   "days": [
+    1,
+    7,
+    14,
+    21,
+    28,
+    56
+   ],
+   "target": 28,
+   "endLabel": null,
+   "rows": [
+    {
+     "name": {
+      "en": "Vivani implant",
+      "ko": "비바니 임플란트"
+     },
+     "sub": {
+      "en": "Rats, n=12→9; dose not stated",
+      "ko": "랫드, n=12→9, 용량 미공개"
+     },
+     "vals": [
+      100,
+      59,
+      88,
+      93,
+      78,
+      72
+     ],
+     "kind": "figure",
+     "src": {
+      "label": "Vivani investor presentation (17 Aug 2026), slide 25",
+      "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
+     },
+     "pts": [
+      [
+       0,
+       1.9
+      ],
+      [
+       1,
+       100.0
+      ],
+      [
+       7,
+       59.3
+      ],
+      [
+       14,
+       87.6
+      ],
+      [
+       21,
+       93.5
+      ],
+      [
+       28,
+       78.3
+      ],
+      [
+       35,
+       81.2
+      ],
+      [
+       42,
+       68.2
+      ],
+      [
+       49,
+       69.1
+      ],
+      [
+       56,
+       72.0
+      ]
+     ],
+     "col": 1,
+     "cmax": 108,
+     "cmaxAt": {
+      "en": "day 1",
+      "ko": "1일"
+     },
+     "auc": 2450,
+     "aucKind": "calc"
+    },
+    {
+     "name": {
+      "en": "Camurus lipid depot",
+      "ko": "Camurus 지질 데포"
+     },
+     "sub": {
+      "en": "Rats, n=3, 1 mg/rat",
+      "ko": "랫드, n=3, 1 mg/마리"
+     },
+     "vals": [
+      98,
+      84,
+      52,
+      29,
+      16,
+      null
+     ],
+     "src": {
+      "label": "WO2026125238A1, Table 10 (Espacenet original document)",
+      "url": "https://worldwide.espacenet.com/patent/search?q=pn%3DWO2026125238A1"
+     },
+     "pts": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.042,
+       7.4
+      ],
+      [
+       0.125,
+       20.8
+      ],
+      [
+       0.25,
+       36.9
+      ],
+      [
+       1.0,
+       97.8
+      ],
+      [
+       2.0,
+       100.0
+      ],
+      [
+       3.0,
+       84.5
+      ],
+      [
+       7.0,
+       83.9
+      ],
+      [
+       14.0,
+       52.4
+      ],
+      [
+       21.0,
+       28.6
+      ],
+      [
+       28.0,
+       16.4
+      ]
+     ],
+     "col": 2,
+     "cmax": 1121,
+     "cmaxAt": {
+      "en": "48 h",
+      "ko": "48시간"
+     },
+     "auc": 16800,
+     "aucKind": "calc"
     }
-   }
-  ],
-  "board": [
-   {
-    "group": "reta",
-    "name": {
-     "en": "Vivani implant",
-     "ko": "비바니 임플란트"
-    },
-    "card": "vivani-reta",
-    "ev": "animal",
-    "who": {
-     "en": "Rats, n=12→9",
-     "ko": "랫드, n=12→9"
-    },
-    "days": 56,
-    "open": true,
-    "bar": {
-     "en": "56 days, study ongoing",
-     "ko": "56일, 시험 진행 중"
-    },
-    "exp": null,
-    "peak": {
-     "en": "108 ng/mL on day 1, then 64–101 ng/mL to day 56",
-     "ko": "1일 108 ng/mL, 이후 56일까지 64~101 ng/mL"
-    },
-    "src": {
-     "label": "Vivani investor presentation (17 Aug 2026), slide 25",
-     "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
-    },
-    "kind": {
-     "peak": "figure"
-    },
-    "tag": {
-     "en": "Implant, not injectable",
-     "ko": "임플란트, 주사제 아님"
-    }
+   ],
+   "none": {
+    "en": "No by-day data: G2GBio (more than 1 month in rats, no numbers) · Aul Bio (named in patent claims only).",
+    "ko": "날짜별 데이터 없음: 지투지바이오(랫드 1개월 이상, 수치 미공개) · 올바이오(특허 청구항에 명칭만)."
    },
-   {
-    "group": "reta",
-    "name": {
-     "en": "G2GBio microspheres",
-     "ko": "지투지바이오 미립구"
-    },
-    "card": "g2gbio-reta",
-    "ev": "animal",
-    "who": {
-     "en": "Rats, n not stated",
-     "ko": "랫드, n 미공개"
-    },
-    "days": 30,
-    "open": true,
-    "bar": {
-     "en": "More than 1 month",
-     "ko": "1개월 이상"
-    },
-    "exp": null,
-    "peak": {
-     "en": "Under 5% released in the first 24 h",
-     "ko": "첫 24시간 방출 5% 미만"
-    },
-    "src": {
-     "label": "ADA 2026 abstract 2815-LB",
-     "url": "https://doi.org/10.2337/db26-2815-lb"
-    }
+   "axis": 63,
+   "tick": 7,
+   "yLabel": {
+    "en": "% of peak",
+    "ko": "최고농도 대비(%)"
    },
-   {
-    "group": "reta",
-    "name": {
-     "en": "Camurus lipid depot",
-     "ko": "Camurus 지질 데포"
+   "metrics": [
+    {
+     "key": "cmax",
+     "label": {
+      "en": "Cmax",
+      "ko": "Cmax"
+     },
+     "unit": "ng/mL"
     },
-    "card": "camurus-reta",
-    "ev": "animal",
-    "who": {
-     "en": "Rats, n=3, 1 mg/rat",
-     "ko": "랫드, n=3, 1 mg/마리"
-    },
-    "days": 28,
-    "open": true,
-    "bar": {
-     "en": "28 days; 16% of peak still left on day 28",
-     "ko": "28일, 28일차에도 최고농도의 16% 유지"
-    },
-    "exp": null,
-    "peak": {
-     "en": "1,121 ng/mL at 48 h, near-flat to day 7, 184 ng/mL on day 28",
-     "ko": "48시간 1,121 ng/mL, 7일까지 거의 평탄, 28일 184 ng/mL"
-    },
-    "src": {
-     "label": "WO2026125238A1, Table 10 (Espacenet original document)",
-     "url": "https://worldwide.espacenet.com/patent/search?q=pn%3DWO2026125238A1"
+    {
+     "key": "auc",
+     "label": {
+      "en": "AUC 0–28 d",
+      "ko": "AUC 0~28일"
+     },
+     "unit": "ng·day/mL"
     }
+   ]
+  },
+  "judge": {
+   "text": {
+    "en": "How regulators judge a depot: total exposure (AUC, given as rBA) is the main bridge to the reference; the trough at steady state is the efficacy marker; peak, swing and first-day release are checked for safety.",
+    "ko": "규제기관의 데포 평가: 기준 제품과의 핵심 브릿지는 총 노출량(AUC, 상대 BA)이며, 정상상태 최저농도는 유효성 지표, 최고농도·변동폭·초기 방출은 안전성 확인 항목입니다."
    },
-   {
-    "group": "reta",
-    "name": {
-     "en": "Aul Bio microspheres",
-     "ko": "올바이오 미립구"
+   "src": [
+    {
+     "label": "EMA guideline on modified-release dosage forms (EMA/CPMP/EWP/280/96 Rev1)",
+     "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-pharmacokinetic-and-clinical-evaluation-modified-release-dosage-forms_en.pdf"
     },
-    "card": "aulbio-reta",
-    "ev": "none",
-    "who": {
-     "en": "No data",
-     "ko": "데이터 없음"
-    },
-    "days": null,
-    "open": false,
-    "bar": {
-     "en": "Named in patent claims only",
-     "ko": "특허 청구항에 명칭만 기재"
-    },
-    "exp": null,
-    "peak": null,
-    "src": {
-     "label": "EP4721726A1",
-     "url": "https://patents.google.com/patent/EP4721726A1/en"
-    }
-   },
-   {
-    "group": "sib",
-    "name": {
-     "en": "Camurus CAM2056 · semaglutide",
-     "ko": "Camurus CAM2056 · 세마글루타이드"
-    },
-    "ev": "human",
-    "who": {
-     "en": "People, n=80",
-     "ko": "사람, n=80"
-    },
-    "days": 28,
-    "open": false,
-    "bar": {
-     "en": "Dosed monthly",
-     "ko": "월 1회 투여"
-    },
-    "exp": null,
-    "peak": {
-     "en": "Cmax similar to weekly Wegovy given at 4× its monthly dose",
-     "ko": "주 1회 위고비 월 용량의 4배 투여 시와 유사한 Cmax"
-    },
-    "src": {
-     "label": "Camurus release (10 Nov 2025)",
-     "url": "https://www.camurus.com/media/press-releases/2025/camurus-reports-positive-topline-results-for-cam2056-semaglutide-monthly-depot/"
-    }
-   },
-   {
-    "group": "sib",
-    "name": {
-     "en": "Camurus Oczyesa · octreotide",
-     "ko": "Camurus Oczyesa · 옥트레오타이드"
-    },
-    "ev": "human",
-    "who": {
-     "en": "People, approved (EU)",
-     "ko": "사람, EU 허가"
-    },
-    "days": 28,
-    "open": false,
-    "bar": {
-     "en": "Dosed monthly",
-     "ko": "월 1회 투여"
-    },
-    "exp": {
-     "en": "92–98% of the daily injection (4–5× the PLGA monthly)",
-     "ko": "일반 주사의 92~98% (PLGA 월 1회 제형의 4~5배)"
-    },
-    "peak": {
-     "en": "Peak/trough 12.7 vs 13.6 for the daily injection",
-     "ko": "최고/최저 비 12.7, 일반 주사 13.6"
-    },
-    "src": {
+    {
      "label": "EMA EPAR, Oczyesa (2025)",
      "url": "https://www.ema.europa.eu/en/documents/assessment-report/oczyesa-epar-public-assessment-report_en.pdf"
     }
-   },
+   ]
+  },
+  "refs": [
    {
-    "group": "sib",
-    "name": {
-     "en": "Aul Bio AUL009 · semaglutide",
-     "ko": "올바이오 AUL009 · 세마글루타이드"
-    },
-    "ev": "human",
-    "who": {
-     "en": "People, n=8",
-     "ko": "사람, n=8"
-    },
-    "days": 30,
-    "open": true,
-    "bar": {
-     "en": "30 days or more",
-     "ko": "30일 이상"
-    },
-    "exp": {
-     "en": "Patent: +95% vs own microspheres without additive (rats)",
-     "ko": "특허: 첨가제 없는 자사 미립구 대비 +95% (랫드)"
-    },
-    "peak": null,
-    "src": {
-     "label": "Dailypharm (11 Jun 2026)",
-     "url": "https://m.dailypharm.com/user/news/339336"
-    }
-   },
-   {
-    "group": "sib",
-    "name": {
-     "en": "G2GBio GB-7001 · semaglutide",
-     "ko": "지투지바이오 GB-7001 · 세마글루타이드"
-    },
-    "ev": "animal",
-    "who": {
-     "en": "Rats, minipigs",
-     "ko": "랫드, 미니피그"
-    },
-    "days": 28,
-    "open": false,
-    "bar": {
-     "en": "28 days",
-     "ko": "28일"
-    },
-    "exp": null,
-    "peak": {
-     "en": "Peak-to-trough 1.3 vs 1.8 for Ozempic",
-     "ko": "최고/최저 비 1.3, 오젬픽 1.8"
-    },
-    "src": [
-     {
-      "label": "ADA 2023 abstract 78-LB (28 days, rats and minipigs)",
-      "url": "https://doi.org/10.2337/db23-78-lb"
-     },
-     {
-      "label": "Money Today (21 Apr 2026), simulation",
-      "url": "https://www.mt.co.kr/article/2026042110551044753"
-     }
-    ],
-    "kind": {
-     "peak": "simulated"
-    }
-   },
-   {
-    "group": "ref",
     "name": {
      "en": "Weekly retatrutide (Lilly)",
      "ko": "주 1회 레타트루타이드(릴리)"
     },
-    "ev": "human",
-    "who": {
+    "sub": {
      "en": "People with T2D, 12 weeks",
      "ko": "제2형 당뇨 환자, 12주"
-    },
-    "days": 7,
-    "open": false,
-    "bar": {
-     "en": "Dosed weekly",
-     "ko": "주 1회 투여"
     },
     "exp": {
      "en": "12 mg weekly averages 1,620 ng/mL at steady state (the level a monthly depot must match)",
@@ -1378,24 +1324,109 @@
       "label": "ClinicalTrials.gov NCT04867785, posted population-PK results",
       "url": "https://clinicaltrials.gov/study/NCT04867785?tab=results"
      }
-    ]
+    ],
+    "target": true
    },
    {
-    "group": "ref",
+    "name": {
+     "en": "Camurus CAM2056 · semaglutide",
+     "ko": "Camurus CAM2056 · 세마글루타이드"
+    },
+    "sub": {
+     "en": "People, n=80",
+     "ko": "사람, n=80"
+    },
+    "exp": null,
+    "peak": {
+     "en": "Cmax similar to weekly Wegovy given at 4× its monthly dose",
+     "ko": "주 1회 위고비 월 용량의 4배 투여 시와 유사한 Cmax"
+    },
+    "src": {
+     "label": "Camurus release (10 Nov 2025)",
+     "url": "https://www.camurus.com/media/press-releases/2025/camurus-reports-positive-topline-results-for-cam2056-semaglutide-monthly-depot/"
+    },
+    "group": "sib"
+   },
+   {
+    "name": {
+     "en": "Camurus Oczyesa · octreotide",
+     "ko": "Camurus Oczyesa · 옥트레오타이드"
+    },
+    "sub": {
+     "en": "People, approved (EU)",
+     "ko": "사람, EU 허가"
+    },
+    "exp": {
+     "en": "92–98% of the daily injection (4–5× the PLGA monthly)",
+     "ko": "일반 주사의 92~98% (PLGA 월 1회 제형의 4~5배)"
+    },
+    "peak": {
+     "en": "Peak/trough 12.7 vs 13.6 for the daily injection",
+     "ko": "최고/최저 비 12.7, 일반 주사 13.6"
+    },
+    "src": {
+     "label": "EMA EPAR, Oczyesa (2025)",
+     "url": "https://www.ema.europa.eu/en/documents/assessment-report/oczyesa-epar-public-assessment-report_en.pdf"
+    },
+    "group": "sib"
+   },
+   {
+    "name": {
+     "en": "Aul Bio AUL009 · semaglutide",
+     "ko": "올바이오 AUL009 · 세마글루타이드"
+    },
+    "sub": {
+     "en": "People, n=8",
+     "ko": "사람, n=8"
+    },
+    "exp": {
+     "en": "Patent: +95% vs own microspheres without additive (rats)",
+     "ko": "특허: 첨가제 없는 자사 미립구 대비 +95% (랫드)"
+    },
+    "peak": null,
+    "src": {
+     "label": "Dailypharm (11 Jun 2026)",
+     "url": "https://m.dailypharm.com/user/news/339336"
+    },
+    "group": "sib"
+   },
+   {
+    "name": {
+     "en": "G2GBio GB-7001 · semaglutide",
+     "ko": "지투지바이오 GB-7001 · 세마글루타이드"
+    },
+    "sub": {
+     "en": "Rats, minipigs",
+     "ko": "랫드, 미니피그"
+    },
+    "exp": null,
+    "peak": {
+     "en": "Peak-to-trough 1.3 vs 1.8 for Ozempic",
+     "ko": "최고/최저 비 1.3, 오젬픽 1.8"
+    },
+    "src": [
+     {
+      "label": "ADA 2023 abstract 78-LB (28 days, rats and minipigs)",
+      "url": "https://doi.org/10.2337/db23-78-lb"
+     },
+     {
+      "label": "Money Today (21 Apr 2026), simulation",
+      "url": "https://www.mt.co.kr/article/2026042110551044753"
+     }
+    ],
+    "kind": {
+     "peak": "simulated"
+    },
+    "group": "sib"
+   },
+   {
     "name": {
      "en": "Bydureon · exenatide",
      "ko": "바이듀리온 · 엑세나타이드"
     },
-    "ev": "human",
-    "who": {
+    "sub": {
      "en": "People, approved",
      "ko": "사람, 허가"
-    },
-    "days": 7,
-    "open": false,
-    "bar": {
-     "en": "Dosed weekly (PLGA microspheres)",
-     "ko": "주 1회 투여(PLGA 미립구)"
     },
     "exp": {
      "en": "About 22–25% of twice-daily Byetta",
@@ -1408,24 +1439,17 @@
     "src": {
      "label": "FDA clinical pharmacology review, Bydureon",
      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2012/022200Orig1s000ClinPharmR.pdf"
-    }
+    },
+    "group": "ref"
    },
    {
-    "group": "ref",
     "name": {
      "en": "Sandostatin LAR · octreotide",
      "ko": "산도스타틴 LAR · 옥트레오타이드"
     },
-    "ev": "human",
-    "who": {
+    "sub": {
      "en": "People, approved",
      "ko": "사람, 허가"
-    },
-    "days": 28,
-    "open": false,
-    "bar": {
-     "en": "Dosed monthly (PLGA microspheres)",
-     "ko": "월 1회 투여(PLGA 미립구)"
     },
     "exp": {
      "en": "60–63% of the daily injection",
@@ -1438,25 +1462,10 @@
     "src": {
      "label": "US label, Sandostatin LAR",
      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/021008s049lbl.pdf"
-    }
+    },
+    "group": "ref"
    }
   ],
-  "judge": {
-   "text": {
-    "en": "How regulators judge a depot: total exposure (AUC, given as rBA) is the main bridge to the reference; the trough at steady state is the efficacy marker; peak, swing and first-day release are checked for safety.",
-    "ko": "규제기관의 데포 평가: 기준 제품과의 핵심 브릿지는 총 노출량(AUC, 상대 BA)이며, 정상상태 최저농도는 유효성 지표, 최고농도·변동폭·초기 방출은 안전성 확인 항목입니다."
-   },
-   "src": [
-    {
-     "label": "EMA guideline on modified-release dosage forms (EMA/CPMP/EWP/280/96 Rev1)",
-     "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-pharmacokinetic-and-clinical-evaluation-modified-release-dosage-forms_en.pdf"
-    },
-    {
-     "label": "EMA EPAR, Oczyesa (2025)",
-     "url": "https://www.ema.europa.eu/en/documents/assessment-report/oczyesa-epar-public-assessment-report_en.pdf"
-    }
-   ]
-  },
   "caution": {
    "text": {
     "en": "Read the rat rows with care: the same exenatide microsphere reached about 63% relative bioavailability in rats, 23% in monkeys and 22–25% in people.",
@@ -1467,167 +1476,16 @@
     "url": "https://www.ema.europa.eu/en/documents/assessment-report/bydureon-epar-public-assessment-report_en.pdf"
    }
   },
-  "curves": [
-   {
-    "name": {
-     "en": "Vivani implant",
-     "ko": "비바니 임플란트"
-    },
-    "dose": {
-     "en": "dose not stated",
-     "ko": "용량 미공개"
-    },
-    "col": "--lane-1",
-    "src": {
-     "label": "Vivani investor presentation (17 Aug 2026), slide 25",
-     "url": "https://d1io3yog0oux5.cloudfront.net/_04d7da8b17f6042a6d61c45bfed9a1b3/vivanimedical/db/2227/20903/pdf/VANI+Corp+Deck+Update+17Aug2026+Final.pdf"
-    },
-    "pts": [
-     [
-      0,
-      2,
-      0
-     ],
-     [
-      1,
-      107.6,
-      24.0
-     ],
-     [
-      7,
-      63.8,
-      9.0
-     ],
-     [
-      14,
-      94.3,
-      10.7
-     ],
-     [
-      21,
-      100.6,
-      10.7
-     ],
-     [
-      28,
-      84.3,
-      9.3
-     ],
-     [
-      35,
-      87.4,
-      6.6
-     ],
-     [
-      42,
-      73.4,
-      5.1
-     ],
-     [
-      49,
-      74.4,
-      4.8
-     ],
-     [
-      56,
-      77.5,
-      6.4
-     ]
-    ],
-    "note": {
-     "en": "Mean ± SE, normalised to a 250 g rat, read from the published chart",
-     "ko": "평균 ± SE, 250 g 랫드 보정, 공개 차트에서 판독"
-    }
+  "refGroups": {
+   "sib": {
+    "en": "Same companies, other drugs",
+    "ko": "같은 회사, 다른 약물"
    },
-   {
-    "name": {
-     "en": "Camurus lipid depot",
-     "ko": "Camurus 지질 데포"
-    },
-    "dose": {
-     "en": "1 mg/rat",
-     "ko": "1 mg/마리"
-    },
-    "col": "--lane-3",
-    "src": {
-     "label": "WO2026125238A1, Table 10 (Espacenet original document)",
-     "url": "https://worldwide.espacenet.com/patent/search?q=pn%3DWO2026125238A1"
-    },
-    "pts": [
-     [
-      0.0,
-      0,
-      0
-     ],
-     [
-      0.042,
-      83,
-      0
-     ],
-     [
-      0.125,
-      233,
-      0
-     ],
-     [
-      0.25,
-      414,
-      0
-     ],
-     [
-      1.0,
-      1096,
-      0
-     ],
-     [
-      2.0,
-      1121,
-      0
-     ],
-     [
-      3.0,
-      947,
-      0
-     ],
-     [
-      7.0,
-      940,
-      0
-     ],
-     [
-      14.0,
-      587,
-      0
-     ],
-     [
-      21.0,
-      321,
-      0
-     ],
-     [
-      28.0,
-      184,
-      0
-     ]
-    ],
-    "note": {
-     "en": "Mean of 3 rats, from the patent table",
-     "ko": "랫드 3마리 평균, 특허 표 수치"
-    }
+   "ref": {
+    "en": "Approved depots, for scale",
+    "ko": "허가 데포 참고치"
    }
-  ],
-  "chart": {
-   "kind": "peak",
-   "title": {
-    "en": "The two retatrutide depot curves in public",
-    "ko": "공개된 레타트루타이드 데포 곡선 2개"
-   },
-   "sub": {
-    "en": "Both in rats. Doses differ, so each line is shown as % of its own peak: compare the shape, not the height. Hover a point for the real ng/mL.",
-    "ko": "모두 랫드 데이터. 용량이 달라 각 곡선을 자체 최고농도 대비 %로 표시했습니다. 높이가 아닌 모양을 비교하세요. 점에 마우스를 올리면 실제 ng/mL가 보입니다."
-   }
-  },
-  "tick": 7
+  }
  },
  "meta": {
   "name": {

@@ -896,9 +896,726 @@
    "en": "Has anyone shown a month of CagriSema in the blood?",
    "ko": "카그리세마 혈중농도를 한 달 유지한 곳이 있는가?"
   },
-  "lede": {
-   "en": "One has, in rats only: G2GBio. Its microspheres held cagrilintide and semaglutide in plasma for over 28 days, and its patents show cagrilintide release lasting 35–84 days. No one has published exposure or peak against weekly CagriSema. To match 2.4 + 2.4 mg weekly, a monthly depot would need to average about 356 ng/mL cagrilintide and 370 ng/mL semaglutide in people.",
-   "ko": "한 곳, 랫드 데이터뿐입니다: 지투지바이오. 미립구가 카그릴린타이드와 세마글루타이드 혈중농도를 28일 이상 유지했고, 특허에서 카그릴린타이드 방출은 35~84일입니다. 주 1회 카그리세마 대비 노출량이나 최고농도를 공개한 곳은 없습니다. 2.4+2.4 mg 주 1회와 같으려면 월 1회 데포는 사람에서 평균 카그릴린타이드 약 356 ng/mL, 세마글루타이드 약 370 ng/mL를 유지해야 합니다."
+  "answer": {
+   "en": "Only G2GBio, in rats. Its best batch releases 94% of the dose by day 28. To match weekly dosing in people, a depot must average about 356 ng/mL cagrilintide and 370 ng/mL semaglutide.",
+   "ko": "지투지바이오 한 곳, 랫드 데이터뿐입니다. 가장 좋은 배치는 28일까지 투여량의 94%를 방출합니다. 사람에서 주 1회 투여와 같으려면 데포는 평균 카그릴린타이드 약 356 ng/mL, 세마글루타이드 약 370 ng/mL를 유지해야 합니다."
+  },
+  "table": {
+   "title": {
+    "en": "How fast G2GBio's microspheres release cagrilintide",
+    "ko": "지투지바이오 미립구의 카그릴린타이드 방출 속도"
+   },
+   "sub": {
+    "en": "Share of the dose absorbed by each day in rats, worked out from plasma levels. The guide row is an even release over 28 days.",
+    "ko": "랫드에서 혈중농도로 계산한 날짜별 누적 흡수율. 가이드 행은 28일 균등 방출입니다."
+   },
+   "days": [
+    1,
+    7,
+    14,
+    21,
+    28
+   ],
+   "target": 28,
+   "endLabel": {
+    "en": "100% by",
+    "ko": "100% 도달"
+   },
+   "guide": {
+    "name": {
+     "en": "Even monthly release",
+     "ko": "28일 균등 방출"
+    },
+    "vals": [
+     4,
+     25,
+     50,
+     75,
+     100
+    ],
+    "end": {
+     "en": "day 28",
+     "ko": "28일"
+    },
+    "pts": [
+     [
+      0,
+      0
+     ],
+     [
+      28,
+      100
+     ]
+    ]
+   },
+   "rows": [
+    {
+     "name": {
+      "en": "High-load particles",
+      "ko": "고함량 미립자"
+     },
+     "sub": {
+      "en": "Rats, 3.6 mg, 40–71% load; sister batches 91–98% by day 28",
+      "ko": "랫드, 3.6 mg, 함량 40~71%; 유사 배치 28일 91~98%"
+     },
+     "vals": [
+      4.8,
+      46.5,
+      69.4,
+      83.4,
+      94.2
+     ],
+     "end": {
+      "en": "day 35",
+      "ko": "35일"
+     },
+     "src": {
+      "label": "WO2026005556A1, Table 5",
+      "url": "https://patents.google.com/patent/WO2026005556A1/en"
+     },
+     "pts": [
+      [
+       0,
+       0
+      ],
+      [
+       0.04,
+       0
+      ],
+      [
+       0.25,
+       0.3
+      ],
+      [
+       1,
+       4.8
+      ],
+      [
+       4,
+       30.2
+      ],
+      [
+       7,
+       46.5
+      ],
+      [
+       10,
+       57.1
+      ],
+      [
+       14,
+       69.4
+      ],
+      [
+       17,
+       76.4
+      ],
+      [
+       21,
+       83.4
+      ],
+      [
+       28,
+       94.2
+      ],
+      [
+       35,
+       100
+      ]
+     ],
+     "col": 1,
+     "cmax": null,
+     "auc": null
+    },
+    {
+     "name": {
+      "en": "With semaglutide 15/15",
+      "ko": "세마글루타이드 동시 봉입 15/15"
+     },
+     "sub": {
+      "en": "Rats, 1.2 mg",
+      "ko": "랫드, 1.2 mg"
+     },
+     "vals": [
+      6.2,
+      38.5,
+      52.9,
+      66.2,
+      78.7
+     ],
+     "end": {
+      "en": "day 56",
+      "ko": "56일"
+     },
+     "src": {
+      "label": "WO2024248574A1, Tables 11–12",
+      "url": "https://patents.google.com/patent/WO2024248574A1/en"
+     },
+     "pts": [
+      [
+       0,
+       0
+      ],
+      [
+       0.25,
+       0.6
+      ],
+      [
+       1,
+       6.2
+      ],
+      [
+       4,
+       28.8
+      ],
+      [
+       7,
+       38.5
+      ],
+      [
+       10,
+       45.1
+      ],
+      [
+       14,
+       52.9
+      ],
+      [
+       17,
+       58.3
+      ],
+      [
+       21,
+       66.2
+      ],
+      [
+       28,
+       78.7
+      ],
+      [
+       35,
+       85.3
+      ],
+      [
+       42,
+       89.9
+      ],
+      [
+       49,
+       96.0
+      ],
+      [
+       56,
+       100
+      ]
+     ],
+     "col": 2,
+     "cmax": 407.23,
+     "auc": 5486.7
+    },
+    {
+     "name": {
+      "en": "With semaglutide 10/10",
+      "ko": "세마글루타이드 동시 봉입 10/10"
+     },
+     "sub": {
+      "en": "Rats, 3.6 mg",
+      "ko": "랫드, 3.6 mg"
+     },
+     "vals": [
+      0.8,
+      4.4,
+      12.4,
+      55.8,
+      79.8
+     ],
+     "end": {
+      "en": "day 77",
+      "ko": "77일"
+     },
+     "src": {
+      "label": "WO2024248574A1, Tables 11–12",
+      "url": "https://patents.google.com/patent/WO2024248574A1/en"
+     },
+     "pts": [
+      [
+       0,
+       0
+      ],
+      [
+       0.25,
+       0.1
+      ],
+      [
+       1,
+       0.8
+      ],
+      [
+       4,
+       3.3
+      ],
+      [
+       7,
+       4.4
+      ],
+      [
+       10,
+       6.1
+      ],
+      [
+       14,
+       12.4
+      ],
+      [
+       17,
+       27.4
+      ],
+      [
+       21,
+       55.8
+      ],
+      [
+       28,
+       79.8
+      ],
+      [
+       35,
+       83.5
+      ],
+      [
+       42,
+       88.6
+      ],
+      [
+       49,
+       93.4
+      ],
+      [
+       56,
+       97.0
+      ],
+      [
+       63,
+       99.2
+      ],
+      [
+       70,
+       99.9
+      ],
+      [
+       77,
+       100
+      ]
+     ],
+     "col": 3,
+     "cmax": 1512.8,
+     "auc": 4898.8
+    },
+    {
+     "name": {
+      "en": "Cagrilintide 25% load",
+      "ko": "카그릴린타이드 함량 25%"
+     },
+     "sub": {
+      "en": "Rats, 3.6 mg",
+      "ko": "랫드, 3.6 mg"
+     },
+     "vals": [
+      4.7,
+      37.3,
+      48.2,
+      56.5,
+      61.3
+     ],
+     "end": {
+      "en": "day 84",
+      "ko": "84일"
+     },
+     "src": {
+      "label": "WO2024248574A1, Tables 11–12",
+      "url": "https://patents.google.com/patent/WO2024248574A1/en"
+     },
+     "pts": [
+      [
+       0,
+       0
+      ],
+      [
+       0.25,
+       0.2
+      ],
+      [
+       1,
+       4.7
+      ],
+      [
+       4,
+       27.5
+      ],
+      [
+       7,
+       37.3
+      ],
+      [
+       10,
+       41.9
+      ],
+      [
+       14,
+       48.2
+      ],
+      [
+       17,
+       52.6
+      ],
+      [
+       21,
+       56.5
+      ],
+      [
+       28,
+       61.3
+      ],
+      [
+       35,
+       70.5
+      ],
+      [
+       42,
+       80.2
+      ],
+      [
+       49,
+       86.8
+      ],
+      [
+       56,
+       93.6
+      ],
+      [
+       63,
+       97.4
+      ],
+      [
+       70,
+       98.8
+      ],
+      [
+       77,
+       99.6
+      ],
+      [
+       84,
+       100
+      ]
+     ],
+     "col": 4,
+     "cmax": 690.1,
+     "auc": 1796.4
+    },
+    {
+     "name": {
+      "en": "Cagrilintide 15% load",
+      "ko": "카그릴린타이드 함량 15%"
+     },
+     "sub": {
+      "en": "Rats, 3.6 mg",
+      "ko": "랫드, 3.6 mg"
+     },
+     "vals": [
+      2.9,
+      18.1,
+      28.7,
+      37.4,
+      43.6
+     ],
+     "end": {
+      "en": "day 70",
+      "ko": "70일"
+     },
+     "src": {
+      "label": "WO2024248574A1, Tables 11–12",
+      "url": "https://patents.google.com/patent/WO2024248574A1/en"
+     },
+     "pts": [
+      [
+       0,
+       0
+      ],
+      [
+       0.25,
+       0.2
+      ],
+      [
+       1,
+       2.9
+      ],
+      [
+       4,
+       13.8
+      ],
+      [
+       7,
+       18.1
+      ],
+      [
+       10,
+       21.6
+      ],
+      [
+       14,
+       28.7
+      ],
+      [
+       17,
+       33.2
+      ],
+      [
+       21,
+       37.4
+      ],
+      [
+       28,
+       43.6
+      ],
+      [
+       35,
+       53.9
+      ],
+      [
+       42,
+       65.7
+      ],
+      [
+       49,
+       74.7
+      ],
+      [
+       56,
+       86.6
+      ],
+      [
+       63,
+       96.8
+      ],
+      [
+       70,
+       100
+      ]
+     ],
+     "col": 5,
+     "cmax": 41.7,
+     "auc": 208.6
+    },
+    {
+     "name": {
+      "en": "Without burst inhibitor",
+      "ko": "초기방출 억제제 없음"
+     },
+     "sub": {
+      "en": "Comparative examples, rats, 3.6 mg",
+      "ko": "비교예, 랫드, 3.6 mg"
+     },
+     "muted": true,
+     "vals": [
+      [
+       11.4,
+       19.6
+      ],
+      [
+       58.9,
+       78.6
+      ],
+      [
+       63.1,
+       82.7
+      ],
+      [
+       65.1,
+       87.6
+      ],
+      [
+       70.2,
+       91.8
+      ]
+     ],
+     "end": {
+      "en": "day 70–77",
+      "ko": "70~77일"
+     },
+     "src": {
+      "label": "WO2024248574A1, Tables 11–12",
+      "url": "https://patents.google.com/patent/WO2024248574A1/en"
+     },
+     "band": [
+      [
+       0,
+       0,
+       0
+      ],
+      [
+       0.25,
+       0.8,
+       2.2
+      ],
+      [
+       1,
+       11.4,
+       19.6
+      ],
+      [
+       4,
+       51.2,
+       71.1
+      ],
+      [
+       7,
+       58.9,
+       78.6
+      ],
+      [
+       10,
+       61.4,
+       80.8
+      ],
+      [
+       14,
+       63.1,
+       82.7
+      ],
+      [
+       17,
+       63.8,
+       84.5
+      ],
+      [
+       21,
+       65.1,
+       87.6
+      ],
+      [
+       28,
+       70.2,
+       91.8
+      ],
+      [
+       35,
+       82.1,
+       94.6
+      ],
+      [
+       42,
+       91.7,
+       96.2
+      ],
+      [
+       49,
+       94.2,
+       97.1
+      ],
+      [
+       56,
+       96.5,
+       98.1
+      ],
+      [
+       63,
+       98.9,
+       99.1
+      ],
+      [
+       70,
+       100,
+       99.7
+      ],
+      [
+       77,
+       100,
+       100
+      ]
+     ],
+     "cmax": null,
+     "auc": null
+    },
+    {
+     "name": {
+      "en": "Plain solution (no depot)",
+      "ko": "용액(데포 없음)"
+     },
+     "sub": {
+      "en": "Rats, 1.2 mg",
+      "ko": "랫드, 1.2 mg"
+     },
+     "muted": true,
+     "vals": [
+      35.2,
+      100,
+      null,
+      null,
+      null
+     ],
+     "end": {
+      "en": "day 7",
+      "ko": "7일"
+     },
+     "src": {
+      "label": "WO2024248574A1, Tables 11–12",
+      "url": "https://patents.google.com/patent/WO2024248574A1/en"
+     },
+     "pts": [
+      [
+       0,
+       0
+      ],
+      [
+       0.25,
+       4.5
+      ],
+      [
+       1,
+       35.2
+      ],
+      [
+       4,
+       91.1
+      ],
+      [
+       7,
+       100
+      ]
+     ],
+     "cmax": null,
+     "auc": null
+    }
+   ],
+   "none": {
+    "en": "No by-day data: G2GBio ADA 2026 abstract (both drugs held beyond 28 days, no numbers) · China Pharmaceutical University (24-hour lab release only) · i2o (claims only).",
+    "ko": "날짜별 데이터 없음: 지투지바이오 ADA 2026 초록(두 약물 28일 이상 유지, 수치 미공개) · 중국약과대학(24시간 체외 방출만) · i2o(청구항만)."
+   },
+   "axis": 91,
+   "tick": 14,
+   "yLabel": {
+    "en": "% of dose absorbed",
+    "ko": "누적 흡수율(%)"
+   },
+   "metrics": [
+    {
+     "key": "cmax",
+     "label": {
+      "en": "Cmax",
+      "ko": "Cmax"
+     },
+     "unit": "ng/mL"
+    },
+    {
+     "key": "auc",
+     "label": {
+      "en": "AUC ÷ dose",
+      "ko": "AUC/용량"
+     },
+     "unit": "ng·day/mL per mg"
+    }
+   ]
   },
   "judge": {
    "text": {
@@ -916,6 +1633,120 @@
     }
    ]
   },
+  "refs": [
+   {
+    "name": {
+     "en": "Weekly CagriSema (Novo)",
+     "ko": "주 1회 카그리세마(노보)"
+    },
+    "sub": {
+     "en": "People, n=12, 2.4 + 2.4 mg",
+     "ko": "사람, n=12, 2.4+2.4 mg"
+    },
+    "target": true,
+    "exp": {
+     "en": "Averages about 356 ng/mL cagrilintide and 370 ng/mL semaglutide at steady state",
+     "ko": "정상상태 평균 카그릴린타이드 약 356, 세마글루타이드 약 370 ng/mL"
+    },
+    "peak": {
+     "en": "Cmax 103 / 120 nmol/L, 24 / 18 h after the dose; half-life 184 / 158 h",
+     "ko": "Cmax 103 / 120 nmol/L, 투여 24 / 18시간 후; 반감기 184 / 158시간"
+    },
+    "src": {
+     "label": "Enebo et al., Lancet 2021 (appendix Table S2)",
+     "url": "https://doi.org/10.1016/S0140-6736(21)00845-X"
+    }
+   },
+   {
+    "name": {
+     "en": "Daily CagriSema (rats)",
+     "ko": "매일 투여 카그리세마(랫드)"
+    },
+    "sub": {
+     "en": "Obese rats, 2 + 2 nmol/kg/day: the level a rat depot should reach",
+     "ko": "비만 랫드, 2+2 nmol/kg/일: 랫드 데포의 목표 수준"
+    },
+    "group": "sib",
+    "exp": {
+     "en": "24 h after the dose: cagrilintide 14–23 nmol/L (about 62–101 ng/mL), semaglutide 5–14 nmol/L",
+     "ko": "투여 24시간 후: 카그릴린타이드 14~23 nmol/L(약 62~101 ng/mL), 세마글루타이드 5~14 nmol/L"
+    },
+    "peak": null,
+    "src": {
+     "label": "Novo, Nat Metab 2025, Extended Data Table 1",
+     "url": "https://doi.org/10.1038/s42255-025-01324-8"
+    }
+   },
+   {
+    "name": {
+     "en": "CagriSema, one syringe (pigs)",
+     "ko": "카그리세마 단일 주사기(돼지)"
+    },
+    "sub": {
+     "en": "Dual-chamber syringe vs two separate injections",
+     "ko": "이중 챔버 주사기 대 개별 주사 2회"
+    },
+    "group": "sib",
+    "exp": {
+     "en": "Cagrilintide AUC up to +45%",
+     "ko": "카그릴린타이드 AUC 최대 +45%"
+    },
+    "peak": {
+     "en": "Cagrilintide Cmax up to +65%; semaglutide about +22%",
+     "ko": "카그릴린타이드 Cmax 최대 +65%, 세마글루타이드 약 +22%"
+    },
+    "src": {
+     "label": "US12527844B2, Example 6",
+     "url": "https://patents.google.com/patent/US12527844B2/en"
+    }
+   },
+   {
+    "name": {
+     "en": "Bydureon · exenatide",
+     "ko": "바이듀리온 · 엑세나타이드"
+    },
+    "exp": {
+     "en": "About 22–25% of twice-daily Byetta",
+     "ko": "1일 2회 바이에타의 약 22~25%"
+    },
+    "peak": {
+     "en": "First-day peak 34 vs 211 pg/mL for Byetta",
+     "ko": "첫날 최고농도 34, 바이에타 211 pg/mL"
+    },
+    "src": {
+     "label": "FDA clinical pharmacology review, Bydureon",
+     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2012/022200Orig1s000ClinPharmR.pdf"
+    },
+    "sub": {
+     "en": "People, approved",
+     "ko": "사람, 허가"
+    },
+    "group": "ref"
+   },
+   {
+    "name": {
+     "en": "Sandostatin LAR · octreotide",
+     "ko": "산도스타틴 LAR · 옥트레오타이드"
+    },
+    "exp": {
+     "en": "60–63% of the daily injection",
+     "ko": "일반 주사의 60~63%"
+    },
+    "peak": {
+     "en": "Peak-to-trough 44–68% vs 163–209% daily",
+     "ko": "최고-최저 변동 44~68%, 일반 주사 163~209%"
+    },
+    "src": {
+     "label": "US label, Sandostatin LAR",
+     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/021008s049lbl.pdf"
+    },
+    "sub": {
+     "en": "People, approved",
+     "ko": "사람, 허가"
+    },
+    "group": "ref"
+   }
+  ],
   "caution": {
    "text": {
     "en": "Read the rat rows with care: the same exenatide microsphere reached about 63% relative bioavailability in rats but 22–25% in people, and cagrilintide's own bioavailability under the skin is about 30% in rats and unpublished in people.",
@@ -932,704 +1763,15 @@
     }
    ]
   },
-  "target": 28,
-  "axis": 91,
-  "tick": 14,
-  "groups": [
-   {
-    "id": "cagri",
-    "name": {
-     "en": "Long-acting CagriSema",
-     "ko": "장기지속형 카그리세마"
-    }
+  "refGroups": {
+   "sib": {
+    "en": "Other CagriSema references",
+    "ko": "기타 카그리세마 참고치"
    },
-   {
-    "id": "ref",
-    "name": {
-     "en": "Weekly CagriSema and approved depots",
-     "ko": "주 1회 카그리세마와 허가 데포"
-    }
+   "ref": {
+    "en": "Approved depots, for scale",
+    "ko": "허가 데포 참고치"
    }
-  ],
-  "board": [
-   {
-    "group": "cagri",
-    "name": {
-     "en": "G2GBio · both drugs (ADA)",
-     "ko": "지투지바이오 · 두 약물(ADA)"
-    },
-    "card": "g2gbio-cagri",
-    "ev": "animal",
-    "who": {
-     "en": "Rats, n not stated",
-     "ko": "랫드, n 미공개"
-    },
-    "days": 30,
-    "open": true,
-    "bar": {
-     "en": "Both drugs held beyond 28 days",
-     "ko": "두 약물 모두 28일 이상 유지"
-    },
-    "exp": null,
-    "peak": {
-     "en": "“No excessive initial burst” (no number given)",
-     "ko": "‘과도한 초기 방출 없음’(수치 미공개)"
-    },
-    "src": {
-     "label": "ADA 2026 abstract 2814-LB",
-     "url": "https://doi.org/10.2337/db26-2814-lb"
-    }
-   },
-   {
-    "group": "cagri",
-    "name": {
-     "en": "G2GBio · cagrilintide alone",
-     "ko": "지투지바이오 · 카그릴린타이드 단독"
-    },
-    "card": "g2gbio-cagri",
-    "ev": "animal",
-    "who": {
-     "en": "Rats, 3.6 mg; 15–25% load",
-     "ko": "랫드, 3.6 mg; 함량 15~25%"
-    },
-    "days": 84,
-    "open": false,
-    "bar": {
-     "en": "44–61% absorbed by day 28; complete by day 70–84",
-     "ko": "28일 44~61% 흡수, 70~84일 완료"
-    },
-    "exp": {
-     "en": "Exposure per mg rises with load: 209 → 1,796 ng·day/mL per mg",
-     "ko": "함량에 따라 mg당 노출 증가: 209 → 1,796 ng·day/mL/mg"
-    },
-    "peak": {
-     "en": "Cmax 42–690 ng/mL; day 1 = 3–5% of dose",
-     "ko": "Cmax 42~690 ng/mL; 첫날 투여량의 3~5%"
-    },
-    "src": {
-     "label": "WO2024248574A1, Tables 11–12",
-     "url": "https://patents.google.com/patent/WO2024248574A1/en"
-    }
-   },
-   {
-    "group": "cagri",
-    "name": {
-     "en": "G2GBio · with semaglutide",
-     "ko": "지투지바이오 · 세마글루타이드 동시 봉입"
-    },
-    "card": "g2gbio-cagri",
-    "ev": "animal",
-    "who": {
-     "en": "Rats, 3.6 mg; 10 + 10% load",
-     "ko": "랫드, 3.6 mg; 함량 10+10%"
-    },
-    "days": 77,
-    "open": false,
-    "bar": {
-     "en": "12% by day 14, then 80% by day 28; complete by day 77",
-     "ko": "14일 12% 후 28일 80%, 77일 완료"
-    },
-    "exp": {
-     "en": "4,899 ng·day/mL per mg, about 2.7× the best single-drug batch",
-     "ko": "mg당 4,899 ng·day/mL, 단독 최고 배치의 약 2.7배"
-    },
-    "peak": {
-     "en": "Cmax 1,513 ng/mL; day 1 = 0.8% of dose",
-     "ko": "Cmax 1,513 ng/mL; 첫날 투여량의 0.8%"
-    },
-    "src": {
-     "label": "WO2024248574A1, Tables 11–12",
-     "url": "https://patents.google.com/patent/WO2024248574A1/en"
-    }
-   },
-   {
-    "group": "cagri",
-    "name": {
-     "en": "G2GBio · high-load particles",
-     "ko": "지투지바이오 · 고함량 미립자"
-    },
-    "card": "g2gbio-cagri",
-    "ev": "animal",
-    "who": {
-     "en": "Rats, 3.6 mg; 40–71% load",
-     "ko": "랫드, 3.6 mg; 함량 40~71%"
-    },
-    "days": 35,
-    "open": false,
-    "bar": {
-     "en": "94–98% absorbed by day 28; complete by day 35–42",
-     "ko": "28일 94~98% 흡수, 35~42일 완료"
-    },
-    "exp": null,
-    "peak": {
-     "en": "Day 1 about 3–7% of dose",
-     "ko": "첫날 투여량의 약 3~7%"
-    },
-    "src": {
-     "label": "WO2026005556A1, Table 5",
-     "url": "https://patents.google.com/patent/WO2026005556A1/en"
-    }
-   },
-   {
-    "group": "cagri",
-    "name": {
-     "en": "China Pharm. Univ. depot",
-     "ko": "중국약과대학 데포"
-    },
-    "card": "cpu-cagri",
-    "ev": "none",
-    "who": {
-     "en": "Lab only",
-     "ko": "체외 시험만"
-    },
-    "days": null,
-    "open": false,
-    "bar": {
-     "en": "24-hour lab release only; no animal data",
-     "ko": "24시간 체외 방출만, 동물 데이터 없음"
-    },
-    "exp": null,
-    "peak": {
-     "en": "First 24 h in the lab: semaglutide 1–17%, cagrilintide 2–19%",
-     "ko": "체외 첫 24시간: 세마글루타이드 1~17%, 카그릴린타이드 2~19%"
-    },
-    "kind": {
-     "peak": "figure"
-    },
-    "src": {
-     "label": "Google Patents: CN121774878A",
-     "url": "https://patents.google.com/patent/CN121774878A/zh"
-    }
-   },
-   {
-    "group": "cagri",
-    "name": {
-     "en": "i2o microspheres",
-     "ko": "i2o 미립구"
-    },
-    "card": "i2o-cagri",
-    "ev": "none",
-    "who": {
-     "en": "No data",
-     "ko": "데이터 없음"
-    },
-    "days": null,
-    "open": false,
-    "bar": {
-     "en": "Claims cagrilintide 10–15 mg monthly; no cagrilintide data",
-     "ko": "카그릴린타이드 10~15 mg 월 1회 청구, 데이터 없음"
-    },
-    "exp": null,
-    "peak": null,
-    "src": {
-     "label": "Google Patents: WO2026152138A2",
-     "url": "https://patents.google.com/patent/WO2026152138A2/en"
-    }
-   },
-   {
-    "group": "ref",
-    "name": {
-     "en": "Weekly CagriSema (Novo)",
-     "ko": "주 1회 카그리세마(노보)"
-    },
-    "ev": "human",
-    "who": {
-     "en": "People, n=12, 2.4 + 2.4 mg",
-     "ko": "사람, n=12, 2.4+2.4 mg"
-    },
-    "days": 7,
-    "open": false,
-    "bar": {
-     "en": "Dosed weekly",
-     "ko": "주 1회 투여"
-    },
-    "exp": {
-     "en": "Averages about 356 ng/mL cagrilintide and 370 ng/mL semaglutide at steady state (the level a monthly depot must match)",
-     "ko": "정상상태 평균 카그릴린타이드 약 356, 세마글루타이드 약 370 ng/mL (월 1회 데포가 맞춰야 할 수준)"
-    },
-    "peak": {
-     "en": "Cmax 103 / 120 nmol/L, 24 / 18 h after the dose; half-life 184 / 158 h",
-     "ko": "Cmax 103 / 120 nmol/L, 투여 24 / 18시간 후; 반감기 184 / 158시간"
-    },
-    "src": {
-     "label": "Enebo et al., Lancet 2021 (appendix Table S2)",
-     "url": "https://doi.org/10.1016/S0140-6736(21)00845-X"
-    }
-   },
-   {
-    "group": "ref",
-    "name": {
-     "en": "CagriSema, one syringe (pigs)",
-     "ko": "카그리세마 단일 주사기(돼지)"
-    },
-    "ev": "animal",
-    "who": {
-     "en": "Pigs, dual-chamber syringe",
-     "ko": "돼지, 이중 챔버 주사기"
-    },
-    "days": 7,
-    "open": false,
-    "bar": {
-     "en": "Dosed weekly",
-     "ko": "주 1회 투여"
-    },
-    "exp": {
-     "en": "Cagrilintide AUC up to +45% versus two separate injections",
-     "ko": "개별 주사 2회 대비 카그릴린타이드 AUC 최대 +45%"
-    },
-    "peak": {
-     "en": "Cagrilintide Cmax up to +65%; semaglutide about +22%",
-     "ko": "카그릴린타이드 Cmax 최대 +65%, 세마글루타이드 약 +22%"
-    },
-    "src": {
-     "label": "US12527844B2, Example 6",
-     "url": "https://patents.google.com/patent/US12527844B2/en"
-    }
-   },
-   {
-    "group": "ref",
-    "name": {
-     "en": "Daily CagriSema (rats)",
-     "ko": "매일 투여 카그리세마(랫드)"
-    },
-    "ev": "animal",
-    "who": {
-     "en": "Obese rats, 2 + 2 nmol/kg/day",
-     "ko": "비만 랫드, 2+2 nmol/kg/일"
-    },
-    "days": 1,
-    "open": false,
-    "bar": {
-     "en": "Dosed daily: the level a rat depot should reach",
-     "ko": "매일 투여: 랫드 데포가 도달해야 할 수준"
-    },
-    "exp": {
-     "en": "24 h after the dose: cagrilintide 14–23 nmol/L, semaglutide 5–14 nmol/L",
-     "ko": "투여 24시간 후: 카그릴린타이드 14~23, 세마글루타이드 5~14 nmol/L"
-    },
-    "peak": null,
-    "src": {
-     "label": "Novo, Nat Metab 2025, Extended Data Table 1",
-     "url": "https://doi.org/10.1038/s42255-025-01324-8"
-    }
-   },
-   {
-    "group": "ref",
-    "name": {
-     "en": "Bydureon · exenatide",
-     "ko": "바이듀리온 · 엑세나타이드"
-    },
-    "ev": "human",
-    "who": {
-     "en": "People, approved",
-     "ko": "사람, 허가"
-    },
-    "days": 7,
-    "open": false,
-    "bar": {
-     "en": "Dosed weekly (PLGA microspheres)",
-     "ko": "주 1회 투여(PLGA 미립구)"
-    },
-    "exp": {
-     "en": "About 22–25% of twice-daily Byetta",
-     "ko": "1일 2회 바이에타의 약 22~25%"
-    },
-    "peak": {
-     "en": "First-day peak 34 vs 211 pg/mL for Byetta",
-     "ko": "첫날 최고농도 34, 바이에타 211 pg/mL"
-    },
-    "src": {
-     "label": "FDA clinical pharmacology review, Bydureon",
-     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2012/022200Orig1s000ClinPharmR.pdf"
-    }
-   },
-   {
-    "group": "ref",
-    "name": {
-     "en": "Sandostatin LAR · octreotide",
-     "ko": "산도스타틴 LAR · 옥트레오타이드"
-    },
-    "ev": "human",
-    "who": {
-     "en": "People, approved",
-     "ko": "사람, 허가"
-    },
-    "days": 28,
-    "open": false,
-    "bar": {
-     "en": "Dosed monthly (PLGA microspheres)",
-     "ko": "월 1회 투여(PLGA 미립구)"
-    },
-    "exp": {
-     "en": "60–63% of the daily injection",
-     "ko": "일반 주사의 60~63%"
-    },
-    "peak": {
-     "en": "Peak-to-trough 44–68% vs 163–209% daily",
-     "ko": "최고-최저 변동 44~68%, 일반 주사 163~209%"
-    },
-    "src": {
-     "label": "US label, Sandostatin LAR",
-     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/021008s049lbl.pdf"
-    }
-   }
-  ],
-  "chart": {
-   "kind": "cumulative",
-   "title": {
-    "en": "How fast G2GBio's microspheres release cagrilintide (rats)",
-    "ko": "지투지바이오 미립구의 카그릴린타이드 방출 속도(랫드)"
-   },
-   "sub": {
-    "en": "Share of the dose absorbed by each day, worked out from plasma levels. The dashed line is an even release over 28 days. Hover a point for the value.",
-    "ko": "혈중농도로 계산한 날짜별 누적 흡수율. 점선은 28일 균등 방출. 점에 마우스를 올리면 값이 보입니다."
-   }
-  },
-  "curves": [
-   {
-    "name": {
-     "en": "Solution (no depot)",
-     "ko": "용액(데포 없음)"
-    },
-    "dose": {
-     "en": "1.2 mg",
-     "ko": "1.2 mg"
-    },
-    "col": "--lane-4",
-    "src": {
-     "label": "WO2024248574A1, Tables 11–12",
-     "url": "https://patents.google.com/patent/WO2024248574A1/en"
-    },
-    "pts": [
-     [
-      0,
-      0,
-      0
-     ],
-     [
-      0.25,
-      4.5,
-      0
-     ],
-     [
-      1,
-      35.2,
-      0
-     ],
-     [
-      4,
-      91.1,
-      0
-     ],
-     [
-      7,
-      100,
-      0
-     ]
-    ],
-    "note": {
-     "en": "WO2024248574A1 Table 12",
-     "ko": "WO2024248574A1 표 12"
-    }
-   },
-   {
-    "name": {
-     "en": "Cagrilintide alone, 25% load",
-     "ko": "카그릴린타이드 단독, 함량 25%"
-    },
-    "dose": {
-     "en": "3.6 mg",
-     "ko": "3.6 mg"
-    },
-    "col": "--lane-3",
-    "src": {
-     "label": "WO2024248574A1, Tables 11–12",
-     "url": "https://patents.google.com/patent/WO2024248574A1/en"
-    },
-    "pts": [
-     [
-      0,
-      0,
-      0
-     ],
-     [
-      0.25,
-      0.2,
-      0
-     ],
-     [
-      1,
-      4.7,
-      0
-     ],
-     [
-      4,
-      27.5,
-      0
-     ],
-     [
-      7,
-      37.3,
-      0
-     ],
-     [
-      10,
-      41.9,
-      0
-     ],
-     [
-      14,
-      48.2,
-      0
-     ],
-     [
-      17,
-      52.6,
-      0
-     ],
-     [
-      21,
-      56.5,
-      0
-     ],
-     [
-      28,
-      61.3,
-      0
-     ],
-     [
-      35,
-      70.5,
-      0
-     ],
-     [
-      42,
-      80.2,
-      0
-     ],
-     [
-      49,
-      86.8,
-      0
-     ],
-     [
-      56,
-      93.6,
-      0
-     ],
-     [
-      63,
-      97.4,
-      0
-     ],
-     [
-      70,
-      98.8,
-      0
-     ],
-     [
-      77,
-      99.6,
-      0
-     ],
-     [
-      84,
-      100,
-      0
-     ]
-    ],
-    "note": {
-     "en": "Ex 1-3, Table 12",
-     "ko": "실시예 1-3, 표 12"
-    }
-   },
-   {
-    "name": {
-     "en": "With semaglutide, 10 + 10%",
-     "ko": "세마글루타이드 동시 봉입, 10+10%"
-    },
-    "dose": {
-     "en": "3.6 mg",
-     "ko": "3.6 mg"
-    },
-    "col": "--lane-1",
-    "src": {
-     "label": "WO2024248574A1, Tables 11–12",
-     "url": "https://patents.google.com/patent/WO2024248574A1/en"
-    },
-    "pts": [
-     [
-      0,
-      0,
-      0
-     ],
-     [
-      0.25,
-      0.1,
-      0
-     ],
-     [
-      1,
-      0.8,
-      0
-     ],
-     [
-      4,
-      3.3,
-      0
-     ],
-     [
-      7,
-      4.4,
-      0
-     ],
-     [
-      10,
-      6.1,
-      0
-     ],
-     [
-      14,
-      12.4,
-      0
-     ],
-     [
-      17,
-      27.4,
-      0
-     ],
-     [
-      21,
-      55.8,
-      0
-     ],
-     [
-      28,
-      79.8,
-      0
-     ],
-     [
-      35,
-      83.5,
-      0
-     ],
-     [
-      42,
-      88.6,
-      0
-     ],
-     [
-      49,
-      93.4,
-      0
-     ],
-     [
-      56,
-      97.0,
-      0
-     ],
-     [
-      63,
-      99.2,
-      0
-     ],
-     [
-      70,
-      99.9,
-      0
-     ],
-     [
-      77,
-      100,
-      0
-     ]
-    ],
-    "note": {
-     "en": "Ex 5-1, Table 12; only cagrilintide measured",
-     "ko": "실시예 5-1, 표 12; 카그릴린타이드만 측정"
-    }
-   },
-   {
-    "name": {
-     "en": "High-load particles",
-     "ko": "고함량 미립자"
-    },
-    "dose": {
-     "en": "3.6 mg",
-     "ko": "3.6 mg"
-    },
-    "col": "--lane-2",
-    "src": {
-     "label": "WO2026005556A1, Table 5",
-     "url": "https://patents.google.com/patent/WO2026005556A1/en"
-    },
-    "pts": [
-     [
-      0,
-      0,
-      0
-     ],
-     [
-      0.04,
-      0,
-      0
-     ],
-     [
-      0.25,
-      0.3,
-      0
-     ],
-     [
-      1,
-      4.8,
-      0
-     ],
-     [
-      4,
-      30.2,
-      0
-     ],
-     [
-      7,
-      46.5,
-      0
-     ],
-     [
-      10,
-      57.1,
-      0
-     ],
-     [
-      14,
-      69.4,
-      0
-     ],
-     [
-      17,
-      76.4,
-      0
-     ],
-     [
-      21,
-      83.4,
-      0
-     ],
-     [
-      28,
-      94.2,
-      0
-     ],
-     [
-      35,
-      100,
-      0
-     ]
-    ],
-    "note": {
-     "en": "Ex 2-4, WO2026005556A1 Table 5",
-     "ko": "실시예 2-4, WO2026005556A1 표 5"
-    }
-   }
-  ]
+  }
  }
 }

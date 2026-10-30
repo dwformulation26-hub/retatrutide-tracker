@@ -168,44 +168,60 @@ def validate(d):
             p.append(f"{where}: src url missing")
     pk = d.get("pk")
     if pk:
-        PK_EV = {"human", "animal", "hidden", "none"}
-        groups = {g["id"] for g in pk["groups"]}
-        for k in ("title", "lede"):
+        srcs_ok = lambda src: all(x.get("url", "").startswith("http") for x in ([src] if isinstance(src, dict) else src or [{}]))
+        for k in ("title", "answer"):
             if not bilingual(pk.get(k)):
                 p.append(f"pk {k}: needs en and ko")
-        for r in pk["board"]:
-            where = f"pk row {r.get('name', {}).get('en')}"
-            if r.get("group") not in groups:
-                p.append(f"{where}: group not in groups")
-            if r.get("card") and r["card"] not in ids:
-                p.append(f"{where}: no card with id {r['card']}")
-            if r.get("ev") not in PK_EV:
-                p.append(f"{where}: ev must be one of {sorted(PK_EV)}")
-            if (r.get("days") is None) != (r.get("ev") == "none"):
-                p.append(f"{where}: days is required unless ev is none")
-            elif r.get("days") is not None and not 0 < r["days"] <= pk["axis"]:
-                p.append(f"{where}: days must fall on the 0-{pk['axis']} axis")
-            for k in ("name", "who", "bar"):
-                if not bilingual(r.get(k)):
-                    p.append(f"{where}: {k} needs en and ko")
-            for k in ("exp", "peak"):
-                if r.get(k) is not None and not bilingual(r[k]):
-                    p.append(f"{where}: {k} needs en and ko")
-            srcs = [r["src"]] if isinstance(r.get("src"), dict) else r.get("src") or [{}]
-            if not all(s.get("url", "").startswith("http") for s in srcs):
-                p.append(f"{where}: src url missing")
         for k in ("judge", "caution"):
             if not bilingual((pk.get(k) or {}).get("text")):
                 p.append(f"pk {k}: text needs en and ko")
-        for r in pk["board"]:
+        X = pk["table"]
+        for k in ("title", "sub", "none"):
+            if not bilingual(X.get(k)):
+                p.append(f"pk table {k}: needs en and ko")
+        if X["target"] not in X["days"]:
+            p.append("pk table: target day must be one of the day columns")
+        for r in ([X["guide"]] if X.get("guide") else []) + X["rows"]:
+            where = f"pk table row {r['name']['en']}"
+            if len(r["vals"]) != len(X["days"]):
+                p.append(f"{where}: needs one value per day column")
+            for v in r["vals"]:
+                ok = v is None or (isinstance(v, (int, float)) and 0 <= v <= 100) or (isinstance(v, list) and len(v) == 2 and 0 <= v[0] <= v[1] <= 100)
+                if not ok:
+                    p.append(f"{where}: values must be 0-100, a [lo, hi] range or null")
+            curve = r.get("pts") or [[dd, lo] for dd, lo, hi in r.get("band", [])] + [[dd, hi] for dd, lo, hi in r.get("band", [])]
+            if r is not X.get("guide") and not curve:
+                p.append(f"{where}: needs pts (or a band) for the chart")
+            if any(len(q) != 2 or not 0 <= q[0] <= X["axis"] or not 0 <= q[1] <= 100 for q in curve):
+                p.append(f"{where}: chart points must be [day 0-{X['axis']}, value 0-100]")
+            for m in X.get("metrics", []):
+                v = r.get(m["key"])
+                if v is not None and not (isinstance(v, (int, float)) and v > 0):
+                    p.append(f"{where}: {m['key']} must be a positive number or null")
+                if r.get(m["key"] + "Kind") not in (None, "figure", "simulated", "calc"):
+                    p.append(f"{where}: {m['key']}Kind must be figure, simulated or calc")
+            if r.get("col") is not None and r["col"] not in range(1, 6):
+                p.append(f"{where}: col must be 1-5 (the five chart colours)")
+            if r is not X.get("guide"):
+                if not bilingual(r.get("sub")) or not srcs_ok(r.get("src")):
+                    p.append(f"{where}: needs sub (en, ko) and a source url")
+                if r.get("kind") not in (None, "figure", "simulated"):
+                    p.append(f"{where}: kind must be figure or simulated")
+        groups = set(pk.get("refGroups", {}))
+        if sum(1 for r in pk["refs"] if r.get("target")) != 1:
+            p.append("pk refs: exactly one row must be the weekly target")
+        for r in pk["refs"]:
+            where = f"pk ref {r['name']['en']}"
+            if not r.get("target") and r.get("group") not in groups:
+                p.append(f"{where}: group must be one of refGroups")
+            if not bilingual(r.get("sub")) or not srcs_ok(r.get("src")):
+                p.append(f"{where}: needs sub (en, ko) and a source url")
+            for k in ("exp", "peak"):
+                if r.get(k) is not None and not bilingual(r[k]):
+                    p.append(f"{where}: {k} needs en and ko")
             for col, k in (r.get("kind") or {}).items():
                 if col not in ("exp", "peak") or k not in ("figure", "simulated") or not r.get(col):
-                    p.append(f"pk row {r['name']['en']}: kind {col}={k} must tag a filled exp or peak as figure or simulated")
-        for cv in pk["curves"]:
-            if not all(len(t) == 3 and all(isinstance(x, (int, float)) for x in t) for t in cv["pts"]):
-                p.append(f"pk curve {cv['name']['en']}: pts must be [day, mean, se] numbers")
-            if not cv.get("src", {}).get("url", "").startswith("http"):
-                p.append(f"pk curve {cv['name']['en']}: src url missing")
+                    p.append(f"{where}: kind {col}={k} must tag a filled exp or peak as figure or simulated")
     dates = [n["date"] for n in d["news"]]
     if dates != sorted(dates, reverse=True):
         p.append("news must be sorted newest first")
@@ -222,7 +238,7 @@ def render(all_d):
     print(f"wrote index.html ({len(html) // 1024} KB)")
     for key, d in all_d.items():
         print(f"  {key}: {len(d['cards'])} cards, {len(d['patents'])} + {len(d['platforms'])} patents, {len(d['estate'])} originator families, "
-              f"{len(d['plan'])} milestones, {len(d['news'])} news, {len(d['pk']['board'])} PK rows, as of {d['asOf']}")
+              f"{len(d['plan'])} milestones, {len(d['news'])} news, {len(d['pk']['table']['rows'])} PK table rows, as of {d['asOf']}")
 
 
 def main():

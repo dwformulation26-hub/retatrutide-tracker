@@ -18,9 +18,9 @@ on the patent holder.
 3. **Lilly timeline**: four key figures, a Gantt of Lilly's own retatrutide patent families on one year axis (first
    filing → expiry, the possible extension dashed, the molecule patent emphasised), and a year-by-year road map with a
    Today rule between what is done and what is planned.
-4. **PK data**: one board that puts every long-acting retatrutide programme, the same companies' other-drug depots and
-   approved depots on one day axis (red line = 28-day monthly target), with the same two number columns beside each bar
-   (exposure vs reference, peak and first day), then the only public retatrutide depot curve (Vivani, rats).
+4. **PK data**: the page question answered in one sentence, then (1) a by-day table of how the dose comes out or how the
+   level holds, with day 28 marked as the monthly target, and (2) a comparison against the weekly product and approved
+   depots on exposure (rBA) and peak.
 5. **News**: dated events since Jan 2025.
 
 `index.html` is one static file with all data built in - deploy it as-is. Internal use only.
@@ -45,11 +45,12 @@ Edit `reta_data.json`, run `python build.py`, commit both the JSON and `index.ht
 - `estate[].short` labels a chart row (max 24 chars); `granted` and `title` feed the details table. `kind` is `compound`, `use`, `formulation` or `process`. `expiry` is the 20-year date (Google Patents' estimate
   or filing + 20 years); `extMax` is the furthest a term extension could reach and stays an estimate until one is granted.
 - `plan[].done` is `false` for anything after `asOf`; the build refuses a "done" milestone dated in the future.
-- `pk.board` rows: `group` (`reta`, `sib`, `ref`), `ev` (`human`, `animal`, `hidden` = sampled but not public, `none`),
-  `days` on the 0–63 axis (the dosing interval for approved and weekly products, otherwise how long levels were shown),
-  `open: true` when levels lasted longer than shown. `exp`/`peak` stay `null` when no public number exists (shown as a
-  dash). Tag any value read off a chart or simulated with `kind` (`figure`, `simulated`); never draw or type a value
-  that is not in a source. `pk.curve.pts` are `[day, mean, SE]` read from the published chart.
+- `pk`: `answer` is the one-sentence reply to the page question, with the human target. `pk.table` is the by-day table:
+  `days` columns, the `target` day (28), optional `guide` row (even monthly release), and `rows` with one value per day
+  (0–100, a `[lo, hi]` range, or `null`), `end`, `peak`, `sub` and `src`; `muted` for comparison rows. Programmes with no
+  by-day numbers go in `none`, never as empty rows. `pk.refs` is the comparison against the weekly product: one `target`
+  row, then rows grouped by `refGroups`. Tag any value read off a chart or simulated with `kind` (`figure`, `simulated`);
+  never type a value that is not in a source.
 - Ledes carry `{n}`, `{p}` and `{q}` placeholders for the card, patent and platform counts; reread them when facts change.
 
 Initial research: 2026-10-29, from ClinicalTrials.gov, Espacenet, Google Patents (rate-limited part-way), Lilly's SEC
