@@ -6,7 +6,7 @@
 const DATA = { reta: require("../reta_data.json"), cagri: require("../cagri_data.json") };
 // the newest free model is often overloaded (503); the next ones are tried in turn
 const MODELS = [process.env.GEMINI_MODEL || "gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite"];
-const LIMITS = { question: 600, turns: 6, turnText: 1500, perMinute: 8 };
+const LIMITS = { question: 600, turns: 6, turnText: 1500, perMinute: 8, wait: 20000 };
 
 // English only: the Korean copies would double the tokens without adding facts
 function english(o) {
@@ -80,25 +80,29 @@ module.exports = async function handler(req, res) {
   const payload = {
     systemInstruction: { parts: [{ text: `${RULES}\n\nThe reader is viewing the ${DATA[drug].meta.name.en} side${page ? `, ${page} page` : ""}.\n\n${CONTEXT}` }] },
     contents: [...history, { role: "user", parts: [{ text: q }] }],
-    generationConfig: { maxOutputTokens: 2048 },
+    // short answers to look-up questions need little reasoning; low thinking keeps replies to seconds
+    generationConfig: { maxOutputTokens: 2048, thinkingConfig: { thinkingLevel: "low" } },
   };
-  let r, j, model;
+  let r = { status: 504 }, j = {}, model;
   for (model of MODELS) {
     try {
       r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-goog-api-key": process.env.GEMINI_API_KEY },
         body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(LIMITS.wait),
       });
       j = await r.json().catch(() => ({}));
     } catch (e) {
-      return send(res, 502, { error: "unreachable" });
+      // a model that has not answered in time is treated as overloaded
+      r = { status: e.name === "TimeoutError" ? 504 : 502 };
+      if (r.status === 502) return send(res, 502, { error: "unreachable" });
     }
-    // overloaded, or this model's free allowance is used up: try the next model
-    if (r.status !== 503 && r.status !== 500 && r.status !== 429) break;
+    // overloaded, too slow, or this model's free allowance is used up: try the next model
+    if (![429, 500, 503, 504].includes(r.status)) break;
   }
   if (r.status === 429) return send(res, 429, { error: "quota" });
-  if (r.status === 503 || r.status === 500) return send(res, 503, { error: "overloaded" });
+  if ([500, 503, 504].includes(r.status)) return send(res, 503, { error: "overloaded" });
   if (!r.ok) {
     console.error("gemini", r.status, j && j.error && j.error.message);
     // Google's short status (e.g. NOT_FOUND, INVALID_ARGUMENT) tells a wrong model name from a bad key without exposing either
